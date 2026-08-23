@@ -1,38 +1,73 @@
 #!/usr/bin/env bash
-# Download your model weight file.
-#
-# Rules:
-#   - Must be idempotent (safe to run multiple times).
-#   - Must download without any credentials (public URL only).
-#   - The output path must match `_runtime.model_path` in metadata.json.
+# Download the public CodeFellow model artifact without credentials.
+# Safe to run repeatedly; completed weights are verified before reuse.
 
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODEL_DIR="$HERE/model"
-MODEL_FILE="$MODEL_DIR/SmolLM2-135M-Instruct-Q4_K_M.gguf"
+MODEL_FILE="$MODEL_DIR/CodeFellow-Q4_K_M.gguf"
+PARTIAL_FILE="$MODEL_FILE.partial"
 
-# ── Replace this URL with your public model weight URL ─────────────────────────
-MODEL_URL="https://huggingface.co/bartowski/SmolLM2-135M-Instruct-GGUF/resolve/main/SmolLM2-135M-Instruct-Q4_K_M.gguf"
-# ───────────────────────────────────────────────────────────────────────────────
+# Qwen2.5-Coder-3B-Instruct Q4_K_M, selected by the full official-profiler
+# comparison. The checksum is published with the unchanged Bartowski artifact.
+MODEL_URL="https://huggingface.co/bartowski/Qwen2.5-Coder-3B-Instruct-GGUF/resolve/main/Qwen2.5-Coder-3B-Instruct-Q4_K_M.gguf"
+MODEL_SHA256="3da3afe6cf5c674ac195803ea0dd6fee7e1c228c2105c1ce8c66890d1d4ab460"
+
+verify_model() {
+    printf '%s  %s\n' "$MODEL_SHA256" "$1" | sha256sum --check --status
+}
 
 mkdir -p "$MODEL_DIR"
 
 if [[ -f "$MODEL_FILE" ]]; then
-  echo "model already present at $MODEL_FILE — skipping download"
-  exit 0
+    if verify_model "$MODEL_FILE"; then
+        echo "verified model already present: $MODEL_FILE"
+        exit 0
+    fi
+    echo "error: existing model has the wrong SHA-256: $MODEL_FILE" >&2
+    echo "remove that file explicitly, then run this script again" >&2
+    exit 1
 fi
 
-echo "downloading $MODEL_URL → $MODEL_FILE (~80 MB)…"
+echo "downloading the public CodeFellow model (about 1.8 GiB)"
 
-if command -v curl > /dev/null 2>&1; then
-  curl -L --fail --progress-bar -o "$MODEL_FILE.partial" "$MODEL_URL"
-elif command -v wget > /dev/null 2>&1; then
-  wget --show-progress -O "$MODEL_FILE.partial" "$MODEL_URL"
+if command -v aria2c >/dev/null 2>&1; then
+    aria2c \
+        --continue=true \
+        --allow-overwrite=true \
+        --auto-file-renaming=false \
+        --file-allocation=none \
+        --max-connection-per-server=8 \
+        --split=8 \
+        --dir="$MODEL_DIR" \
+        --out="$(basename "$PARTIAL_FILE")" \
+        "$MODEL_URL"
+elif command -v curl >/dev/null 2>&1; then
+    curl \
+        --location \
+        --fail \
+        --retry 5 \
+        --retry-delay 2 \
+        --retry-all-errors \
+        --continue-at - \
+        --output "$PARTIAL_FILE" \
+        "$MODEL_URL"
+elif command -v wget >/dev/null 2>&1; then
+    wget \
+        --continue \
+        --output-document="$PARTIAL_FILE" \
+        "$MODEL_URL"
 else
-  echo "error: neither curl nor wget found" >&2
-  exit 1
+    echo "error: install aria2c, curl, or wget to download the model" >&2
+    exit 1
 fi
 
-mv "$MODEL_FILE.partial" "$MODEL_FILE"
-echo "done: $MODEL_FILE"
+if ! verify_model "$PARTIAL_FILE"; then
+    echo "error: downloaded model failed SHA-256 verification" >&2
+    rm -f -- "$PARTIAL_FILE"
+    exit 1
+fi
+
+mv -f -- "$PARTIAL_FILE" "$MODEL_FILE"
+echo "verified model ready: $MODEL_FILE"

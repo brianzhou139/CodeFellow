@@ -1,190 +1,105 @@
-# ADTC 2026 — Submission Template
+# CodeFellow
 
-This is the official template repository for the **Africa Deep Tech Challenge 2026** Laptop LLM track.
+**Learn, debug, and build—completely offline.**
 
-Fork this repository, fill in the required files, and submit your repository URL via [adtc-2026.devpost.com](https://adtc-2026.devpost.com).
+CodeFellow is a private, on-device coding tutor for learners who cannot assume reliable or affordable internet access. It combines the unchanged Qwen2.5-Coder-3B-Instruct Q4_K_M coding model, a 600 MB CPU-int8 Kiswahili translation model, and real local diagnostics from Python or Node.js. It supports English and the natural Kiswahili/English code-switching register used in programming classrooms, preserving terms such as `function`, `array`, `API`, and `runtime` instead of forcing artificial translations.
 
----
+Qwen runs through `llama.cpp`; the Kiswahili language layer runs through CTranslate2 and SentencePiece. No cloud API is called during use.
 
-## ✅ Submission Checklist
+## Why this problem
 
-Before submitting, confirm every item:
+Many university, polytechnic, TVET, and bootcamp learners in Southern Africa practice on budget laptops and intermittent connections. A generic chatbot may invent compiler results and often gives away a full solution before a learner understands the bug. CodeFellow instead grounds its response in diagnostics produced on the learner's own laptop and lets the learner request either a guided hint or a full worked explanation.
 
-- [ ] Your repository is **public** on GitHub
-- [ ] `metadata.json` is fully filled in — no placeholder values remain
-- [ ] `metadata.json` contains exactly **2 test prompts** in the `test_prompts` array, written for your chosen domain
-- [ ] `download_model.sh` successfully downloads your model to `model/`
-- [ ] The downloaded file is a valid **GGUF format** (`.gguf`) weight file
-- [ ] `model/*.gguf` is listed in `.gitignore` — do **not** commit large weight files
-- [ ] `REPORT.md` is filled in with your technical writeup
-- [ ] Running `bash download_model.sh` completes without errors
-- [ ] Your model runs entirely **offline** — zero external network calls during inference
+## Cross-disciplinary integration
 
----
+The primary pairing is **coding assistants + education**, with computational linguistics as a second load-bearing integration:
 
-## 📁 Required File Structure
+- hint mode asks questions, identifies one concept, and avoids replacing the whole solution;
+- full mode explains the root cause, proposes a minimal patch, and suggests tests;
+- the prompt includes real syntax diagnostics produced locally, so tutoring is tied to executable evidence rather than a cosmetic persona.
+- a constrained Kiswahili programming glossary protects identifiers, operators, complexity notation, and semantic terms such as *shufwa* (even) before local translation;
+- fenced code is never translated, while teaching prose can be rendered in Kiswahili or natural Kiswahili/English code-switching.
 
-```
-your-submission/
-├── metadata.json          ← Required. Team, model, and test prompt metadata.
-├── download_model.sh      ← Required. Downloads your .gguf model weight file.
-├── REPORT.md              ← Required. Technical writeup (problem, design, benchmarks).
-├── model/
-│   └── your-model.gguf   ← Downloaded by the script above. Do NOT commit.
-└── .gitignore             ← Must exclude *.gguf and model/ from version control.
-```
+## Quick start
 
----
-
-## 📝 metadata.json
-
-Fill in every field. No field should remain at its placeholder value.
-
-```json
-{
-  "team_id": "your-team-id",
-  "domain": "coding_assistants",
-  "language_scope": ["en"],
-  "african_alpha_claim": false,
-  "budget_laptop_claim": true,
-  "submitter": {
-    "name": "your-name",
-    "email": "your-email@domain.com",
-    "github_handle": "your-github"
-  },
-  "cross_disciplinary_pairing": {
-    "discipline": "education",
-    "load_bearing": true,
-    "description": "Brief description of how your model serves a real-world domain."
-  },
-  "test_prompts": [
-    {
-      "prompt_id": "tp_001",
-      "prompt": "Your first test prompt, written for your chosen domain."
-    },
-    {
-      "prompt_id": "tp_002",
-      "prompt": "Your second test prompt, written for your chosen domain."
-    }
-  ],
-  "model": {
-    "name": "YourModel-Q4_K_M",
-    "runtime": "llama.cpp",
-    "quantization": "GGUF Q4_K_M",
-    "parameters_estimate": "1.1B",
-    "packaging": "binary_bundle"
-  },
-  "_runtime": {
-    "model_path": "model/your-model.gguf"
-  }
-}
-```
-
-### Field Reference
-
-| Field | Required | Description |
-|---|---|---|
-| `team_id` | ✅ | Your unique team ID as registered on the ADTF portal |
-| `domain` | ✅ | Your challenge track. One of: `math_scientific_reasoning`, `healthcare_medical`, `agriculture`, `creative_writing`, `coding_assistants`, `corporate_enterprise`, `autonomous_ai_agents` |
-| `language_scope` | ✅ | Array of BCP-47 language codes. Must include at least one. |
-| `african_alpha_claim` | ✅ | `true` only if claiming the African Use Case Bonus |
-| `budget_laptop_claim` | ✅ | Must be `true` — all submissions target the 8 GB RAM laptop profile |
-| `submitter.name` | ✅ | Full name of the team member submitting the run |
-| `submitter.email` | ✅ | Valid email address linked to the registered team |
-| `submitter.github_handle` | ✅ | Verifiable GitHub username |
-| `cross_disciplinary_pairing.discipline` | ✅ | The deep-tech discipline your model serves |
-| `cross_disciplinary_pairing.load_bearing` | ✅ | `true` if the pairing is integral to the submission, not cosmetic |
-| `test_prompts` | ✅ | **Exactly 2 prompts** in your chosen domain. Organizers will add 2 hidden prompts to test for overfitting. |
-| `model.runtime` | ✅ | Must be `llama.cpp`. No other runtime is accepted. |
-| `model.quantization` | ✅ | Must be a GGUF quantization format (e.g. `GGUF Q4_K_M`, `GGUF Q5_K_M`) |
-| `model.parameters_estimate` | ✅ | Approximate parameter count (e.g. `135M`, `1.1B`, `7B`) |
-| `model.packaging` | ✅ | How the model is packaged. One of: `docker_image`, `docker_build_from_repo`, `binary_bundle` |
-| `_runtime.model_path` | ✅ | Relative path from repo root to your `.gguf` file (e.g. `model/my-model.gguf`) |
-
----
-
-## 📥 download_model.sh
-
-This script **must** download your model weight file to the `model/` directory.
-
-Rules:
-- Must be idempotent — safe to run multiple times without re-downloading.
-- Must work without any credentials — your weights must be publicly accessible.
-- The downloaded file path must exactly match `_runtime.model_path` in `metadata.json`.
-
-Recommended hosting options for your weights:
-- [Hugging Face](https://huggingface.co) — public model repos (free, best for GGUF files)
-- GitHub Release Assets — attach the `.gguf` file to a GitHub Release
-- Any stable public URL (GCS public bucket, S3 public object, etc.)
-
----
-
-## 📄 REPORT.md
-
-Your technical writeup. Judges and the LLM-based audit system will read this to understand your submission. Cover:
-
-1. **Problem** — What problem are you solving? Who is the target user in an African context?
-2. **Design Decisions** — What model did you start from? Why that quantization level? What alternatives did you evaluate?
-3. **Constraints** — What hardware, connectivity, or data constraints shaped your approach?
-4. **Benchmarks** — What inference speed and memory numbers did you observe on your development machine?
-
-Keep it factual and specific. One to three pages is ideal.
-
----
-
-## 🧪 Local Testing
-
-The ADTC profiler is open source. Install it directly from the official repository:
+Requirements: Ubuntu/Linux, Python 3.10+, a current `llama.cpp` build containing `llama-cli`, roughly 3 GB of free disk space, and 8 GB RAM.
 
 ```bash
-pip install "git+https://github.com/Africa-Deep-Tech-Foundation/adtc-profiler.git"
-```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 
-Then run a local smoke test before submitting:
-
-```bash
-# 1. Download your weights
 bash download_model.sh
+bash download_translation.sh
 
-# 2. Run the profiler in participant mode
+# Guided hint for a Python or JavaScript file
+python3 codefellow.py app.py --question "Why does this fail on repeated values?"
+
+# Full diagnosis and patch guidance
+python3 codefellow.py app.py --full-answer
+
+# Higher-accuracy two-pass mode: a second local critic checks the first draft
+python3 codefellow.py app.py --full-answer --review
+
+# Ground the answer in a trusted test command that you choose
+python3 codefellow.py app.py --full-answer --test-command "python3 -m pytest -q"
+
+# Reproduce the two included demo scenarios
+python3 codefellow.py examples/longest_unique_bug.py \
+  --question "Why is the answer for abba wrong?" --full-answer
+python3 codefellow.py examples/average_bug.js \
+  --question "Help me handle empty input and numeric strings."
+
+# Kiswahili teaching prose with standard English coding vocabulary
+python3 codefellow.py examples/average_bug.js --language sw-mix \
+  --question "Kwa nini function hii inafeli ikiwa array ni empty?" --full-answer
+
+# Override runtime paths when llama-cli is not on PATH
+python3 codefellow.py app.py \
+  --llama-cli /path/to/llama.cpp/build/bin/llama-cli \
+  --model /path/to/model.gguf
+```
+
+CodeFellow reads at most 64 KiB from the selected source file. Python files are checked with the standard-library syntax parser without creating bytecode; JavaScript files are checked with `node --check` when Node.js is installed. A learner may explicitly supply a trusted `--test-command`; it runs without a shell, in the source directory, with a 45-second timeout and bounded captured output. Test evidence is placed in the model prompt so the diagnosis is tied to an actual failure.
+
+For Kiswahili requests, CodeFellow first protects exact programming contracts and translates only the natural-language requirement to English. Qwen solves the technical problem in its strongest language. The local language layer then translates teaching prose back to Kiswahili while preserving fenced code exactly. In `sw-mix` mode it retains conventional English programming vocabulary. English requests bypass the translator completely, preserving the base model's speed and accuracy.
+
+When a compact model returns bare replacement code in full-answer mode, CodeFellow's deterministic response-contract layer wraps it in one language-labelled code block and removes only obvious top-level demo execution after the final Python or JavaScript definition. The model still produces the implementation, and generated code is never executed by this layer. This makes formatting and safety predictable without weakening the underlying model or requiring a cloud retry.
+
+The runtime explicitly disables hidden reasoning traces and reserves the token budget for the learner-facing answer. This keeps responses predictable on compact thinking-capable models.
+
+## ADTC profiler smoke test
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install "git+https://github.com/Africa-Deep-Tech-Foundation/adtc-profiler.git"
+
 adtc-profiler run \
   --submission . \
   --mode participant \
   --output submission.json \
   --skip-accuracy
-
-# 3. Review your report
-cat submission.json
 ```
 
-A valid run produces a `submission.json` with `"measured_on": "participant_laptop"`.
+The model is downloaded before evaluation. Once the model is present, both the application and profiler inference path operate without network access.
 
-The profiler source code, including the thermal monitoring logic and scoring formulas, is publicly readable at:
-[github.com/Africa-Deep-Tech-Foundation/adtc-profiler](https://github.com/Africa-Deep-Tech-Foundation/adtc-profiler)
+## Repository layout
 
----
+- `codefellow.py` — offline tutor and local-diagnostics application
+- `translation_backend.py` — terminology-aware Kiswahili routing and CPU-int8 NLLB runtime
+- `response_contract.py` — deterministic formatting, demo removal, and code-switch register
+- `metadata.json` — ADTC submission metadata and two declared prompts
+- `download_model.sh` — public, resumable, checksum-verified model download
+- `download_translation.sh` — public, resumable, checksum-verified translator download
+- `REPORT.md` — design rationale and reproducible benchmark results
+- `examples/` — small Python and JavaScript demo bugs
+- `model/` — local GGUF weights, excluded from Git
 
-## ⚠️ Rules
+## Safety and scope
 
-1. **Public repository required.** Your repository must be public at the time of evaluation.
-2. **No model weights in git.** Add `*.gguf` and `model/` to your `.gitignore`. The evaluator downloads weights fresh via `download_model.sh`.
-3. **100% offline during evaluation.** Your model must run with zero external network dependencies during our testing window. `download_model.sh` runs before the profiler starts, but once profiling begins, no outbound requests are permitted.
-4. **llama.cpp only.** All models must use GGUF weights and run through `llama.cpp`. No other runtime is supported by our evaluation framework.
-5. **8 GB RAM limit.** Your model must run within the standard laptop profile (4 vCPU, 8 GB RAM, integrated GPU only). Out-of-memory errors during evaluation result in automatic disqualification.
-6. **No size restriction.** There is no parameter count or file size cap — but the 8 GB RAM constraint is strict. Plan your quantization level accordingly.
-7. **Two test prompts required.** Your `metadata.json` must include exactly 2 prompts in the `test_prompts` array. Organizers will generate 2 additional hidden prompts within your domain. All 4 are used for scoring.
+CodeFellow is a learning tool. It does not execute model-generated code, make network requests, or silently edit the learner's files. It runs a project test command only when the learner explicitly supplies `--test-command`; that command is never constructed by the model.
 
----
+## License
 
-## 🆘 Support
-
-Open an issue in this repository or contact the ADTF team at challenge@africadeeptech.org.
-
-View the full eligibility rules at [adtc-2026.devpost.com/rules](https://adtc-2026.devpost.com/rules).
-
----
-
-## 📄 License
-
-This template is licensed under the terms of the [GNU GPL v3 License](LICENSE).
-
+Repository code is distributed under [GPL-3.0](LICENSE). Qwen retains the Qwen Research License. The NLLB translator is CC-BY-NC-4.0 and is included for this non-commercial research/evaluation prototype; see `NOTICE` and `THIRD_PARTY_LICENSES/`.

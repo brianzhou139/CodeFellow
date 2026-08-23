@@ -1,0 +1,11 @@
+NLLB-200-distilled-600M
+Copyright Meta Platforms, Inc. and affiliates.
+
+Licensed under Creative Commons Attribution-NonCommercial 4.0 International
+(CC BY-NC 4.0). CodeFellow uses an INT8 CTranslate2 conversion for this
+non-commercial research and evaluation prototype.
+
+License summary: https://creativecommons.org/licenses/by-nc/4.0/
+Legal code: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+Model card: https://huggingface.co/facebook/nllb-200-distilled-600M
+Conversion: https://huggingface.co/mijuanlo/nllb-200-distilled-600M-ct2-int8

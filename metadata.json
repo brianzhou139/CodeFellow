@@ -1,37 +1,38 @@
 {
-  "team_id": "your-team-id",
+  "team_id": "REPLACE_WITH_ADTF_TEAM_ID",
   "domain": "coding_assistants",
-  "language_scope": ["en"],
-  "african_alpha_claim": false,
+  "language_scope": ["en", "sw"],
+  "african_alpha_claim": true,
   "budget_laptop_claim": true,
   "submitter": {
-    "name": "your-name",
-    "email": "your-email@domain.com",
-    "github_handle": "your-github"
+    "name": "Brian Zhou",
+    "email": "brianzhou139@gmail.com",
+    "github_handle": "brianzhou139"
   },
   "cross_disciplinary_pairing": {
     "discipline": "education",
     "load_bearing": true,
-    "description": "Brief description of how your model serves a real-world domain."
+    "description": "CodeFellow combines local compiler and test diagnostics with hint-first programming education in English and natural Kiswahili/English code-switching. It preserves standard coding terms while specializing in correct minimal Python and JavaScript repairs, focused tests, and beginner-friendly offline explanations."
   },
   "test_prompts": [
     {
       "prompt_id": "tp_001",
-      "prompt": "Write a Python function that reads a CSV file and returns the column with the highest mean value."
+      "prompt": "A beginner wrote this Python function to return the length of the longest substring without repeated characters:\n\ndef longest_unique(text):\n    seen = set()\n    left = 0\n    best = 0\n    for right, char in enumerate(text):\n        if char in seen:\n            seen.remove(text[left])\n            left += 1\n        seen.add(char)\n        best = max(best, right - left + 1)\n    return best\n\nIt returns the wrong answer for 'abba'. Diagnose the root cause, show the smallest correct patch, write five pytest tests including empty input, all-repeated input, and Unicode input, then explain the sliding-window invariant and time complexity in beginner-friendly language."
     },
     {
       "prompt_id": "tp_002",
-      "prompt": "Explain the difference between a list and a tuple in Python, and give one example where each is the better choice."
+      "prompt": "Unamfundisha mwanafunzi wa mwaka wa kwanza JavaScript offline. Function yake `function average(values) { return values.reduce((sum, value) => sum + value) / values.length; }` inafeli ikiwa array ni empty na numeric strings zinasababisha behaviour isiyotarajiwa. Toa diagnostic hint moja bila solution kamili. Kisha toa robust implementation chini ya `Jibu kamili`, eleza type-coercion issue kwa Kiswahili huku ukihifadhi English coding terms za kawaida, na ongeza runnable tests ukitumia Node `node:test` module."
     }
   ],
   "model": {
-    "name": "SmolLM2-135M-Instruct-Q4_K_M",
+    "name": "Qwen2.5-Coder-3B-Instruct-Q4_K_M",
     "runtime": "llama.cpp",
     "quantization": "GGUF Q4_K_M",
-    "parameters_estimate": "135M",
+    "parameters_estimate": "3B",
     "packaging": "binary_bundle"
   },
   "_runtime": {
-    "model_path": "model/SmolLM2-135M-Instruct-Q4_K_M.gguf"
+    "model_path": "model/CodeFellow-Q4_K_M.gguf",
+    "translation_path": "translation/nllb-200-distilled-600M-ct2-int8"
   }
 }

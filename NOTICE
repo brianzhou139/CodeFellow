@@ -1,0 +1,39 @@
+CodeFellow
+Copyright (c) 2026 CodeFellow contributors
+
+This project is built with Qwen2.5-Coder-3B-Instruct and downloads an unchanged
+Q4_K_M quantization of the upstream instruction model.
+
+Qwen is licensed under the Qwen RESEARCH LICENSE AGREEMENT,
+Copyright (c) Alibaba Cloud. All Rights Reserved.
+
+The shipped architecture keeps those weights unchanged and differentiates the
+application with local diagnostics, tutoring policy, response contracts, and a
+separate terminology-aware Kiswahili translation lane. It is described as
+"Built with Qwen" as required by the upstream license.
+
+Upstream model:
+https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct
+
+Upstream license:
+https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct/blob/main/LICENSE
+
+The Qwen Research License permits non-commercial use, modification, and
+redistribution subject to its terms. A separate license from Alibaba Cloud is
+required for commercial use. This notice is not a substitute for the complete
+upstream license, which is distributed in THIRD_PARTY_LICENSES/.
+
+CodeFellow also downloads an INT8 CTranslate2 conversion of Meta's
+NLLB-200-distilled-600M for local Kiswahili translation. NLLB is licensed under
+CC-BY-NC-4.0 and is used here only for non-commercial competition research and
+evaluation. The upstream model card states that it is a research translation
+model, not a certified translator or a general production deployment.
+
+Upstream NLLB model:
+https://huggingface.co/facebook/nllb-200-distilled-600M
+
+Downloaded CTranslate2 conversion:
+https://huggingface.co/mijuanlo/nllb-200-distilled-600M-ct2-int8
+
+License:
+https://creativecommons.org/licenses/by-nc/4.0/legalcode

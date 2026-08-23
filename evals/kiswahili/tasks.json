@@ -1,0 +1,309 @@
+[
+  {
+    "id": "py_sum_even",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement sum_even(numbers), returning the sum of all even integers in the input list. An empty list must return 0.",
+    "prompt_sw": "Tekeleza kitendakazi sum_even(numbers), ambacho kinarejesha jumla ya nambari kamili shufwa katika orodha. Orodha tupu lazima irejeshe 0.",
+    "prompt_af": "Implementeer sum_even(numbers), wat die som van alle ewe heelgetalle in die invoerlys teruggee. 'n Leë lys moet 0 teruggee.",
+    "tests": ["assert sum_even([]) == 0", "assert sum_even([1, 2, 3, 4, -6]) == 0", "assert sum_even([2, 2, 5]) == 4"]
+  },
+  {
+    "id": "py_clamp",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement clamp(value, low, high). Return low when value is below low, high when it is above high, otherwise value. Raise ValueError when low is greater than high.",
+    "prompt_sw": "Tekeleza clamp(value, low, high). Rejesha low ikiwa value ni ndogo kuliko low, high ikiwa ni kubwa kuliko high, vinginevyo rejesha value. Toa ValueError ikiwa low ni kubwa kuliko high.",
+    "prompt_af": "Implementeer clamp(value, low, high). Gee low terug as value laer as low is, high as dit hoër as high is, anders value. Gooi ValueError wanneer low groter as high is.",
+    "tests": ["assert clamp(5, 1, 10) == 5", "assert clamp(-2, 0, 8) == 0", "assert clamp(20, 0, 8) == 8", "try:\n    clamp(1, 5, 2)\n    raise AssertionError('ValueError expected')\nexcept ValueError:\n    pass"]
+  },
+  {
+    "id": "py_unique_order",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement unique_preserving_order(items). Return a new list containing the first occurrence of each hashable item while preserving input order.",
+    "prompt_sw": "Tekeleza unique_preserving_order(items). Rejesha orodha mpya yenye tukio la kwanza la kila kipengele kinachoweza kuwa ufunguo, huku mpangilio wa awali ukihifadhiwa.",
+    "prompt_af": "Implementeer unique_preserving_order(items). Gee 'n nuwe lys terug met die eerste voorkoms van elke hashbare item, terwyl die invoervolgorde behoue bly.",
+    "tests": ["assert unique_preserving_order([]) == []", "assert unique_preserving_order([3, 1, 3, 2, 1]) == [3, 1, 2]", "assert unique_preserving_order(['a', 'a', 'b']) == ['a', 'b']"]
+  },
+  {
+    "id": "py_chunk_list",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement chunk_list(items, size), splitting items into consecutive lists of at most size elements. Raise ValueError when size is zero or negative.",
+    "prompt_sw": "Tekeleza chunk_list(items, size), ukigawa items kuwa orodha zinazofuatana zenye vipengele visivyozidi size. Toa ValueError ikiwa size ni sifuri au hasi.",
+    "prompt_af": "Implementeer chunk_list(items, size), wat items in opeenvolgende lyste van hoogstens size elemente verdeel. Gooi ValueError wanneer size nul of negatief is.",
+    "tests": ["assert chunk_list([], 3) == []", "assert chunk_list([1, 2, 3, 4, 5], 2) == [[1, 2], [3, 4], [5]]", "try:\n    chunk_list([1], 0)\n    raise AssertionError('ValueError expected')\nexcept ValueError:\n    pass"]
+  },
+  {
+    "id": "py_word_frequency",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement word_frequency(text). Count words case-insensitively and ignore punctuation. Return a dictionary mapping each word to its count.",
+    "prompt_sw": "Tekeleza word_frequency(text). Hesabu maneno bila kujali herufi kubwa au ndogo na upuuze alama za uandishi. Rejesha kamusi inayounganisha kila neno na idadi yake.",
+    "prompt_af": "Implementeer word_frequency(text). Tel woorde sonder om hoofletters te onderskei en ignoreer leestekens. Gee 'n woordeboek terug wat elke woord na sy telling karteer.",
+    "tests": ["assert word_frequency('') == {}", "assert word_frequency('Hello, hello! world.') == {'hello': 2, 'world': 1}", "assert word_frequency('One two TWO?') == {'one': 1, 'two': 2}"]
+  },
+  {
+    "id": "py_normalized_palindrome",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement is_palindrome(text). Ignore case and all non-alphanumeric characters. Return a boolean.",
+    "prompt_sw": "Tekeleza is_palindrome(text). Puuza tofauti za herufi kubwa na ndogo pamoja na herufi zote zisizo za kialfabeti au nambari. Rejesha thamani ya boolean.",
+    "prompt_af": "Implementeer is_palindrome(text). Ignoreer hoofletterverskille en alle nie-alfanumeriese karakters. Gee 'n booleaanse waarde terug.",
+    "tests": ["assert is_palindrome('A man, a plan, a canal: Panama!') is True", "assert is_palindrome('OpenAI') is False", "assert is_palindrome('') is True"]
+  },
+  {
+    "id": "py_merge_sorted",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement merge_sorted(left, right), merging two ascending sorted lists into one ascending list in linear time. Do not call sorted or list.sort.",
+    "prompt_sw": "Tekeleza merge_sorted(left, right), ukiunganisha orodha mbili zilizopangwa kwa kupanda kuwa orodha moja ya kupanda kwa muda wa mstari. Usitumie sorted wala list.sort.",
+    "prompt_af": "Implementeer merge_sorted(left, right), wat twee stygend gesorteerde lyste in lineêre tyd saamsmelt. Moenie sorted of list.sort gebruik nie.",
+    "forbid": ["sorted(", ".sort("],
+    "tests": ["assert merge_sorted([], []) == []", "assert merge_sorted([1, 3, 7], [2, 2, 8]) == [1, 2, 2, 3, 7, 8]", "assert merge_sorted([], [1]) == [1]"]
+  },
+  {
+    "id": "py_second_largest",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement second_largest(numbers). Return the second-largest distinct value, or None when fewer than two distinct values exist.",
+    "prompt_sw": "Tekeleza second_largest(numbers). Rejesha thamani tofauti ya pili kwa ukubwa, au None ikiwa kuna thamani tofauti chini ya mbili.",
+    "prompt_af": "Implementeer second_largest(numbers). Gee die tweede grootste unieke waarde terug, of None wanneer minder as twee unieke waardes bestaan.",
+    "tests": ["assert second_largest([]) is None", "assert second_largest([5, 5]) is None", "assert second_largest([4, 1, 7, 7, 3]) == 4", "assert second_largest([-5, -2, -9]) == -5"]
+  },
+  {
+    "id": "py_safe_average",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement safe_average(numbers). Return the arithmetic mean as a float, or None for an empty list.",
+    "prompt_sw": "Tekeleza safe_average(numbers). Rejesha wastani wa kihesabu kama float, au None kwa orodha tupu.",
+    "prompt_af": "Implementeer safe_average(numbers). Gee die rekenkundige gemiddelde as 'n float terug, of None vir 'n leë lys.",
+    "tests": ["assert safe_average([]) is None", "assert safe_average([2, 4, 6]) == 4.0", "assert safe_average([-1, 1]) == 0.0"]
+  },
+  {
+    "id": "py_rotate_right",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement rotate_right(items, k). Return a new list rotated right by k positions. Support k larger than the list and return [] for an empty list.",
+    "prompt_sw": "Tekeleza rotate_right(items, k). Rejesha orodha mpya iliyozungushwa kulia kwa nafasi k. Ruhusu k kuwa kubwa kuliko urefu wa orodha na urejeshe [] kwa orodha tupu.",
+    "prompt_af": "Implementeer rotate_right(items, k). Gee 'n nuwe lys terug wat k posisies na regs geroteer is. Ondersteun k groter as die lyslengte en gee [] vir 'n leë lys terug.",
+    "tests": ["assert rotate_right([], 4) == []", "assert rotate_right([1, 2, 3, 4], 1) == [4, 1, 2, 3]", "assert rotate_right([1, 2, 3], 5) == [2, 3, 1]"]
+  },
+  {
+    "id": "py_debug_binary_search",
+    "category": "debugging",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Fix this binary search and return the complete corrected function. It must return the target index or -1:\n\ndef binary_search(items, target):\n    left, right = 0, len(items) - 1\n    while left < right:\n        mid = (left + right) // 2\n        if items[mid] == target:\n            return mid\n        if items[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1",
+    "prompt_sw": "Rekebisha utafutaji huu wa binary na urejeshe kitendakazi kizima kilichosahihishwa. Lazima kirejeshe faharasa ya target au -1:\n\ndef binary_search(items, target):\n    left, right = 0, len(items) - 1\n    while left < right:\n        mid = (left + right) // 2\n        if items[mid] == target:\n            return mid\n        if items[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1",
+    "prompt_af": "Maak hierdie binêre soektog reg en gee die volledige gekorrigeerde funksie terug. Dit moet die target-indeks of -1 teruggee:\n\ndef binary_search(items, target):\n    left, right = 0, len(items) - 1\n    while left < right:\n        mid = (left + right) // 2\n        if items[mid] == target:\n            return mid\n        if items[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1",
+    "tests": ["assert binary_search([], 3) == -1", "assert binary_search([1], 1) == 0", "assert binary_search([1, 3, 5, 7], 7) == 3", "assert binary_search([1, 3, 5, 7], 2) == -1"]
+  },
+  {
+    "id": "py_debug_longest_unique",
+    "category": "debugging",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Fix this sliding-window function and return the complete corrected function. It must return the length of the longest substring without repeated characters:\n\ndef longest_unique(text):\n    seen = set()\n    left = 0\n    best = 0\n    for right, char in enumerate(text):\n        if char in seen:\n            seen.remove(text[left])\n            left += 1\n        seen.add(char)\n        best = max(best, right - left + 1)\n    return best",
+    "prompt_sw": "Rekebisha kitendakazi hiki cha dirisha linalosogea na urejeshe kitendakazi kizima kilichosahihishwa. Lazima kirejeshe urefu wa mfuatano mdogo mrefu zaidi usio na herufi inayojirudia:\n\ndef longest_unique(text):\n    seen = set()\n    left = 0\n    best = 0\n    for right, char in enumerate(text):\n        if char in seen:\n            seen.remove(text[left])\n            left += 1\n        seen.add(char)\n        best = max(best, right - left + 1)\n    return best",
+    "prompt_af": "Maak hierdie glyvensterfunksie reg en gee die volledige gekorrigeerde funksie terug. Dit moet die lengte van die langste substring sonder herhaalde karakters teruggee:\n\ndef longest_unique(text):\n    seen = set()\n    left = 0\n    best = 0\n    for right, char in enumerate(text):\n        if char in seen:\n            seen.remove(text[left])\n            left += 1\n        seen.add(char)\n        best = max(best, right - left + 1)\n    return best",
+    "tests": ["assert longest_unique('') == 0", "assert longest_unique('abba') == 2", "assert longest_unique('abcabcbb') == 3", "assert longest_unique('dvdf') == 3"]
+  },
+  {
+    "id": "py_debug_is_prime",
+    "category": "debugging",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Fix this prime test and return the complete corrected function:\n\ndef is_prime(n):\n    if n < 2:\n        return False\n    for divisor in range(2, n):\n        if n % divisor == 0:\n            return False\n        return True",
+    "prompt_sw": "Rekebisha jaribio hili la nambari tasa na urejeshe kitendakazi kizima kilichosahihishwa:\n\ndef is_prime(n):\n    if n < 2:\n        return False\n    for divisor in range(2, n):\n        if n % divisor == 0:\n            return False\n        return True",
+    "prompt_af": "Maak hierdie priemgetaltoets reg en gee die volledige gekorrigeerde funksie terug:\n\ndef is_prime(n):\n    if n < 2:\n        return False\n    for divisor in range(2, n):\n        if n % divisor == 0:\n            return False\n        return True",
+    "tests": ["assert is_prime(2) is True", "assert is_prime(3) is True", "assert is_prime(9) is False", "assert is_prime(17) is True", "assert is_prime(1) is False"]
+  },
+  {
+    "id": "py_debug_factorial",
+    "category": "debugging",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Fix this factorial function. It must return 1 for 0 and raise ValueError for negative n. Return the complete corrected function:\n\ndef factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)",
+    "prompt_sw": "Rekebisha kitendakazi hiki cha factorial. Lazima kirejeshe 1 kwa 0 na kutoa ValueError kwa n hasi. Rejesha kitendakazi kizima kilichosahihishwa:\n\ndef factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)",
+    "prompt_af": "Maak hierdie faktoriaalfunksie reg. Dit moet 1 vir 0 teruggee en ValueError vir negatiewe n gooi. Gee die volledige gekorrigeerde funksie terug:\n\ndef factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)",
+    "tests": ["assert factorial(0) == 1", "assert factorial(1) == 1", "assert factorial(5) == 120", "try:\n    factorial(-1)\n    raise AssertionError('ValueError expected')\nexcept ValueError:\n    pass"]
+  },
+  {
+    "id": "py_debug_minimum",
+    "category": "debugging",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Fix this function so it returns the minimum value, including for all-negative lists, and None for an empty list. Return the complete corrected function:\n\ndef find_min(numbers):\n    smallest = 0\n    for number in numbers:\n        if number < smallest:\n            smallest = number\n    return smallest",
+    "prompt_sw": "Rekebisha kitendakazi hiki ili kirejeshe thamani ndogo zaidi, hata kwa orodha yenye nambari hasi pekee, na None kwa orodha tupu. Rejesha kitendakazi kizima kilichosahihishwa:\n\ndef find_min(numbers):\n    smallest = 0\n    for number in numbers:\n        if number < smallest:\n            smallest = number\n    return smallest",
+    "prompt_af": "Maak hierdie funksie reg sodat dit die minimum waarde teruggee, ook vir lyste met slegs negatiewe getalle, en None vir 'n leë lys. Gee die volledige gekorrigeerde funksie terug:\n\ndef find_min(numbers):\n    smallest = 0\n    for number in numbers:\n        if number < smallest:\n            smallest = number\n    return smallest",
+    "tests": ["assert find_min([]) is None", "assert find_min([4, 2, 9]) == 2", "assert find_min([-4, -2, -9]) == -9", "assert find_min([5]) == 5"]
+  },
+  {
+    "id": "js_numeric_average",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "javascript",
+    "prompt_en": "Implement average(values) in JavaScript. Values may be numbers or numeric strings. Return null for an empty array and the numeric arithmetic mean otherwise.",
+    "prompt_sw": "Tekeleza average(values) katika JavaScript. Values zinaweza kuwa nambari au kamba za nambari. Rejesha null kwa array tupu na wastani wa kihesabu wa nambari vinginevyo.",
+    "prompt_af": "Implementeer average(values) in JavaScript. Values kan getalle of numeriese stringe wees. Gee null vir 'n leë array terug en andersins die numeriese rekenkundige gemiddelde.",
+    "tests": ["if (average([]) !== null) throw new Error('empty')", "if (average([2, '4', 6]) !== 4) throw new Error('mixed')", "if (average(['1', '2']) !== 1.5) throw new Error('strings')"]
+  },
+  {
+    "id": "js_unique_by_id",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "javascript",
+    "prompt_en": "Implement uniqueById(items) in JavaScript. Return a new array keeping only the first object for each id, in original order. Do not mutate the input.",
+    "prompt_sw": "Tekeleza uniqueById(items) katika JavaScript. Rejesha array mpya inayohifadhi object ya kwanza tu kwa kila id, kwa mpangilio wa awali. Usibadilishe input.",
+    "prompt_af": "Implementeer uniqueById(items) in JavaScript. Gee 'n nuwe array terug wat slegs die eerste objek vir elke id in oorspronklike volgorde behou. Moenie die invoer verander nie.",
+    "tests": ["const a = [{id: 2, v: 'a'}, {id: 1, v: 'b'}, {id: 2, v: 'c'}]", "const before = JSON.stringify(a)", "const out = uniqueById(a)", "if (JSON.stringify(out) !== JSON.stringify([{id: 2, v: 'a'}, {id: 1, v: 'b'}])) throw new Error('result')", "if (JSON.stringify(a) !== before) throw new Error('mutated')"]
+  },
+  {
+    "id": "js_slugify",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "javascript",
+    "prompt_en": "Implement slugify(text) in JavaScript. Lowercase the text, replace each run of non-alphanumeric characters with one hyphen, and remove leading or trailing hyphens.",
+    "prompt_sw": "Tekeleza slugify(text) katika JavaScript. Badilisha maandishi kuwa herufi ndogo, badilisha kila mfululizo wa herufi zisizo za kialfabeti au nambari kuwa hyphen moja, na uondoe hyphen za mwanzo au mwisho.",
+    "prompt_af": "Implementeer slugify(text) in JavaScript. Maak die teks kleinletters, vervang elke reeks nie-alfanumeriese karakters met een koppelteken, en verwyder voorste of agterste koppeltekens.",
+    "tests": ["if (slugify(' Hello, World! ') !== 'hello-world') throw new Error('basic')", "if (slugify('A---B  C') !== 'a-b-c') throw new Error('runs')", "if (slugify('') !== '') throw new Error('empty')"]
+  },
+  {
+    "id": "js_sum_even",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "javascript",
+    "prompt_en": "Implement sumEven(numbers) in JavaScript, returning the sum of all even numbers. An empty array must return 0.",
+    "prompt_sw": "Tekeleza sumEven(numbers) katika JavaScript, ukirejesha jumla ya nambari zote shufwa. Array tupu lazima irejeshe 0.",
+    "prompt_af": "Implementeer sumEven(numbers) in JavaScript en gee die som van alle ewe getalle terug. 'n Leë array moet 0 teruggee.",
+    "tests": ["if (sumEven([]) !== 0) throw new Error('empty')", "if (sumEven([1, 2, 3, 4, -6]) !== 0) throw new Error('values')"]
+  },
+  {
+    "id": "js_flatten_one",
+    "category": "implementation",
+    "kind": "code",
+    "runtime": "javascript",
+    "prompt_en": "Implement flattenOneLevel(items) in JavaScript. Flatten exactly one array nesting level without using Array.prototype.flat.",
+    "prompt_sw": "Tekeleza flattenOneLevel(items) katika JavaScript. Tandaza kiwango kimoja tu cha array bila kutumia Array.prototype.flat.",
+    "prompt_af": "Implementeer flattenOneLevel(items) in JavaScript. Maak presies een vlak van geneste arrays plat sonder Array.prototype.flat.",
+    "forbid": [".flat("],
+    "tests": ["if (JSON.stringify(flattenOneLevel([1, [2, 3], [[4]]])) !== JSON.stringify([1, 2, 3, [4]])) throw new Error('level')", "if (JSON.stringify(flattenOneLevel([])) !== '[]') throw new Error('empty')"]
+  },
+  {
+    "id": "js_debug_maximum",
+    "category": "debugging",
+    "kind": "code",
+    "runtime": "javascript",
+    "prompt_en": "Fix this JavaScript function so it returns the maximum value for any non-empty numeric array, including all-negative arrays, and null for an empty array. Return the complete function:\n\nfunction maximum(numbers) {\n  let best = 0;\n  for (const number of numbers) {\n    if (number > best) best = number;\n  }\n  return best;\n}",
+    "prompt_sw": "Rekebisha kitendakazi hiki cha JavaScript ili kirejeshe thamani kubwa zaidi kwa array yoyote ya nambari isiyo tupu, ikijumuisha array ya nambari hasi pekee, na null kwa array tupu. Rejesha kitendakazi kizima:\n\nfunction maximum(numbers) {\n  let best = 0;\n  for (const number of numbers) {\n    if (number > best) best = number;\n  }\n  return best;\n}",
+    "prompt_af": "Maak hierdie JavaScript-funksie reg sodat dit die maksimum waarde vir enige nie-leë numeriese array teruggee, insluitend arrays met slegs negatiewe getalle, en null vir 'n leë array. Gee die volledige funksie terug:\n\nfunction maximum(numbers) {\n  let best = 0;\n  for (const number of numbers) {\n    if (number > best) best = number;\n  }\n  return best;\n}",
+    "tests": ["if (maximum([]) !== null) throw new Error('empty')", "if (maximum([-5, -2, -9]) !== -2) throw new Error('negative')", "if (maximum([2, 8, 1]) !== 8) throw new Error('positive')"]
+  },
+  {
+    "id": "js_debug_binary_search",
+    "category": "debugging",
+    "kind": "code",
+    "runtime": "javascript",
+    "prompt_en": "Fix this JavaScript binary search and return the complete function. It must return the target index or -1:\n\nfunction binarySearch(items, target) {\n  let left = 0, right = items.length - 1;\n  while (left < right) {\n    const mid = Math.floor((left + right) / 2);\n    if (items[mid] === target) return mid;\n    if (items[mid] < target) left = mid + 1;\n    else right = mid - 1;\n  }\n  return -1;\n}",
+    "prompt_sw": "Rekebisha utafutaji huu wa binary wa JavaScript na urejeshe kitendakazi kizima. Lazima kirejeshe faharasa ya target au -1:\n\nfunction binarySearch(items, target) {\n  let left = 0, right = items.length - 1;\n  while (left < right) {\n    const mid = Math.floor((left + right) / 2);\n    if (items[mid] === target) return mid;\n    if (items[mid] < target) left = mid + 1;\n    else right = mid - 1;\n  }\n  return -1;\n}",
+    "prompt_af": "Maak hierdie JavaScript-binêre soektog reg en gee die volledige funksie terug. Dit moet die target-indeks of -1 teruggee:\n\nfunction binarySearch(items, target) {\n  let left = 0, right = items.length - 1;\n  while (left < right) {\n    const mid = Math.floor((left + right) / 2);\n    if (items[mid] === target) return mid;\n    if (items[mid] < target) left = mid + 1;\n    else right = mid - 1;\n  }\n  return -1;\n}",
+    "tests": ["if (binarySearch([], 1) !== -1) throw new Error('empty')", "if (binarySearch([1], 1) !== 0) throw new Error('single')", "if (binarySearch([1, 3, 5, 7], 7) !== 3) throw new Error('last')", "if (binarySearch([1, 3, 5], 2) !== -1) throw new Error('missing')"]
+  },
+  {
+    "id": "js_debug_palindrome",
+    "category": "debugging",
+    "kind": "code",
+    "runtime": "javascript",
+    "prompt_en": "Fix this JavaScript palindrome checker so it ignores case and non-alphanumeric characters. Return the complete function:\n\nfunction isPalindrome(text) {\n  return text === text.split('').reverse().join('');\n}",
+    "prompt_sw": "Rekebisha kikagua-palindrome hiki cha JavaScript ili kipuuze tofauti za herufi kubwa na ndogo na herufi zisizo za kialfabeti au nambari. Rejesha kitendakazi kizima:\n\nfunction isPalindrome(text) {\n  return text === text.split('').reverse().join('');\n}",
+    "prompt_af": "Maak hierdie JavaScript-palindroomtoetser reg sodat dit hoofletterverskille en nie-alfanumeriese karakters ignoreer. Gee die volledige funksie terug:\n\nfunction isPalindrome(text) {\n  return text === text.split('').reverse().join('');\n}",
+    "tests": ["if (!isPalindrome('A man, a plan, a canal: Panama!')) throw new Error('normalized')", "if (isPalindrome('OpenAI')) throw new Error('false')", "if (!isPalindrome('')) throw new Error('empty')"]
+  },
+  {
+    "id": "js_debug_frequency",
+    "category": "debugging",
+    "kind": "code",
+    "runtime": "javascript",
+    "prompt_en": "Fix this JavaScript frequency counter; it currently counts array indexes instead of values. Return the complete function:\n\nfunction frequencies(items) {\n  const counts = {};\n  for (const item in items) {\n    counts[item] = (counts[item] || 0) + 1;\n  }\n  return counts;\n}",
+    "prompt_sw": "Rekebisha kihesabu-marudio hiki cha JavaScript; kwa sasa kinahesabu faharasa za array badala ya thamani. Rejesha kitendakazi kizima:\n\nfunction frequencies(items) {\n  const counts = {};\n  for (const item in items) {\n    counts[item] = (counts[item] || 0) + 1;\n  }\n  return counts;\n}",
+    "prompt_af": "Maak hierdie JavaScript-frekwensieteller reg; dit tel tans array-indekse in plaas van waardes. Gee die volledige funksie terug:\n\nfunction frequencies(items) {\n  const counts = {};\n  for (const item in items) {\n    counts[item] = (counts[item] || 0) + 1;\n  }\n  return counts;\n}",
+    "tests": ["const r = frequencies(['a', 'b', 'a'])", "if (r.a !== 2 || r.b !== 1 || Object.keys(r).length !== 2) throw new Error('counts')", "if (Object.keys(frequencies([])).length !== 0) throw new Error('empty')"]
+  },
+  {
+    "id": "js_debug_numeric_sort",
+    "category": "debugging",
+    "kind": "code",
+    "runtime": "javascript",
+    "prompt_en": "Fix this JavaScript function so it returns a new numerically ascending array without mutating the input. Return the complete function:\n\nfunction sortNumbers(numbers) {\n  return numbers.sort();\n}",
+    "prompt_sw": "Rekebisha kitendakazi hiki cha JavaScript ili kirejeshe array mpya iliyopangwa kwa nambari kwa kupanda bila kubadilisha input. Rejesha kitendakazi kizima:\n\nfunction sortNumbers(numbers) {\n  return numbers.sort();\n}",
+    "prompt_af": "Maak hierdie JavaScript-funksie reg sodat dit 'n nuwe numeries stygende array teruggee sonder om die invoer te verander. Gee die volledige funksie terug:\n\nfunction sortNumbers(numbers) {\n  return numbers.sort();\n}",
+    "tests": ["const a = [10, 2, 1]", "const before = JSON.stringify(a)", "if (JSON.stringify(sortNumbers(a)) !== JSON.stringify([1, 2, 10])) throw new Error('order')", "if (JSON.stringify(a) !== before) throw new Error('mutated')"]
+  },
+  {
+    "id": "explain_list_tuple",
+    "category": "teaching",
+    "kind": "explanation",
+    "prompt_en": "Explain the key difference between a Python list and tuple, and give one appropriate use case for each.",
+    "prompt_sw": "Eleza tofauti kuu kati ya list na tuple katika Python, na utoe mfano mmoja unaofaa wa matumizi ya kila moja.",
+    "prompt_af": "Verduidelik die belangrikste verskil tussen 'n Python-lys en tuple, en gee een geskikte gebruiksgeval vir elk.",
+    "rubric_en": ["list", "mutable|change|modify", "tuple", "immutable|cannot be changed|fixed"],
+    "rubric_sw": ["list|orodha", "hubadilika|kubadilishwa|mutable", "tuple|tapo", "haibadiliki|immutable|isiyobadilika"],
+    "rubric_af": ["lys|list", "veranderbaar|verander|gewysig", "tuple|tupel", "onveranderlik|kan nie verander" ]
+  },
+  {
+    "id": "explain_js_equality",
+    "category": "teaching",
+    "kind": "explanation",
+    "prompt_en": "Explain the difference between == and === in JavaScript and state which one is normally safer to use.",
+    "prompt_sw": "Eleza tofauti kati ya == na === katika JavaScript na useme ni ipi kwa kawaida ni salama zaidi kutumia.",
+    "prompt_af": "Verduidelik die verskil tussen == en === in JavaScript en noem watter een gewoonlik veiliger is om te gebruik.",
+    "rubric_en": ["==", "coerc|convert|conversion", "===", "same type|type and value|strict"],
+    "rubric_sw": ["==", "ubadilishaji wa aina|kubadilisha aina|coerc", "===", "aina na thamani|aina sawa|strict|salama"],
+    "rubric_af": ["==", "tipe.omskakeling|tipe verander|coerc", "===", "tipe en waarde|dieselfde tipe|streng|veiliger"]
+  },
+  {
+    "id": "explain_complexity",
+    "category": "teaching",
+    "kind": "explanation",
+    "prompt_en": "Explain the practical difference between O(n) and O(n²) time complexity, including what happens when the input size doubles.",
+    "prompt_sw": "Eleza tofauti ya kiutendaji kati ya uchangamano wa muda O(n) na O(n²), ukijumuisha kinachotokea ukubwa wa input unapoongezeka mara mbili.",
+    "prompt_af": "Verduidelik die praktiese verskil tussen O(n)- en O(n²)-tydskompleksiteit, insluitend wat gebeur wanneer die invoergrootte verdubbel.",
+    "rubric_en": ["O\\(n\\)", "linear|double", "O\\(n²\\)|O\\(n\\^2\\)", "four|4|quadratic"],
+    "rubric_sw": ["O\\(n\\)", "mstari|mara mbili|linear", "O\\(n²\\)|O\\(n\\^2\\)", "mara nne|4|quadratic"],
+    "rubric_af": ["O\\(n\\)", "lineêr|verdubbel|twee keer", "O\\(n²\\)|O\\(n\\^2\\)", "vier keer|4|kwadraties"]
+  },
+  {
+    "id": "explain_nonetype",
+    "category": "diagnosis",
+    "kind": "explanation",
+    "prompt_en": "A Python program raises TypeError: 'NoneType' object is not subscriptable on user['name']. Explain the likely cause and give a safe debugging or repair approach.",
+    "prompt_sw": "Programu ya Python inatoa TypeError: 'NoneType' object is not subscriptable kwenye user['name']. Eleza sababu inayowezekana na utoe njia salama ya kuchunguza au kurekebisha.",
+    "prompt_af": "'n Python-program gee TypeError: 'NoneType' object is not subscriptable by user['name']. Verduidelik die waarskynlike oorsaak en gee 'n veilige ontfoutings- of herstelbenadering.",
+    "rubric_en": ["user.*None|None.*user", "index|subscript|\\['name'\\]", "source|return|assignment|trace", "check|if|default|validate"],
+    "rubric_sw": ["user.*None|None.*user", "faharasa|subscript|\\['name'\\]", "chanzo|return|rejesh|assignment|thamani", "angalia|ikiwa|default|thibit"],
+    "rubric_af": ["user.*None|None.*user", "indeks|subscript|\\['name'\\]", "bron|return|teruggee|toekenning", "kontroleer|indien|verstek|valideer"]
+  },
+  {
+    "id": "explain_recursion_base",
+    "category": "teaching",
+    "kind": "explanation",
+    "prompt_en": "Explain why a recursive function needs a base case and what can happen when recursive calls do not move toward it.",
+    "prompt_sw": "Eleza kwa nini kitendakazi cha recursion kinahitaji base case na kinachoweza kutokea ikiwa miito ya recursion haisogei kuielekea.",
+    "prompt_af": "Verduidelik waarom 'n rekursiewe funksie 'n basisgeval nodig het en wat kan gebeur wanneer rekursiewe oproepe nie daarheen vorder nie.",
+    "rubric_en": ["base case", "stop|terminat", "toward|progress|smaller", "infinite|stack overflow|recursion error"],
+    "rubric_sw": ["base case|hali ya msingi", "kusimam|mwisho|terminat", "kuelekea|kupungua|kusogea", "bila mwisho|stack overflow|recursion error"],
+    "rubric_af": ["basisgeval|base case", "stop|beëindig|eindig", "vorder|kleiner|nader", "oneindig|stapeloorloop|stack overflow|rekursiefout"]
+  }
+]

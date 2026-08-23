@@ -1,16 +1,29 @@
 # Model weights — never commit these to git
-model/*.gguf
-model/*.bin
-model/*.safetensors
+model/
+translation/
+*.gguf
+*.bin
+*.safetensors
 
-# macOS
+# Operating systems and editors
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/
 
 # Python
 __pycache__/
 *.pyc
 .venv/
 
-# Local profiler output
+# Local profiler and application output
 submission.json
 audit.json
+*.partial
+
+# Training and conversion artifacts
+artifacts/
+training-output/
+adapter/
+merged-model/
+translation-cache.json
