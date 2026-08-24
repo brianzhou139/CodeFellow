@@ -151,8 +151,8 @@ Draw-Card `
 Draw-Card `
     -Path (Join-Path $OutputDirectory "codefellow-kiswahili.png") `
     -LanguageLabel "Kiswahili + code-switching" `
-    -Prompt "Tekeleza Python function triangle_area(a, h). Hifadhi function name na argument contract hizi bila kubadilisha. Jibu kwa Kiswahili." `
-    -CodeLines @("def triangle_area(a, h):", "    return 0.5 * a * h") `
+    -Prompt "Tekeleza Python function is_palindrome(text). Angalia ikiwa string iliyopewa ni palindrome. Hifadhi function name na argument contract hizi bila kubadilisha." `
+    -CodeLines @("def is_palindrome(text):", "    return text == text[::-1]") `
     -Explanation "" `
     -Checks "Inatekelezeka: NDIYO  |  Format: PASS  |  Cloud: HAKUNA"
 

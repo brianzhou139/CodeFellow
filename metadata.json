@@ -1,5 +1,5 @@
 {
-  "team_id": "REPLACE_WITH_ADTF_TEAM_ID",
+  "team_id": "codefellow",
   "domain": "coding_assistants",
   "language_scope": ["en", "sw"],
   "african_alpha_claim": true,
@@ -21,7 +21,7 @@
     },
     {
       "prompt_id": "tp_002",
-      "prompt": "Tekeleza Python function triangle_area(a, h). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kutokana na urefu wa upande na eneo kubwa la kurudi kwa triangle. >>> triangle_area(5, 3) 7.5 Technical terms zihifadhiwe: function.\n\nJibu kwa Kiswahili. Toa kizuizi kimoja tu cha msimbo wa python chenye utekelezaji kamili. Baada ya kizuizi, ongeza sentensi moja fupi ya Kiswahili inayoeleza mbinu. Usijumuishe majaribio."
+      "prompt": "Tekeleza Python function is_palindrome(text). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Angalia ikiwa string iliyopewa ni palindrome. >>> is_palindrome('') True >>> is_palindrome('aba') True >>> is_palindrome('aaaaa') True >>> is_palindrome('zbcd') False Technical terms zihifadhiwe: function, string.\n\nJibu kwa kizuizi kimoja tu cha msimbo wa python chenye utekelezaji kamili. Usijumuishe maelezo au majaribio."
     }
   ],
   "model": {

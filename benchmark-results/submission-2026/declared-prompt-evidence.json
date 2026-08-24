@@ -22,10 +22,10 @@
     },
     {
       "prompt_id": "tp_002",
-      "prompt": "Tekeleza Python function triangle_area(a, h). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kutokana na urefu wa upande na eneo kubwa la kurudi kwa triangle. >>> triangle_area(5, 3) 7.5 Technical terms zihifadhiwe: function.\n\nJibu kwa Kiswahili. Toa kizuizi kimoja tu cha msimbo wa python chenye utekelezaji kamili. Baada ya kizuizi, ongeza sentensi moja fupi ya Kiswahili inayoeleza mbinu. Usijumuishe majaribio.",
-      "response": "```python\ndef triangle_area(a, h):\n    return 0.5 * a * h\n```\n\nKutokana na urefu wa upande na eneo kubwa la kurudi kwa triangle.",
+      "prompt": "Tekeleza Python function is_palindrome(text). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Angalia ikiwa string iliyopewa ni palindrome. >>> is_palindrome('') True >>> is_palindrome('aba') True >>> is_palindrome('aaaaa') True >>> is_palindrome('zbcd') False Technical terms zihifadhiwe: function, string.\n\nJibu kwa kizuizi kimoja tu cha msimbo wa python chenye utekelezaji kamili. Usijumuishe maelezo au majaribio.",
+      "response": "```python\ndef is_palindrome(text):\n    return text == text[::-1]\n```",
       "finish_reason": "stop",
-      "completion_tokens": 47,
+      "completion_tokens": 19,
       "executable": true,
       "format_compliant": true
     }

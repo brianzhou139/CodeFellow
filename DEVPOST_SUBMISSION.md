@@ -77,8 +77,8 @@ Qwen2.5-Coder, PyTorch, Hugging Face Transformers, PEFT/LoRA, llama.cpp, GGUF Q4
 
 - Source: https://github.com/brianzhou139/CodeFellow
 - Model: https://github.com/brianzhou139/CodeFellow/releases/download/gate1-v1/CodeFellow-3B-Kiswahili-Instruct-Q4_K_M.gguf
-- Video: `ADD_2_MINUTE_VIDEO_URL`
-- Team ID: `REPLACE_WITH_ADTF_TEAM_ID`
+- Video: submitted with the project on the ADTC platform (the platform entry is the source of truth for its hosted URL)
+- Team ID: `codefellow`
 
 ## Two-minute video script
 
@@ -116,11 +116,11 @@ Connect the model to private, repeatable programming support for students, bootc
 
 ## Final Gate 1 checklist
 
-- [ ] Replace Team ID in `metadata.json`, `REPORT.md`, and this file.
-- [ ] Publish the selected GGUF and test `download_model.sh` from a clean directory.
+- [x] Set Team ID to `codefellow` in `metadata.json`, `REPORT.md`, and this file.
+- [x] Publish the selected GGUF and test `download_model.sh` from a clean directory.
 - [x] Commit and push the final source repository.
 - [x] Add profiler JSON and benchmark summary.
 - [x] Capture English and Kiswahili demo screenshots.
 - [x] Render and verify the two-minute video.
-- [ ] Upload the video and insert its public or unlisted URL.
-- [ ] Submit on DevPost before the displayed deadline.
+- [x] Upload the two-minute video with the platform submission.
+- [x] Submit the project on the ADTC platform.
