@@ -8,7 +8,9 @@ The project targets the ADTC Standard Laptop: four CPU cores, 8 GB RAM, integrat
 
 ## Audited demo outputs
 
-These cards reproduce the exact executable responses saved in
+![CodeFellow offline coding tutor](docs/demo/codefellow-cover.png)
+
+The response cards use executable code recorded in
 `benchmark-results/submission-2026/declared-prompt-evidence.json`.
 
 ![CodeFellow English demo](docs/demo/codefellow-english.png)
