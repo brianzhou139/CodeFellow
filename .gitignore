@@ -15,6 +15,11 @@ Thumbs.db
 __pycache__/
 *.pyc
 .venv/
+.video-tools/
+
+# Locally rendered submission video
+video/rendered/
+video/*.mp4
 
 # Local profiler and application output
 /submission.json

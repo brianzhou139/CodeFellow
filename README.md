@@ -1,6 +1,6 @@
 # CodeFellow
 
-**Learn, debug, and build—completely offline.**
+**Learn, debug, and build—no internet required.**
 
 CodeFellow is a 3B on-device coding tutor specialized for English, Kiswahili, and the English–Kiswahili code-switching register used by programming students. The submitted artifact is one CPU-ready `Q4_K_M` GGUF. Kiswahili support is inside the model: the judged inference path uses no translator, cloud service, retrieval layer, response rewriter, or external tool.
 

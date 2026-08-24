@@ -6,7 +6,7 @@ CodeFellow
 
 ## Elevator pitch
 
-Learn, debug, and build—completely offline.
+Learn, debug, and build—no internet required.
 
 ## Domain
 
@@ -82,29 +82,37 @@ Qwen2.5-Coder, PyTorch, Hugging Face Transformers, PEFT/LoRA, llama.cpp, GGUF Q4
 
 ## Two-minute video script
 
-### 0:00–0:15 — Problem
+### 0:00–0:12 — Problem
 
-"Many African programming students learn on ordinary laptops and cannot depend on affordable cloud APIs or reliable internet. CodeFellow is an offline coding tutor for the hardware they already own."
+Data fees, unreliable connectivity, and recurring API charges can decide who gets access to programming support.
 
-### 0:15–0:35 — Product
+### 0:12–0:22 — Product
 
-"It is one 3B Q4_K_M model running locally through llama.cpp. It supports English, Kiswahili, and natural code-switching, while keeping programming identifiers and common English technical terms intact. No translator or cloud service is used in the submitted model path."
+Introduce CodeFellow as an offline coding tutor for the laptop a student already has.
 
-### 0:35–1:00 — Live demo
+### 0:22–0:51 — English and Kiswahili demos
 
-Show Task Prompt 1 in English, then Task Prompt 2 in Kiswahili/code-switching. Show the fenced implementation and one-sentence explanation. Disconnect networking or show that the endpoint is `127.0.0.1`.
+Stream the audited English and Kiswahili/code-switched outputs, labelled as recorded local output. Show `127.0.0.1`, CPU inference, executable code, and short teaching explanations.
 
-### 1:00–1:25 — Engineering
+### 0:51–1:07 — Genuine debugging run
 
-"We trained from the original full-precision Qwen2.5-Coder parent on 10,000 verified examples. Parallel variants keep code identical across languages. Programs are executed, edge cases are tested, and weak examples are rejected with mutation testing. We partially merged the adapter to retain English quality and used a multilingual coding importance matrix for Q4 quantization."
+Show a real `codefellow.py` run against `average_bug.js`: the empty-array failure, a hint-first observation, and a concrete next step without silently editing the learner's file.
 
-### 1:25–1:48 — Evidence
+### 1:07–1:22 — Engineering
 
-Show the benchmark table and profiler JSON. Say: "All comparison runs use four CPU cores, native chat templates, temperature zero, equal 2,048-token contexts, no translator, and no postprocessing. The model stays below the 7 GB peak-RSS limit."
+Show the 10,000-example verified data pipeline: identical code locked across languages, edge-case execution, and mutation testing.
 
-### 1:48–2:00 — Close
+### 1:22–1:37 — Measured performance
 
-"CodeFellow combines coding assistance with education and useful Kiswahili access, completely offline. Learn, debug, and build—completely offline."
+Show official local-profiler results: 4.72 tokens/second, 3.29 GiB peak memory, 0.82 ARC-Easy accuracy, four CPU cores, no GPU, and no thermal throttling.
+
+### 1:37–1:52 — Impact
+
+Connect the model to private, repeatable programming support for students, bootcamps, TVETs, and technical colleges.
+
+### 1:52–2:00 — Close
+
+"CodeFellow is open, reproducible, and ready for audit. Learn, debug, and build—no internet required."
 
 ## Final Gate 1 checklist
 
@@ -113,5 +121,6 @@ Show the benchmark table and profiler JSON. Say: "All comparison runs use four C
 - [x] Commit and push the final source repository.
 - [x] Add profiler JSON and benchmark summary.
 - [x] Capture English and Kiswahili demo screenshots.
-- [ ] Record/upload the two-minute video and insert its URL.
+- [x] Render and verify the two-minute video.
+- [ ] Upload the video and insert its public or unlisted URL.
 - [ ] Submit on DevPost before the displayed deadline.

@@ -45,7 +45,7 @@ function Draw-Card {
     $codeFont = [System.Drawing.Font]::new("Consolas", 17)
     $smallFont = [System.Drawing.Font]::new("Consolas", 10)
     $graphics.DrawString("CodeFellow", $titleFont, $white, 132, 45)
-    $graphics.DrawString("Learn, debug, and build - completely offline.", $bodyFont, $muted, 134, 79)
+    $graphics.DrawString("Learn, debug, and build - no internet required.", $bodyFont, $muted, 134, 79)
     $graphics.DrawString("OFFLINE  |  CPU  |  8 GB", $smallFont, $greenText, 950, 64)
 
     $graphics.DrawString($LanguageLabel.ToUpperInvariant(), $labelFont, $green, 64, 132)
