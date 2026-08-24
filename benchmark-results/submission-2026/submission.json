@@ -23,11 +23,11 @@
     "test_prompts": [
       {
         "prompt_id": "tp_001",
-        "prompt": "Implement the Python function get_positive(l). Preserve this exact function name and argument contract. Requirement: Return only positive numbers in the list. >>> get_positive([-1, 2, -4, 5, 6]) [2, 5, 6] >>> get_positive([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]) [5, 3, 2, 3, 9, 123, 1]\n\nRespond in English. Return exactly one fenced python code block containing the complete implementation. After the block, add one short English sentence explaining the approach. Do not include tests."
+        "prompt": "Implement the Python function derivative(xs). Preserve this exact function name and argument contract. The list xs stores polynomial coefficients in ascending power order: xs[0] + xs[1]*x + xs[2]*x**2 + .... Return the derivative coefficients in the same format. Examples: derivative([3, 1, 2, 4, 5]) returns [1, 4, 12, 20], derivative([1, 2, 3]) returns [2, 6], and derivative([7]) returns []. Do not mutate xs.\n\nRespond in English. Return exactly one fenced python code block containing the complete implementation. After the block, add a concise English explanation in no more than two sentences. Do not include tests."
       },
       {
         "prompt_id": "tp_002",
-        "prompt": "Tekeleza Python function is_palindrome(text). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Angalia ikiwa string iliyopewa ni palindrome. >>> is_palindrome('') True >>> is_palindrome('aba') True >>> is_palindrome('aaaaa') True >>> is_palindrome('zbcd') False Technical terms zihifadhiwe: function, string.\n\nJibu kwa kizuizi kimoja tu cha msimbo wa python chenye utekelezaji kamili. Usijumuishe maelezo au majaribio."
+        "prompt": "Implement Python function is_palindrome(text). Hifadhi exact function name na argument contract. Requirement: return True if string inasomeka sawa forward na backward; otherwise return False. Examples: is_palindrome('') returns True, is_palindrome('aba') returns True, and is_palindrome('zbcd') returns False.\n\nJibu kwa closed python code fence moja tu containing the complete implementation. Hakuna docstring, comments, tests, headings, au extra prose."
       }
     ],
     "model": {
@@ -46,15 +46,15 @@
     "os": "Debian GNU/Linux 12 (bookworm)"
   },
   "throughput": {
-    "tokens_per_second_generation": 5.02,
-    "first_token_latency_ms": 14292.14,
+    "tokens_per_second_generation": 4.74,
+    "first_token_latency_ms": 14183.56,
     "prompt_tokens": 512,
     "generated_tokens": 128
   },
   "memory": {
-    "peak_rss_mb": 3369.99,
-    "steady_state_rss_mb": 3153.08,
-    "peak_vms_mb": 5176.89
+    "peak_rss_mb": 3369.94,
+    "steady_state_rss_mb": 3156.67,
+    "peak_vms_mb": 5240.91
   },
   "accuracy": [
     {
@@ -72,7 +72,7 @@
     "throttled": false
   },
   "reproducibility": {
-    "git_commit_sha": "168990438c7b",
+    "git_commit_sha": "847b98bfd94f",
     "docker_image_digest": "unknown",
     "random_seed": 42
   },

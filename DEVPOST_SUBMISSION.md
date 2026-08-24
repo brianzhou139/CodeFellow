@@ -58,7 +58,7 @@ The hardest problem was preventing language specialization from damaging code. T
 - Independent HumanEval-derived screen deduplicated against all training source tasks.
 - Strict exact-output suite covering fenced code, JSON, and bullet contracts.
 - Reproducible four-core ADTC profiler and raw-model comparison scripts.
-- Final full local profiler: 0.82 accuracy, 5.02 tok/s, 3,369.99 MiB peak RSS, Sperf 33.47, and Seff 52.99.
+- Final synchronized local profiler: 0.82 accuracy, 4.74 tok/s, 3,369.94 MiB peak RSS, Sperf 31.60, and Seff 52.99.
 - Final 50-task audit showing both gains (English, format, adherence) and localized executable regressions, published without cherry-picking.
 
 ## What we learned
@@ -104,7 +104,7 @@ Show the 10,000-example verified data pipeline: identical code locked across lan
 
 ### 1:22–1:37 — Measured performance
 
-Show the recorded local-profiler results used in the submitted cut: 4.72 tokens/second, 3.29 GiB peak memory, 0.82 ARC-Easy accuracy, four CPU cores, no GPU offload, and no thermal throttling. The later identity-corrected full rerun measured 5.02 tokens/second with the same accuracy and memory class.
+Show the recorded local-profiler results used in the submitted cut: 4.72 tokens/second, 3.29 GiB peak memory, 0.82 ARC-Easy accuracy, four CPU cores, no GPU offload, and no thermal throttling. The final prompt-synchronized full rerun measured 4.74 tokens/second with the same accuracy and memory class.
 
 ### 1:37–1:52 — Impact
 
