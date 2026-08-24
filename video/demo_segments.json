@@ -2,19 +2,19 @@
   {
     "kind": "problem",
     "duration": 12,
-    "narration": "Across Africa, the cost of cloud AI is not just a nuisance. Data fees, unreliable connectivity, and recurring API charges can decide who gets to learn and who gets left behind.",
+    "narration": "Across Africa, data costs, unreliable connectivity, and recurring API charges can decide who gets to learn with AI, and who gets left behind.",
     "caption": "Cloud costs and unreliable connectivity turn AI access into a privilege."
   },
   {
     "kind": "solution",
     "duration": 10,
-    "narration": "CodeFellow changes that. It is an offline coding tutor built for the laptop students already have. Learn, debug, and build. No internet required.",
+    "narration": "CodeFellow is an offline coding tutor for everyday laptops. Learn, debug, and build. No internet required.",
     "caption": "CodeFellow: an offline coding tutor for everyday laptops."
   },
   {
     "kind": "english_demo",
     "duration": 15,
-    "narration": "Here, a learner asks CodeFellow to implement a Python function. The model runs locally, preserves the exact contract, returns executable code, and explains the approach. No cloud service touches the prompt.",
+    "narration": "Here, a learner asks for a Python function. CodeFellow runs locally, follows the exact contract, returns executable code, and explains its approach. The prompt never leaves the laptop.",
     "caption": "Exact contract. Executable Python. A short teaching explanation."
   },
   {
@@ -26,31 +26,31 @@
   {
     "kind": "debug_demo",
     "duration": 16,
-    "narration": "CodeFellow is more than code generation. Its hint first tutor reads a learner selected file, combines local diagnostics and test evidence, then explains the next fix without silently changing the source. This is a real run against the included JavaScript bug.",
+    "narration": "CodeFellow goes beyond generation. Its hint-first tutor combines the learner's file, diagnostics, and test evidence, then explains the next fix without changing the source. This is a genuine run on a JavaScript bug.",
     "caption": "A genuine local run: diagnostics-grounded, hint-first debugging."
   },
   {
     "kind": "engineering",
     "duration": 15,
-    "narration": "Under the hood, we trained on ten thousand verified examples. English, Kiswahili, and code switched versions share identical executable solutions. Programs are compiled, edge cases are tested, and mutation testing rejects weak examples.",
+    "narration": "Ten thousand verified examples teach English, Kiswahili, and code-switched behavior with identical solutions. Programs face edge cases, while mutation testing rejects weak examples.",
     "caption": "Correct code is locked across languages, executed, and mutation-tested."
   },
   {
     "kind": "performance",
     "duration": 15,
-    "narration": "The final three billion parameter model is compressed for CPU inference. On our official local profiler run, it generated 4.72 tokens per second, used 3.29 gibibytes of peak memory, and stayed below the seven gigabyte limit without a GPU.",
+    "narration": "The final three-billion-parameter model is compressed for CPUs. The official profiler measured 4.72 tokens per second and 3.29 gibibytes of peak memory: below seven gigabytes, with no GPU.",
     "caption": "Measured locally: 4.72 tokens per second and 3.29 GiB peak memory."
   },
   {
     "kind": "impact",
     "duration": 15,
-    "narration": "A student, bootcamp, or technical college can now provide private, repeatable programming support on an ordinary laptop. Coding assistance becomes programming education, and Kiswahili support is inside the model, not bolted on through a translator.",
+    "narration": "Students, bootcamps, and technical colleges can offer private programming support on ordinary laptops. Coding assistance becomes education, with Kiswahili inside the model, not bolted on through translation.",
     "caption": "Private programming education for students, bootcamps, and technical colleges."
   },
   {
     "kind": "closing",
     "duration": 8,
-    "narration": "CodeFellow is open, reproducible, and ready for audit. Learn, debug, and build. No internet required.",
+    "narration": "CodeFellow is auditable. Learn, debug, and build. No internet required.",
     "caption": "Learn, debug, and build — no internet required."
   }
 ]

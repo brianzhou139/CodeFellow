@@ -37,3 +37,25 @@ python tools/render_demo_video.py `
 The renderer enforces a 120-second runtime and produces an H.264/AAC MP4 at
 `video/rendered/CodeFellow-ADTC-2026-demo.mp4`. Generated audio, encoder files,
 and video exports remain local and are excluded from Git.
+
+### Optional Southern African neural narration
+
+The release cut uses `en-ZA-LeahNeural`, a Southern African English voice. This
+is intentionally described as Southern African rather than Zimbabwean or
+Zambian because no `en-ZW` or `en-ZM` voice is available in the provider's
+catalogue. Install `edge-tts` into an ignored local directory, then run:
+
+```powershell
+$env:PYTHONPATH = (Resolve-Path video/rendered/audio-tools).Path
+$ffmpeg = (Resolve-Path video/rendered/video-tools/imageio_ffmpeg/binaries/ffmpeg*.exe).Path
+python tools/render_demo_neural_narration.py `
+  --segments video/demo_segments.json `
+  --output-directory video/rendered/narration-en-za `
+  --ffmpeg $ffmpeg `
+  --voice en-ZA-LeahNeural `
+  --rate +5%
+```
+
+Pass `video/rendered/narration-en-za` to `render_demo_video.py` as the narration
+directory. This voice-generation step is used only for the pitch video; it is
+not part of CodeFellow's model or evaluation path.
