@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.1.0",
+  "profiler_version": "adtc-profiler 0.1.0",
+  "submission": {
+    "team_id": "local-codefellow-benchmark",
+    "domain": "coding_assistants",
+    "language_scope": [
+      "en",
+      "sw"
+    ],
+    "african_alpha_claim": true,
+    "budget_laptop_claim": true,
+    "submitter": {
+      "name": "Local benchmark",
+      "email": "benchmark@example.invalid",
+      "github_handle": "brianzhou139"
+    },
+    "cross_disciplinary_pairing": {
+      "discipline": "education",
+      "load_bearing": true,
+      "description": "Offline compiler diagnostics and Kiswahili code-switching support a hint-first programming tutor."
+    },
+    "test_prompts": [
+      {
+        "prompt_id": "tp_001",
+        "prompt": "Implement a Python function get_positive(values) that returns only positive numbers, then explain it in one beginner-friendly English sentence."
+      },
+      {
+        "prompt_id": "tp_002",
+        "prompt": "Implement Python function incr_list(values), kisha eleza kwa Kiswahili cha kawaida huku ukihifadhi terms function, list, input, na return kwa English."
+      }
+    ],
+    "model": {
+      "name": "CodeFellow-3B-Kiswahili-Instruct-Q4_K_M",
+      "runtime": "llama.cpp",
+      "quantization": "GGUF Q4_K_M importance-matrix calibrated",
+      "parameters_estimate": "3B",
+      "packaging": "binary_bundle"
+    }
+  },
+  "environment": {
+    "measured_on": "participant_laptop",
+    "cpu_model": "AMD Ryzen 7 4800H with Radeon Graphics",
+    "ram_gb": 15.3,
+    "gpu": "none",
+    "os": "Debian GNU/Linux 12 (bookworm)"
+  },
+  "throughput": {
+    "tokens_per_second_generation": 4.67,
+    "first_token_latency_ms": 15731.5,
+    "prompt_tokens": 512,
+    "generated_tokens": 128
+  },
+  "memory": {
+    "peak_rss_mb": 3370.01,
+    "steady_state_rss_mb": 3159.71,
+    "peak_vms_mb": 5176.92
+  },
+  "accuracy": [],
+  "cpu_thermal": {
+    "cpu_percent_p99": 24.8,
+    "core_temp_c_peak": null,
+    "throttled": false
+  },
+  "reproducibility": {
+    "git_commit_sha": "000000000000",
+    "docker_image_digest": "unknown",
+    "random_seed": 42
+  },
+  "model_info": {
+    "params_count": 3085938688,
+    "context_length": 32768,
+    "architecture": "qwen2",
+    "claimed_params_estimate": "3B",
+    "params_match": true
+  }
+}

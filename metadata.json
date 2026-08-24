@@ -17,22 +17,21 @@
   "test_prompts": [
     {
       "prompt_id": "tp_001",
-      "prompt": "A beginner wrote this Python function to return the length of the longest substring without repeated characters:\n\ndef longest_unique(text):\n    seen = set()\n    left = 0\n    best = 0\n    for right, char in enumerate(text):\n        if char in seen:\n            seen.remove(text[left])\n            left += 1\n        seen.add(char)\n        best = max(best, right - left + 1)\n    return best\n\nIt returns the wrong answer for 'abba'. Diagnose the root cause, show the smallest correct patch, write five pytest tests including empty input, all-repeated input, and Unicode input, then explain the sliding-window invariant and time complexity in beginner-friendly language."
+      "prompt": "Implement the Python function get_positive(l). Preserve this exact function name and argument contract. Requirement: Return only positive numbers in the list. >>> get_positive([-1, 2, -4, 5, 6]) [2, 5, 6] >>> get_positive([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]) [5, 3, 2, 3, 9, 123, 1]\n\nRespond in English. Return exactly one fenced python code block containing the complete implementation. After the block, add one short English sentence explaining the approach. Do not include tests."
     },
     {
       "prompt_id": "tp_002",
-      "prompt": "Unamfundisha mwanafunzi wa mwaka wa kwanza JavaScript offline. Function yake `function average(values) { return values.reduce((sum, value) => sum + value) / values.length; }` inafeli ikiwa array ni empty na numeric strings zinasababisha behaviour isiyotarajiwa. Toa diagnostic hint moja bila solution kamili. Kisha toa robust implementation chini ya `Jibu kamili`, eleza type-coercion issue kwa Kiswahili huku ukihifadhi English coding terms za kawaida, na ongeza runnable tests ukitumia Node `node:test` module."
+      "prompt": "Tekeleza Python function triangle_area(a, h). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kutokana na urefu wa upande na eneo kubwa la kurudi kwa triangle. >>> triangle_area(5, 3) 7.5 Technical terms zihifadhiwe: function.\n\nJibu kwa Kiswahili. Toa kizuizi kimoja tu cha msimbo wa python chenye utekelezaji kamili. Baada ya kizuizi, ongeza sentensi moja fupi ya Kiswahili inayoeleza mbinu. Usijumuishe majaribio."
     }
   ],
   "model": {
-    "name": "Qwen2.5-Coder-3B-Instruct-Q4_K_M",
+    "name": "CodeFellow-3B-Kiswahili-Instruct-Q4_K_M",
     "runtime": "llama.cpp",
-    "quantization": "GGUF Q4_K_M",
+    "quantization": "GGUF Q4_K_M, domain importance-matrix calibrated",
     "parameters_estimate": "3B",
     "packaging": "binary_bundle"
   },
   "_runtime": {
-    "model_path": "model/CodeFellow-Q4_K_M.gguf",
-    "translation_path": "translation/nllb-200-distilled-600M-ct2-int8"
+    "model_path": "model/CodeFellow-Q4_K_M.gguf"
   }
 }

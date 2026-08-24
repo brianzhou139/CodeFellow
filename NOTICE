@@ -1,16 +1,17 @@
 CodeFellow
 Copyright (c) 2026 CodeFellow contributors
 
-This project is built with Qwen2.5-Coder-3B-Instruct and downloads an unchanged
-Q4_K_M quantization of the upstream instruction model.
+This project is built with Qwen2.5-Coder-3B-Instruct and distributes a
+fine-tuned, partially merged Q4_K_M derivative of the upstream instruction
+model.
 
 Qwen is licensed under the Qwen RESEARCH LICENSE AGREEMENT,
 Copyright (c) Alibaba Cloud. All Rights Reserved.
 
-The shipped architecture keeps those weights unchanged and differentiates the
-application with local diagnostics, tutoring policy, response contracts, and a
-separate terminology-aware Kiswahili translation lane. It is described as
-"Built with Qwen" as required by the upstream license.
+The derivative adds English/Kiswahili coding-tutor behavior and natural
+English-Kiswahili code-switching. It is described as "Built with Qwen" as
+required by the upstream license. The submitted model runs directly through
+llama.cpp without a translation model or cloud dependency.
 
 Upstream model:
 https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct
@@ -23,11 +24,12 @@ redistribution subject to its terms. A separate license from Alibaba Cloud is
 required for commercial use. This notice is not a substitute for the complete
 upstream license, which is distributed in THIRD_PARTY_LICENSES/.
 
-CodeFellow also downloads an INT8 CTranslate2 conversion of Meta's
-NLLB-200-distilled-600M for local Kiswahili translation. NLLB is licensed under
-CC-BY-NC-4.0 and is used here only for non-commercial competition research and
-evaluation. The upstream model card states that it is a research translation
-model, not a certified translator or a general production deployment.
+NLLB-200-distilled-600M was used locally as a prose teacher during dataset and
+evaluation construction. It is not part of the submitted GGUF or evaluated
+runtime. The retained research utilities and optional archived download script
+remain subject to CC-BY-NC-4.0. The upstream model card states that NLLB is a
+research translation model, not a certified translator or general production
+deployment.
 
 Upstream NLLB model:
 https://huggingface.co/facebook/nllb-200-distilled-600M

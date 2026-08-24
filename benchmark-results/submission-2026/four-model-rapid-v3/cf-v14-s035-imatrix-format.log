@@ -1,0 +1,42 @@
+[01/12] format_fence_01 PASS
+[02/12] format_fence_02 PASS
+[03/12] format_fence_03 PASS
+[04/12] format_fence_04 PASS
+[05/12] format_fence_05 PASS
+[06/12] format_fence_06 PASS
+[07/12] format_fence_07 PASS
+[08/12] format_fence_08 PASS
+[09/12] format_fence_09 PASS
+[10/12] format_fence_10 PASS
+[11/12] format_fence_11 PASS
+[12/12] format_fence_12 PASS
+{
+  "total": 12,
+  "passed": 12,
+  "compliance_rate": 1.0,
+  "median_inference_seconds": 5.028,
+  "by_contract": {
+    "exact_fence": {
+      "passed": 12,
+      "total": 12,
+      "rate": 1.0
+    }
+  },
+  "by_language": {
+    "en": {
+      "passed": 4,
+      "total": 4,
+      "rate": 1.0
+    },
+    "sw": {
+      "passed": 4,
+      "total": 4,
+      "rate": 1.0
+    },
+    "sw_mix": {
+      "passed": 4,
+      "total": 4,
+      "rate": 1.0
+    }
+  }
+}

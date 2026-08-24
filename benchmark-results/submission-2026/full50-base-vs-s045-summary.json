@@ -1,0 +1,52 @@
+{
+  "schema": "codefellow-q4-comparison-v1",
+  "accuracy_estimate_weights": {
+    "en_code": 0.3,
+    "sw_code": 0.25,
+    "sw_mix_code": 0.25,
+    "format": 0.2
+  },
+  "adtc_formula": "0.50*accuracy + 0.30*min(TPS/15,1)*100 + 0.20*max(0,(7GB-peakRSS)/7GB)*100",
+  "models": [
+    {
+      "label": "qwen25-base",
+      "en_code_pass_rate": 0.76,
+      "en_format_rate": 0.88,
+      "en_language_adherence": 0.54,
+      "sw_code_pass_rate": 0.48,
+      "sw_format_rate": 1.0,
+      "sw_language_adherence": 0.42,
+      "sw_mix_code_pass_rate": 0.58,
+      "sw_mix_format_rate": 1.0,
+      "sw_mix_language_adherence": 0.06,
+      "explicit_format_rate": 0.6,
+      "hallucinated_api_rate": 0.06,
+      "profiler_runs": 0,
+      "median_tps": null,
+      "highest_peak_rss_mb": null,
+      "estimated_accuracy": 61.3
+    },
+    {
+      "label": "cf-v14-s045-imatrix",
+      "en_code_pass_rate": 0.78,
+      "en_format_rate": 1.0,
+      "en_language_adherence": 1.0,
+      "sw_code_pass_rate": 0.42,
+      "sw_format_rate": 1.0,
+      "sw_language_adherence": 0.52,
+      "sw_mix_code_pass_rate": 0.48,
+      "sw_mix_format_rate": 0.98,
+      "sw_mix_language_adherence": 0.24,
+      "explicit_format_rate": 0.7,
+      "hallucinated_api_rate": 0.0533,
+      "profiler_runs": 0,
+      "median_tps": null,
+      "highest_peak_rss_mb": null,
+      "estimated_accuracy": 59.9
+    }
+  ],
+  "ranking": [
+    "qwen25-base",
+    "cf-v14-s045-imatrix"
+  ]
+}

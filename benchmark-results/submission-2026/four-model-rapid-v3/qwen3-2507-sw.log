@@ -1,0 +1,54 @@
+[01/12] he_HumanEval_66 sw
+  FAIL | 211.6s
+[02/12] he_HumanEval_30 sw
+  PASS | 135.3s
+[03/12] he_HumanEval_150 sw
+  FAIL | 81.6s
+[04/12] he_HumanEval_51 sw
+  PASS | 90.7s
+[05/12] he_HumanEval_139 sw
+  FAIL | 95.2s
+[06/12] he_HumanEval_62 sw
+  PASS | 63.2s
+[07/12] he_HumanEval_42 sw
+  PASS | 28.6s
+[08/12] he_HumanEval_48 sw
+  PASS | 47.0s
+[09/12] he_HumanEval_60 sw
+  PASS | 33.3s
+[10/12] he_HumanEval_53 sw
+  FAIL | 20.3s
+[11/12] he_HumanEval_39 sw
+  FAIL | 47.4s
+[12/12] he_HumanEval_24 sw
+  PASS | 46.7s
+{
+  "languages": {
+    "sw": {
+      "responses": 12,
+      "code_passed": 7,
+      "code_total": 12,
+      "code_pass_rate": 0.5833,
+      "format_compliant": 12,
+      "format_compliance_rate": 1.0,
+      "side_effect_free": 7,
+      "side_effect_free_rate": 0.5833,
+      "explanations_passed": 0,
+      "explanations_total": 0,
+      "explanation_pass_rate": 0,
+      "overall_passed": 7,
+      "overall_total": 12,
+      "overall_pass_rate": 0.5833,
+      "language_adherent": 11,
+      "language_adherence_rate": 0.9167,
+      "mean_inference_seconds": 75.071,
+      "median_inference_seconds": 55.264,
+      "mean_completion_tokens": 261.17,
+      "total_completion_tokens": 3134
+    }
+  },
+  "complete_language_sets": 12,
+  "all_languages_passed": 7,
+  "all_languages_pass_rate": 0.5833,
+  "localized_parity": {}
+}

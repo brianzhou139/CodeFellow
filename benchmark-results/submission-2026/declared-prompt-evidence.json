@@ -1,0 +1,33 @@
+{
+  "schema": "codefellow-declared-prompt-evidence-v1",
+  "model_sha256": "50177433b86f9fdcd0161a89bdfdf0ec2819b396e9987bee5d743b3e9e822ea5",
+  "runtime": "llama.cpp /v1/chat/completions",
+  "settings": {
+    "temperature": 0,
+    "max_tokens": 180,
+    "context_tokens": 2048,
+    "threads": 4,
+    "postprocessing": false
+  },
+  "system_prompt": "You are CodeFellow, an offline programming tutor.\nFollow the requested response language exactly while keeping programming\nidentifiers and language keywords unchanged. Produce correct, minimal code\nusing only the standard library. Never access the network, filesystem, shell,\nenvironment variables, or external processes.",
+  "results": [
+    {
+      "prompt_id": "tp_001",
+      "prompt": "Implement the Python function get_positive(l). Preserve this exact function name and argument contract. Requirement: Return only positive numbers in the list. >>> get_positive([-1, 2, -4, 5, 6]) [2, 5, 6] >>> get_positive([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]) [5, 3, 2, 3, 9, 123, 1]\n\nRespond in English. Return exactly one fenced python code block containing the complete implementation. After the block, add one short English sentence explaining the approach. Do not include tests.",
+      "response": "```python\ndef get_positive(l):\n    return [x for x in l if x > 0]\n```\n\nThe approach is to use a list comprehension to iterate over the input list `l` and include only those elements that are greater than zero in the resulting list.",
+      "finish_reason": "stop",
+      "completion_tokens": 57,
+      "executable": true,
+      "format_compliant": true
+    },
+    {
+      "prompt_id": "tp_002",
+      "prompt": "Tekeleza Python function triangle_area(a, h). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kutokana na urefu wa upande na eneo kubwa la kurudi kwa triangle. >>> triangle_area(5, 3) 7.5 Technical terms zihifadhiwe: function.\n\nJibu kwa Kiswahili. Toa kizuizi kimoja tu cha msimbo wa python chenye utekelezaji kamili. Baada ya kizuizi, ongeza sentensi moja fupi ya Kiswahili inayoeleza mbinu. Usijumuishe majaribio.",
+      "response": "```python\ndef triangle_area(a, h):\n    return 0.5 * a * h\n```\n\nKutokana na urefu wa upande na eneo kubwa la kurudi kwa triangle.",
+      "finish_reason": "stop",
+      "completion_tokens": 47,
+      "executable": true,
+      "format_compliant": true
+    }
+  ]
+}

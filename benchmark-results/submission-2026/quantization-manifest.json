@@ -1,0 +1,39 @@
+{
+  "schema": "codefellow-quantization-audit-v1",
+  "parent": "/home/debian_isle/codefellow-training/base-qwen25",
+  "adapter": {
+    "checkpoint": "/home/debian_isle/codefellow-training/run-sw-v14-pilot-r16/checkpoint-100",
+    "strength": 0.45,
+    "sha256": "8548c6745f2d97f4fe7bcca306005d9dd487bba566913ac11154acbc3126dc27"
+  },
+  "merged_f16": "/home/debian_isle/codefellow-training/CodeFellow-sw-v14-step100-s045-F16.gguf",
+  "quantizer": {
+    "runtime": "llama.cpp",
+    "version": "0.2.0-dev",
+    "commit": "e85caa8",
+    "type": "Q4_K_M"
+  },
+  "experimental_ordinary_control_s050": {
+    "path": "/home/debian_isle/codefellow-training/CodeFellow-sw-v14-step100-s050-Q4_K_M-ordinary.gguf",
+    "bytes": 1929902464,
+    "sha256": "9f841f692acfb9fbd6f83727ae8be283dd868c3bcb5a48b4e4b3b6dcdbc4efa1"
+  },
+  "importance_matrix": {
+    "path": "/home/debian_isle/codefellow-training/CodeFellow-sw-v14-step100-s045-Q4_K_M-imatrix.gguf",
+    "bytes": 1929902784,
+    "sha256": "50177433b86f9fdcd0161a89bdfdf0ec2819b396e9987bee5d743b3e9e822ea5",
+    "calibration_activation_source": "step-100 adapter merged at 0.50 strength",
+    "calibration_records": 800,
+    "calibration_language_mix": {
+      "en": 400,
+      "sw": 200,
+      "sw_mix": 200
+    },
+    "debugging_records": 114,
+    "chunks": 60,
+    "context_tokens_per_chunk": 512,
+    "parse_special_tokens": true,
+    "structured_supplement": "training/imatrix_structured_supplement.txt"
+  },
+  "promotion_status": "selected after matched 50-task raw-model comparison and official ADTC profiler gate"
+}

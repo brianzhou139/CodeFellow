@@ -33,6 +33,18 @@ def repair_rate(document: dict, metric: str) -> float:
     return float(summary[metric]) / float(summary["total"])
 
 
+def direct_model_only(document: dict) -> bool:
+    return (
+        document.get("model_only") is True
+        and document.get("application_prompt_strategy") == "direct"
+        and not document.get("application_contract", False)
+        and not document.get("self_review", False)
+        and not document.get("translate_then_solve", False)
+        and not document.get("nllb_model")
+        and not document.get("nllb_roundtrip_explanations", False)
+    )
+
+
 def main() -> int:
     args = parse_args()
     base_paired, candidate_paired = load(args.base_paired), load(args.candidate_paired)
@@ -42,6 +54,8 @@ def main() -> int:
     metrics = {
         "base_en": paired(base_paired, "en", "overall_pass_rate"),
         "candidate_en": paired(candidate_paired, "en", "overall_pass_rate"),
+        "base_en_code": paired(base_paired, "en", "code_pass_rate"),
+        "candidate_en_code": paired(candidate_paired, "en", "code_pass_rate"),
         "base_sw": paired(base_paired, "sw", "overall_pass_rate"),
         "candidate_sw": paired(candidate_paired, "sw", "overall_pass_rate"),
         "base_sw_mix": paired(base_paired, "sw_mix", "overall_pass_rate"),
@@ -63,20 +77,21 @@ def main() -> int:
         "candidate_peak_rss_mb": float(candidate_profiler["memory"]["peak_rss_mb"]),
     }
     checks = {
+        "raw_model_only_evaluation": direct_model_only(candidate_paired),
         "kiswahili_at_least_75_percent": metrics["candidate_sw"] >= 0.75,
         "kiswahili_gain_at_least_10_points": metrics["candidate_sw"] - metrics["base_sw"] >= 0.10,
         "kiswahili_code_switching_at_least_85_percent": metrics["candidate_sw_mix"] >= 0.85,
         "kiswahili_code_switching_gain_at_least_15_points": (
             metrics["candidate_sw_mix"] - metrics["base_sw_mix"] >= 0.15
         ),
-        "english_at_least_88_percent": metrics["candidate_en"] >= 0.88,
-        "english_loss_at_most_2_points": metrics["candidate_en"] >= metrics["base_en"] - 0.02,
-        "all_language_formats_at_least_95_percent": min(
+        "english_not_below_base": metrics["candidate_en"] >= metrics["base_en"],
+        "english_executable_code_not_below_base": metrics["candidate_en_code"] >= metrics["base_en_code"],
+        "all_language_formats_at_least_98_percent": min(
             metrics["candidate_en_format"],
             metrics["candidate_sw_format"],
             metrics["candidate_sw_mix_format"],
         )
-        >= 0.95,
+        >= 0.98,
         "kiswahili_language_adherence_at_least_80_percent": (
             metrics["candidate_sw_language_adherence"] >= 0.80
         ),

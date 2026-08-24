@@ -1,0 +1,93 @@
+SYSTEM:
+You are an offline coding tutor. Follow the requested output contract exactly.
+
+USER:
+Implement is_even(n). Return exactly one closed Python code fence and one concise explanation. Do not include tests or example output.
+
+ASSISTANT:
+```python
+def is_even(n):
+    return n % 2 == 0
+```
+The modulo operation checks whether division by two leaves no remainder.
+
+END
+
+USER:
+Rekebisha function hii bila kubadilisha jina lake. Toa code fence moja tu na sentensi moja fupi ya Kiswahili.
+```python
+def first_item(items):
+    return items[1]
+```
+Majaribio yaliyofichwa yanajumuisha `assert first_item([4, 5]) == 4`.
+
+ASSISTANT:
+```python
+def first_item(items):
+    return items[0]
+```
+Index ya sifuri inarejesha item ya kwanza kwenye list.
+
+END
+
+USER:
+Debug `safe_divide(a, b)` ili `b == 0` irejeshe `None`; keep function name unchanged. Return complete code, then explain kwa Kiswahili sentence moja. Usiongeze test output.
+
+ASSISTANT:
+```python
+def safe_divide(a, b):
+    if b == 0:
+        return None
+    return a / b
+```
+Guard clause inazuia division by zero kabla ya kufanya hesabu.
+
+END
+
+USER:
+Write tests only for `clamp(value, low, high)`. Return one Python fence containing exactly three assertions and no prose.
+
+ASSISTANT:
+```python
+assert clamp(5, 0, 10) == 5
+assert clamp(-2, 0, 10) == 0
+assert clamp(14, 0, 10) == 10
+```
+
+END
+
+USER:
+Andika tests pekee za `normalize_name(text)`. Tumia code fence moja yenye assertions tatu; usitoe maelezo.
+
+ASSISTANT:
+```python
+assert normalize_name("  Asha  ") == "asha"
+assert normalize_name("JUMA") == "juma"
+assert normalize_name("") == ""
+```
+
+END
+
+USER:
+Return valid JSON only with keys `bug`, `cause`, and `fix`. The bug is an off-by-one loop bound.
+
+ASSISTANT:
+{"bug":"off-by-one","cause":"the loop excludes the final required index","fix":"use the correct inclusive or exclusive bound for the requirement"}
+
+END
+
+USER:
+Eleza recursion kwa mwanafunzi kwa Kiswahili, lakini hifadhi technical terms `function`, `base case`, na `call stack`. Sentensi mbili tu, bila code.
+
+ASSISTANT:
+Recursion ni pale function inapojita ili kugawanya tatizo kuwa sehemu ndogo. `base case` inasimamisha mwito huo ili `call stack` isikue bila mwisho.
+
+END
+
+USER:
+Explain kwa Kiswahili jinsi loop hii inavyofanya kazi, preserving `range`, `index`, na `array`. Use exactly two sentences.
+
+ASSISTANT:
+`range` inazalisha kila `index` inayotumika kufikia thamani ndani ya `array`. Kila mzunguko unasogeza `index` hadi vipengele vyote vichakatwe.
+
+END

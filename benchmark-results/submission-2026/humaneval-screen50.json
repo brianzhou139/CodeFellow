@@ -1,0 +1,702 @@
+[
+  {
+    "id": "he_HumanEval_66",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/66",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function digitSum(s). Preserve this exact function name and argument contract. Requirement: Task Write a function that takes a string as input and returns the sum of the upper characters only' ASCII codes. Examples: digitSum(\"\") => 0 digitSum(\"abAB\") => 131 digitSum(\"abcCd\") => 67 digitSum(\"helloE\") => 69 digitSum(\"woArBld\") => 131 digitSum(\"aAaaaXa\") => 153",
+    "prompt_sw": "Tekeleza Python function digitSum(s). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kazi Andika kazi ambayo inachukua mlolongo kama input na inarudi jumla ya herufi za juu tu' ASCII codes. Mifano: digitSum(\"\") => 0 digitSum(\"abAB\") => 131 digitSum(\"abcCd\") => 67 digitSum(\"helloE\") => 69 digitSum(\"woArBld\") => 131 digitSum(\"aAaaaXa\") => 153 Technical terms zihifadhiwe: function, string, character.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(\"\") == 0, \"Error\"\n    assert candidate(\"abAB\") == 131, \"Error\"\n    assert candidate(\"abcCd\") == 67, \"Error\"\n    assert candidate(\"helloE\") == 69, \"Error\"\n    assert candidate(\"woArBld\") == 131, \"Error\"\n    assert candidate(\"aAaaaXa\") == 153, \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(\" How are yOu?\") == 151, \"Error\"\n    assert candidate(\"You arE Very Smart\") == 327, \"Error\"\ncheck(digitSum)"
+    ],
+    "translation_semantic_score": 0.8014
+  },
+  {
+    "id": "he_HumanEval_30",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/30",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function get_positive(l). Preserve this exact function name and argument contract. Requirement: Return only positive numbers in the list. >>> get_positive([-1, 2, -4, 5, 6]) [2, 5, 6] >>> get_positive([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]) [5, 3, 2, 3, 9, 123, 1]",
+    "prompt_sw": "Tekeleza Python function get_positive(l). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kurudisha nambari chanya tu katika orodha. >>> get_positive([-1, 2, -4, 5, 6]) [2, 5, 6] >>> get_positive([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]) [5, 3, 2, 3, 9, 123, 1] Technical terms zihifadhiwe: function, list.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([-1, -2, 4, 5, 6]) == [4, 5, 6]\n    assert candidate([5, 3, -5, 2, 3, 3, 9, 0, 123, 1, -10]) == [5, 3, 2, 3, 3, 9, 123, 1]\n    assert candidate([-1, -2]) == []\n    assert candidate([]) == []\ncheck(get_positive)"
+    ],
+    "translation_semantic_score": 0.7649
+  },
+  {
+    "id": "he_HumanEval_150",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/150",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function x_or_y(n, x, y). Preserve this exact function name and argument contract. Requirement: A simple program which should return the value of x if n is a prime number and should return the value of y otherwise. Examples: for x_or_y(7, 34, 12) == 34 for x_or_y(15, 8, 5) == 5",
+    "prompt_sw": "Tekeleza Python function x_or_y(n, x, y). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Programu rahisi ambayo inapaswa kurejesha thamani ya x ikiwa n ni idadi ya kwanza na inapaswa kurejesha thamani ya y vinginevyo. Mifano: kwa x_or_y(7, 34, 12) == 34 kwa x_or_y(15, 8, 5) == 5 Technical terms zihifadhiwe: function.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(7, 34, 12) == 34\n    assert candidate(15, 8, 5) == 5\n    assert candidate(3, 33, 5212) == 33\n    assert candidate(1259, 3, 52) == 3\n    assert candidate(7919, -1, 12) == -1\n    assert candidate(3609, 1245, 583) == 583\n    assert candidate(91, 56, 129) == 129\n    assert candidate(6, 34, 1234) == 1234\n    \n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(1, 2, 0) == 0\n    assert candidate(2, 2, 0) == 2\ncheck(x_or_y)"
+    ],
+    "translation_semantic_score": 0.7545
+  },
+  {
+    "id": "he_HumanEval_51",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/51",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function remove_vowels(text). Preserve this exact function name and argument contract. Requirement: remove_vowels is a function that takes string and returns string without vowels. >>> remove_vowels('') '' >>> remove_vowels(\"abcdef ghijklm\") 'bcdf ghjklm' >>> remove_vowels('abcdef') 'bcdf' >>> remove_vowels('aaaaa') '' >>> remove_vowels('aaBAA') 'B' >>> remove_vowels('zbcd') 'zbcd'",
+    "prompt_sw": "Tekeleza Python function remove_vowels(text). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: remove_vowels ni kazi ambayo inachukua kamba na inarudi kamba bila vowels. >>> remove_vowels('') '' >>> remove_vowels(\"abcdef ghijklm\") 'bcdf ghjklm' >>> remove_vowels('abcdef') 'bcdf' remove_vowels('aaaaa') '' >>> remove_vowels'(aaBAA') 'B' >>> remove_vowels('zbcd') 'zbcd' Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate('') == ''\n    assert candidate(\"abcdef\\nghijklm\") == 'bcdf\\nghjklm'\n    assert candidate('fedcba') == 'fdcb'\n    assert candidate('eeeee') == ''\n    assert candidate('acBAA') == 'cB'\n    assert candidate('EcBOO') == 'cB'\n    assert candidate('ybcd') == 'ybcd'\ncheck(remove_vowels)"
+    ],
+    "translation_semantic_score": 0.7457
+  },
+  {
+    "id": "he_HumanEval_139",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/139",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function special_factorial(n). Preserve this exact function name and argument contract. Requirement: The Brazilian factorial is defined as: brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1! where n > 0 For example: >>> special_factorial(4) 288 The function will receive an integer as input and should return the special factorial of this integer.",
+    "prompt_sw": "Tekeleza Python function special_factorial(n). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Brazil factorial ni kufafanuliwa kama: brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1! ambapo n > 0 Kwa mfano: >>> special_factorial(4) 288 Kazi itapokea integer kama input na inapaswa kurudisha factorial maalum ya integer hii. Technical terms zihifadhiwe: function.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(4) == 288, \"Test 4\"\n    assert candidate(5) == 34560, \"Test 5\"\n    assert candidate(7) == 125411328000, \"Test 7\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(1) == 1, \"Test 1\"\ncheck(special_factorial)"
+    ],
+    "translation_semantic_score": 0.7453
+  },
+  {
+    "id": "he_HumanEval_62",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/62",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function derivative(xs). Preserve this exact function name and argument contract. Requirement: xs represent coefficients of a polynomial. xs[0] + xs[1] * x + xs[2] * x^2 + .... Return derivative of this polynomial in the same form. >>> derivative([3, 1, 2, 4, 5]) [1, 4, 12, 20] >>> derivative([1, 2, 3]) [2, 6]",
+    "prompt_sw": "Tekeleza Python function derivative(xs). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: xs kuwakilisha coefficients ya polynomial. xs[0] + xs[1] * x + xs[2] * x^2 + .... kurudisha derivative ya polynomial hii katika fomu hiyo hiyo. >>> derivative (([3, 1, 2, 4, 5]) [1, 4, 12, 20] >>> derivative (([1, 2, 3]) [2, 6] Technical terms zihifadhiwe: function.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([3, 1, 2, 4, 5]) == [1, 4, 12, 20]\n    assert candidate([1, 2, 3]) == [2, 6]\n    assert candidate([3, 2, 1]) == [2, 2]\n    assert candidate([3, 2, 1, 0, 4]) == [2, 2, 0, 16]\n    assert candidate([1]) == []\ncheck(derivative)"
+    ],
+    "translation_semantic_score": 0.7284
+  },
+  {
+    "id": "he_HumanEval_42",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/42",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function incr_list(l). Preserve this exact function name and argument contract. Requirement: Return list with elements incremented by 1. >>> incr_list([1, 2, 3]) [2, 3, 4] >>> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123]) [6, 4, 6, 3, 4, 4, 10, 1, 124]",
+    "prompt_sw": "Tekeleza Python function incr_list(l). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kurudi orodha na vipengele kuongezeka kwa 1. >>> incr_list([1, 2, 3]) [2, 3, 4] >>> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123]) [6, 4, 6, 3, 4, 4, 10, 1, 124] Technical terms zihifadhiwe: function, list.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([]) == []\n    assert candidate([3, 2, 1]) == [4, 3, 2]\n    assert candidate([5, 2, 5, 2, 3, 3, 9, 0, 123]) == [6, 3, 6, 3, 4, 4, 10, 1, 124]\ncheck(incr_list)"
+    ],
+    "translation_semantic_score": 0.7098
+  },
+  {
+    "id": "he_HumanEval_48",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/48",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function is_palindrome(text). Preserve this exact function name and argument contract. Requirement: Checks if given string is a palindrome >>> is_palindrome('') True >>> is_palindrome('aba') True >>> is_palindrome('aaaaa') True >>> is_palindrome('zbcd') False",
+    "prompt_sw": "Tekeleza Python function is_palindrome(text). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Angalia ikiwa kamba iliyopewa ni palindrome >>> is_palindrome('') Kweli >>> ni_palindrome('aba') Kweli >>> ni_palindrome('aaaaa') Kweli >>> ni_palindrome('zbcd') Uwongo Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate('') == True\n    assert candidate('aba') == True\n    assert candidate('aaaaa') == True\n    assert candidate('zbcd') == False\n    assert candidate('xywyx') == True\n    assert candidate('xywyz') == False\n    assert candidate('xywzx') == False\ncheck(is_palindrome)"
+    ],
+    "translation_semantic_score": 0.7084
+  },
+  {
+    "id": "he_HumanEval_60",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/60",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function sum_to_n(n). Preserve this exact function name and argument contract. Requirement: sum_to_n is a function that sums numbers from 1 to n. >>> sum_to_n(30) 465 >>> sum_to_n(100) 5050 >>> sum_to_n(5) 15 >>> sum_to_n(10) 55 >>> sum_to_n(1) 1",
+    "prompt_sw": "Tekeleza Python function sum_to_n(n). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: sum_to_n ni kazi ambayo huongeza idadi kutoka 1 hadi n. >>> sum_to_n(30) 465 >>> sum_to_n(100) 5050 >>> sum_to_n(5) 15 >>> sum_to_n(10) 55 >>> sum_to_n(1) 1 Technical terms zihifadhiwe: function.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(1) == 1\n    assert candidate(6) == 21\n    assert candidate(11) == 66\n    assert candidate(30) == 465\n    assert candidate(100) == 5050\ncheck(sum_to_n)"
+    ],
+    "translation_semantic_score": 0.6994
+  },
+  {
+    "id": "he_HumanEval_53",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/53",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function add(x, y). Preserve this exact function name and argument contract. Requirement: Add two numbers x and y >>> add(2, 3) 5 >>> add(5, 7) 12",
+    "prompt_sw": "Tekeleza Python function add(x, y). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Ongeza idadi mbili x na y >>> kuongeza(2, 3) 5 >>> kuongeza(5, 7) 12 Technical terms zihifadhiwe: function.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    import random\n\n    assert candidate(0, 1) == 1\n    assert candidate(1, 0) == 1\n    assert candidate(2, 3) == 5\n    assert candidate(5, 7) == 12\n    assert candidate(7, 5) == 12\n\n    for i in range(100):\n        x, y = random.randint(0, 1000), random.randint(0, 1000)\n        assert candidate(x, y) == x + y\ncheck(add)"
+    ],
+    "translation_semantic_score": 0.6967
+  },
+  {
+    "id": "he_HumanEval_39",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/39",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function prime_fib(n). Preserve this exact function name and argument contract. Requirement: prime_fib returns n-th number that is a Fibonacci number and it's also prime. >>> prime_fib(1) 2 >>> prime_fib(2) 3 >>> prime_fib(3) 5 >>> prime_fib(4) 13 >>> prime_fib(5) 89",
+    "prompt_sw": "Tekeleza Python function prime_fib(n). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: prime_fib anarudi n-th idadi ambayo ni idadi ya Fibonacci na pia ni prime. >>> prime_fib(1) 2 >>> prime_fib(2) 3 >>> prime_fib(3) 5 >>> prime_fib((4) 13 >>> prime_fib(5) 89 Technical terms zihifadhiwe: function.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(1) == 2\n    assert candidate(2) == 3\n    assert candidate(3) == 5\n    assert candidate(4) == 13\n    assert candidate(5) == 89\n    assert candidate(6) == 233\n    assert candidate(7) == 1597\n    assert candidate(8) == 28657\n    assert candidate(9) == 514229\n    assert candidate(10) == 433494437\ncheck(prime_fib)"
+    ],
+    "translation_semantic_score": 0.6958
+  },
+  {
+    "id": "he_HumanEval_24",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/24",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function largest_divisor(n). Preserve this exact function name and argument contract. Requirement: For a given number n, find the largest number that divides n evenly, smaller than n >>> largest_divisor(15) 5",
+    "prompt_sw": "Tekeleza Python function largest_divisor(n). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kwa idadi fulani n, kupata idadi kubwa ambayo inagawanya n sawasawa, ndogo kuliko n >>> largest_divisor(15) 5 Technical terms zihifadhiwe: function.",
+    "tests": [
+      "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate(3) == 1\n    assert candidate(7) == 1\n    assert candidate(10) == 5\n    assert candidate(100) == 50\n    assert candidate(49) == 7\ncheck(largest_divisor)"
+    ],
+    "translation_semantic_score": 0.6553
+  },
+  {
+    "id": "he_HumanEval_55",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/55",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function fib(n). Preserve this exact function name and argument contract. Requirement: Return n-th Fibonacci number. >>> fib(10) 55 >>> fib(1) 1 >>> fib(8) 21",
+    "prompt_sw": "Tekeleza Python function fib(n). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kurudisha n-th Fibonacci idadi. >>> fib(10) 55 >>> fib(1) 1 >>> fib(8) 21 Technical terms zihifadhiwe: function.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(10) == 55\n    assert candidate(1) == 1\n    assert candidate(8) == 21\n    assert candidate(11) == 89\n    assert candidate(12) == 144\ncheck(fib)"
+    ],
+    "translation_semantic_score": 0.6546
+  },
+  {
+    "id": "he_HumanEval_47",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/47",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function median(l). Preserve this exact function name and argument contract. Requirement: Return median of elements in the list l. >>> median([3, 1, 2, 4, 5]) 3 >>> median([-10, 4, 6, 1000, 10, 20]) 15.0",
+    "prompt_sw": "Tekeleza Python function median(l). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kurudi median ya elementi katika orodha l. >>> median (([3, 1, 2, 4, 5]) 3 >>> median (([-10, 4, 6, 1000, 10, 20]) 15.0 Technical terms zihifadhiwe: function, list.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([3, 1, 2, 4, 5]) == 3\n    assert candidate([-10, 4, 6, 1000, 10, 20]) == 8.0\n    assert candidate([5]) == 5\n    assert candidate([6, 5]) == 5.5\n    assert candidate([8, 1, 3, 9, 9, 2, 7]) == 7\ncheck(median)"
+    ],
+    "translation_semantic_score": 0.6519
+  },
+  {
+    "id": "he_HumanEval_89",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/89",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function encrypt(s). Preserve this exact function name and argument contract. Requirement: Create a function encrypt that takes a string as an argument and returns a string encrypted with the alphabet being rotated. The alphabet should be rotated in a manner such that the letters shift down by two multiplied to two places. For example: encrypt('hi') returns 'lm' encrypt('asdfghjkl') returns 'ewhjklnop' encrypt('gf') returns 'kj' encrypt('et') returns 'ix'",
+    "prompt_sw": "Tekeleza Python function encrypt(s). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Unda kazi encrypt ambayo inachukua kamba kama hoja na inarudi kamba encrypted na alfabeti ni kugeuka. alfabeti inapaswa kugeuka kwa njia ya kwamba herufi kuhama chini kwa mbili mara mbili kwa maeneo mawili. Kwa mfano: encrypt('hi') inarudi 'lm' encrypt('asdfghjkl') inarudi 'ewhjklnop' encrypt'(gf') inarudi 'kj' encrypt'et') inarudi 'ix' Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('hi') == 'lm', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('asdfghjkl') == 'ewhjklnop', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('gf') == 'kj', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('et') == 'ix', \"This prints if this assert fails 1 (good for debugging!)\"\n\n    assert candidate('faewfawefaewg')=='jeiajeaijeiak', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('hellomyfriend')=='lippsqcjvmirh', \"This prints if this assert fails 2 (good for debugging!)\"\n    assert candidate('dxzdlmnilfuhmilufhlihufnmlimnufhlimnufhfucufh')=='hbdhpqrmpjylqmpyjlpmlyjrqpmqryjlpmqryjljygyjl', \"This prints if this assert fails 3 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate('a')=='e', \"This prints if this assert fails 2 (also good for debugging!)\"\ncheck(encrypt)"
+    ],
+    "translation_semantic_score": 0.6421
+  },
+  {
+    "id": "he_HumanEval_122",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/122",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function add_elements(arr, k). Preserve this exact function name and argument contract. Requirement: Given a non-empty array of integers arr and an integer k, return the sum of the elements with at most two digits from the first k elements of arr. Example: Input: arr = [111,21,3,4000,5,6,7,8,9], k = 4 Output: 24 # sum of 21 + 3 Constraints: 1. 1 <= len(arr) <= 100 2. 1 <= k <= len(arr)",
+    "prompt_sw": "Tekeleza Python function add_elements(arr, k). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kwa kuzingatia safu isiyo wazi ya integer arr na integer k, rudi jumla ya elementi zilizo na takwimu mbili za juu kutoka kwa k kwanza k elementi za arr. Mfano: Input: arr = [111,21,3,4000,5,6,7,8,9], k = 4 Matokeo: 24 # jumla ya 21 + 3 Vizuizi: 1. 1 <=( lenarr) <= 100 2. 1 <= k <= lenarr) Technical terms zihifadhiwe: function, array.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([1,-2,-3,41,57,76,87,88,99], 3) == -4\n    assert candidate([111,121,3,4000,5,6], 2) == 0\n    assert candidate([11,21,3,90,5,6,7,8,9], 4) == 125\n    assert candidate([111,21,3,4000,5,6,7,8,9], 4) == 24, \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate([1], 1) == 1, \"This prints if this assert fails 2 (also good for debugging!)\"\ncheck(add_elements)"
+    ],
+    "translation_semantic_score": 0.6368
+  },
+  {
+    "id": "he_HumanEval_23",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/23",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function strlen(string). Preserve this exact function name and argument contract. Requirement: Return length of given string >>> strlen('') 0 >>> strlen('abc') 3",
+    "prompt_sw": "Tekeleza Python function strlen(string). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kurudisha urefu wa kamba iliyotolewa >>> strlen('') 0 >>> strlen('abc') 3 Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('') == 0\n    assert candidate('x') == 1\n    assert candidate('asdasnakj') == 9\ncheck(strlen)"
+    ],
+    "translation_semantic_score": 0.6293
+  },
+  {
+    "id": "he_HumanEval_10",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/10",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function make_palindrome(string). Preserve this exact function name and argument contract. Requirement: Test if given string is a palindrome",
+    "prompt_sw": "Tekeleza Python function make_palindrome(string). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kutekeleza kazi ya Python make_palindrome(string). Hifadhi jina hili sahihi la kazi na mkataba wa hoja. Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('') == ''\n    assert candidate('x') == 'x'\n    assert candidate('xyz') == 'xyzyx'\n    assert candidate('xyx') == 'xyx'\n    assert candidate('jerry') == 'jerryrrej'\ncheck(make_palindrome)"
+    ],
+    "translation_semantic_score": 0.6252
+  },
+  {
+    "id": "he_HumanEval_13",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/13",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function greatest_common_divisor(a, b). Preserve this exact function name and argument contract. Requirement: Return a greatest common divisor of two integers a and b >>> greatest_common_divisor(3, 5) 1 >>> greatest_common_divisor(25, 15) 5",
+    "prompt_sw": "Tekeleza Python function greatest_common_divisor(a, b). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kurudisha sehemu kubwa ya kawaida ya integer mbili a na b >>> greatest_common_divisor(3, 5) 1 >>> greatest_common_divisor(25, 15) 5 Technical terms zihifadhiwe: function.",
+    "tests": [
+      "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate(3, 7) == 1\n    assert candidate(10, 15) == 5\n    assert candidate(49, 14) == 7\n    assert candidate(144, 60) == 12\ncheck(greatest_common_divisor)"
+    ],
+    "translation_semantic_score": 0.6206
+  },
+  {
+    "id": "he_HumanEval_54",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/54",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function same_chars(s0, s1). Preserve this exact function name and argument contract. Requirement: Check if two words have the same characters. >>> same_chars('eabcdzzzz', 'dddzzzzzzzddeddabc') True >>> same_chars('abcd', 'dddddddabc') True >>> same_chars('dddddddabc', 'abcd') True >>> same_chars('eabcd', 'dddddddabc') False >>> same_chars('abcd', 'dddddddabce') False >>> same_chars('eabcdzzzz', 'dddzzzzzzzddddabc') False",
+    "prompt_sw": "Tekeleza Python function same_chars(s0, s1). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Angalia kama maneno mawili yana wahusika sawa. >>> same_chars('eabcdzzzz', 'dddzzzzzzzddabc') True >>> same_chars('abcd', 'dddddddabc') True >>> same_chars('dddddddabc', 'dddzzzzzddabc') True >>> same_chars'eabcd', 'dddddddabc') True >>> same_chars'eabcd', 'dddddddabc') False >>> same_chars('abcd', 'dddddabce') False >>> same_chars('eabcd', 'dddddddabc') False >>> Technical terms zihifadhiwe: function, character.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate('eabcdzzzz', 'dddzzzzzzzddeddabc') == True\n    assert candidate('abcd', 'dddddddabc') == True\n    assert candidate('dddddddabc', 'abcd') == True\n    assert candidate('eabcd', 'dddddddabc') == False\n    assert candidate('abcd', 'dddddddabcf') == False\n    assert candidate('eabcdzzzz', 'dddzzzzzzzddddabc') == False\n    assert candidate('aabb', 'aaccc') == False\ncheck(same_chars)"
+    ],
+    "translation_semantic_score": 0.5977
+  },
+  {
+    "id": "he_HumanEval_44",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/44",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function change_base(x, base). Preserve this exact function name and argument contract. Requirement: Change numerical base of input number x to base. return string representation after the conversion. base numbers are less than 10. >>> change_base(8, 3) '22' >>> change_base(8, 2) '1000' >>> change_base(7, 2) '111'",
+    "prompt_sw": "Tekeleza Python function change_base(x, base). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Badilisha msingi wa nambari ya namba ya kuingia x kwa msingi. rudi utambulisho wa string baada ya uongofu. nambari za msingi ni chini ya 10. >>> change_base(8, 3) '22' >>> change_base(8, 2) '1000' >>> change_base7, 2) '111' Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(8, 3) == \"22\"\n    assert candidate(9, 3) == \"100\"\n    assert candidate(234, 2) == \"11101010\"\n    assert candidate(16, 2) == \"10000\"\n    assert candidate(8, 2) == \"1000\"\n    assert candidate(7, 2) == \"111\"\n    for x in range(2, 8):\n        assert candidate(x, x + 1) == str(x)\ncheck(change_base)"
+    ],
+    "translation_semantic_score": 0.5879
+  },
+  {
+    "id": "he_HumanEval_71",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/71",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function triangle_area(a, b, c). Preserve this exact function name and argument contract. Requirement: Given the lengths of the three sides of a triangle. Return the area of the triangle rounded to 2 decimal points if the three sides form a valid triangle. Otherwise return -1 Three sides make a valid triangle when the sum of any two sides is greater than the third side. Example: triangle_area(3, 4, 5) == 6.00 triangle_area(1, 2, 10) == -1",
+    "prompt_sw": "Tekeleza Python function triangle_area(a, b, c). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kwa kuzingatia urefu wa pande tatu za triangle. Kurudisha eneo la triangle iliyozunguka hadi alama 2 za desimali ikiwa pande tatu huunda triangle halali. Vinginevyo kurudisha -1 pande tatu hufanya triangle halali wakati jumla ya pande zote mbili ni kubwa kuliko upande wa tatu. Mfano: triangle_area(3, 4, 5) == 6.00 triangle_area1, 2, 10) == -1 Technical terms zihifadhiwe: function.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(3, 4, 5) == 6.00, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(1, 2, 10) == -1\n    assert candidate(4, 8, 5) == 8.18\n    assert candidate(2, 2, 2) == 1.73\n    assert candidate(1, 2, 3) == -1\n    assert candidate(10, 5, 7) == 16.25\n    assert candidate(2, 6, 3) == -1\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(1, 1, 1) == 0.43, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(2, 2, 10) == -1\ncheck(triangle_area)"
+    ],
+    "translation_semantic_score": 0.5775
+  },
+  {
+    "id": "he_HumanEval_151",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/151",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function double_the_difference(lst). Preserve this exact function name and argument contract. Requirement: Given a list of numbers, return the sum of squares of the numbers in the list that are odd. Ignore numbers that are negative or not integers. double_the_difference([1, 3, 2, 0]) == 1 + 9 + 0 + 0 = 10 double_the_difference([-1, -2, 0]) == 0 double_the_difference([9, -2]) == 81 double_the_difference([0]) == 0 If the input list is empty, return 0.",
+    "prompt_sw": "Tekeleza Python function double_the_difference(lst). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kwa kuzingatia orodha ya nambari, rudi jumla ya mraba wa nambari kwenye orodha ambayo ni odd. Kutojali nambari ambazo ni hasi au sio integer. double_the_difference (([1, 3, 2, 0]) == 1 + 9 + 0 + 0 = 10 double_the_difference (([-1, -2, 0]) == 0 double_the_difference[9, -2]) == 81 double_the_difference == Technical terms zihifadhiwe: function, list.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([]) == 0 , \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate([5, 4]) == 25 , \"This prints if this assert fails 2 (good for debugging!)\"\n    assert candidate([0.1, 0.2, 0.3]) == 0 , \"This prints if this assert fails 3 (good for debugging!)\"\n    assert candidate([-10, -20, -30]) == 0 , \"This prints if this assert fails 4 (good for debugging!)\"\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate([-1, -2, 8]) == 0, \"This prints if this assert fails 5 (also good for debugging!)\"\n    assert candidate([0.2, 3, 5]) == 34, \"This prints if this assert fails 6 (also good for debugging!)\"\n    lst = list(range(-99, 100, 2))\n    odd_sum = sum([i**2 for i in lst if i%2!=0 and i > 0])\n    assert candidate(lst) == odd_sum , \"This prints if this assert fails 7 (good for debugging!)\"\ncheck(double_the_difference)"
+    ],
+    "translation_semantic_score": 0.5728
+  },
+  {
+    "id": "he_HumanEval_65",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/65",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function circular_shift(x, shift). Preserve this exact function name and argument contract. Requirement: Circular shift the digits of the integer x, shift the digits right by shift and return the result as a string. If shift > number of digits, return digits reversed. >>> circular_shift(12, 1) \"21\" >>> circular_shift(12, 2) \"12\"",
+    "prompt_sw": "Tekeleza Python function circular_shift(x, shift). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Circular shift digits ya integer x, shift digits haki kwa shift na kurudi matokeo kama string. Kama shift > idadi ya digits, kurudi digits reversed. >>> circular_shift(12, 1) \"21\" >>> circular_shift(12, 2) \"12\" Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(100, 2) == \"001\"\n    assert candidate(12, 2) == \"12\"\n    assert candidate(97, 8) == \"79\"\n    assert candidate(12, 1) == \"21\", \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(11, 101) == \"11\", \"This prints if this assert fails 2 (also good for debugging!)\"\ncheck(circular_shift)"
+    ],
+    "translation_semantic_score": 0.567
+  },
+  {
+    "id": "he_HumanEval_125",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/125",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function split_words(txt). Preserve this exact function name and argument contract. Requirement: Given a string of words, return a list of words split on whitespace, if no whitespaces exists in the text you should split on commas ',' if no commas exists you should return the number of lower-case letters with odd order in the alphabet, ord('a') = 0, ord('b') = 1, ... ord('z') = 25 Examples split_words(\"Hello world!\") ➞ [\"Hello\", \"world!\"] split_words(\"Hello,world!\") ➞ [\"Hello\", \"world!\"] split_words(\"abcdef\") == 3",
+    "prompt_sw": "Tekeleza Python function split_words(txt). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kwa kuzingatia mlolongo wa maneno, rudi orodha ya maneno yaliyogawanywa kwenye nafasi nyeupe, ikiwa hakuna nafasi nyeupe katika maandishi unapaswa kugawanywa kwenye commas ',' ikiwa hakuna commas unapaswa kurudi idadi ya herufi ndogo na utaratibu wa kushangaza katika alfabeti, ord('a') = 0, ord('b') = 1, ... ord'z') = 25 Mifano split_words(\"Hello dunia!\") ⁇ [\"Hello\", \"!\"] split_((\"Hello,world!\") ⁇ [\"Hello\", \"world!\"] split_words\"abellocdef\") == 3 Technical terms zihifadhiwe: function, list, string.",
+    "tests": [
+      "def check(candidate):\n\n    assert candidate(\"Hello world!\") == [\"Hello\",\"world!\"]\n    assert candidate(\"Hello,world!\") == [\"Hello\",\"world!\"]\n    assert candidate(\"Hello world,!\") == [\"Hello\",\"world,!\"]\n    assert candidate(\"Hello,Hello,world !\") == [\"Hello,Hello,world\",\"!\"]\n    assert candidate(\"abcdef\") == 3\n    assert candidate(\"aaabb\") == 2\n    assert candidate(\"aaaBb\") == 1\n    assert candidate(\"\") == 0\ncheck(split_words)"
+    ],
+    "translation_semantic_score": 0.561
+  },
+  {
+    "id": "he_HumanEval_79",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/79",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function decimal_to_binary(decimal). Preserve this exact function name and argument contract. Requirement: You will be given a number in decimal form and your task is to convert it to binary format. The function should return a string, with each character representing a binary number. Each character in the string will be '0' or '1'. There will be an extra couple of characters 'db' at the beginning and at the end of the string. The extra characters are there to help with the format. Examples: decimal_to_binary(15) # returns \"db1111db\" decimal_to_binary(32) # returns \"db100000db\"",
+    "prompt_sw": "Tekeleza Python function decimal_to_binary(decimal). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Utapokea nambari katika fomu ya desimali na kazi yako ni kuibadilisha kuwa fomu ya binary. Kazi inapaswa kurejesha kamba, na kila tabia inawakilisha nambari ya binary. Kila tabia katika kamba itakuwa '0' au '1'. Kutakuwa na wahusika wa ziada 'db' mwanzoni na mwishoni mwa kamba. Wahusika wa ziada wapo kusaidia na muundo. Mifano: decimal_to_binary(15) # inarudi \"db1111db\" decimal ((_to_binary32) # inarudi \"db100000db\" Technical terms zihifadhiwe: function, string, character.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(0) == \"db0db\"\n    assert candidate(32) == \"db100000db\"\n    assert candidate(103) == \"db1100111db\"\n    assert candidate(15) == \"db1111db\", \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\ncheck(decimal_to_binary)"
+    ],
+    "translation_semantic_score": 0.558
+  },
+  {
+    "id": "he_HumanEval_90",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/90",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function next_smallest(lst). Preserve this exact function name and argument contract. Requirement: You are given a list of integers. Write a function next_smallest() that returns the 2nd smallest element of the list. Return None if there is no such element. next_smallest([1, 2, 3, 4, 5]) == 2 next_smallest([5, 1, 4, 3, 2]) == 2 next_smallest([]) == None next_smallest([1, 1]) == None",
+    "prompt_sw": "Tekeleza Python function next_smallest(lst). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Unapewa orodha ya integer. Andika kazi next_smallest() ambayo inarudi kipengele cha pili kidogo cha orodha. Rudi hakuna ikiwa hakuna kipengele kama hicho. next_smallest([1, 2, 3, 4, 5]) == 2 next_smallest([5, 1, 4, 3, 2]) == 2 next_smallest[]) == Hakuna next_smallest([1, 1]) == Hakuna Technical terms zihifadhiwe: function, list.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([1, 2, 3, 4, 5]) == 2\n    assert candidate([5, 1, 4, 3, 2]) == 2\n    assert candidate([]) == None\n    assert candidate([1, 1]) == None\n    assert candidate([1,1,1,1,0]) == 1\n    assert candidate([1, 0**0]) == None\n    assert candidate([-35, 34, 12, -45]) == -35\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\ncheck(next_smallest)"
+    ],
+    "translation_semantic_score": 0.5421
+  },
+  {
+    "id": "he_HumanEval_86",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/86",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function anti_shuffle(s). Preserve this exact function name and argument contract. Requirement: Write a function that takes a string and returns an ordered version of it. Ordered version of string, is a string where all words (separated by space) are replaced by a new word where all the characters arranged in ascending order based on ascii value. Note: You should keep the order of words and blank spaces in the sentence. For example: anti_shuffle('Hi') returns 'Hi' anti_shuffle('hello') returns 'ehllo' anti_shuffle('Hello World!!!') returns 'Hello !!!Wdlor'",
+    "prompt_sw": "Tekeleza Python function anti_shuffle(s). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Andika kazi ambayo inachukua kamba na inarudi toleo la utaratibu wake. Toleo la utaratibu wa kamba, ni kamba ambapo maneno yote (iliyogawanywa na nafasi) hubadilishwa na neno jipya ambapo wahusika wote wanapangwa kwa utaratibu unaoongezeka kulingana na thamani ya ascii. Kumbuka: Unapaswa kuweka utaratibu wa maneno na nafasi tupu katika sentensi. Kwa mfano: anti_shuffle'(Hi') inarudi 'Hi' anti_shuffle('hello') inarudi 'eh' anti_shuffle('Hello World!!!') inarudi 'Hello !!!Wdlor' Technical terms zihifadhiwe: function, string, character.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('Hi') == 'Hi'\n    assert candidate('hello') == 'ehllo'\n    assert candidate('number') == 'bemnru'\n    assert candidate('abcd') == 'abcd'\n    assert candidate('Hello World!!!') == 'Hello !!!Wdlor'\n    assert candidate('') == ''\n    assert candidate('Hi. My name is Mister Robot. How are you?') == '.Hi My aemn is Meirst .Rboot How aer ?ouy'\n    # Check some edge cases that are easy to work out by hand.\n    assert True\ncheck(anti_shuffle)"
+    ],
+    "translation_semantic_score": 0.5357
+  },
+  {
+    "id": "he_HumanEval_76",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/76",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function is_simple_power(x, n). Preserve this exact function name and argument contract. Requirement: Your task is to write a function that returns true if a number x is a simple power of n and false in other cases. x is a simple power of n if n**int=x For example: is_simple_power(1, 4) => true is_simple_power(2, 2) => true is_simple_power(8, 2) => true is_simple_power(3, 2) => false is_simple_power(3, 1) => false is_simple_power(5, 3) => false",
+    "prompt_sw": "Tekeleza Python function is_simple_power(x, n). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kazi yako ni kuandika kazi ambayo inarudi kweli ikiwa nambari x ni nguvu rahisi ya n na isiyo sahihi katika hali nyingine. x ni nguvu rahisi ya n ikiwa n**int=x Kwa mfano: is_simple_power(1, 4) => kweli ni_simple_power(2, 2) => kweli ni_simple_power(8, 2) => kweli ni_simple_power(3, 2) => uwongo ni_simple_power3, 1) => uwongo ni_simple_power5, 3) => uwongo Technical terms zihifadhiwe: function.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(16, 2)== True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(143214, 16)== False, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(4, 2)==True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(9, 3)==True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(16, 4)==True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(24, 2)==False, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(128, 4)==False, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(12, 6)==False, \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(1, 1)==True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(1, 12)==True, \"This prints if this assert fails 2 (also good for debugging!)\"\ncheck(is_simple_power)"
+    ],
+    "translation_semantic_score": 0.5353
+  },
+  {
+    "id": "he_HumanEval_37",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/37",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function sort_even(l). Preserve this exact function name and argument contract. Requirement: This function takes a list l and returns a list l' such that l' is identical to l in the odd indicies, while its values at the even indicies are equal to the values of the even indicies of l, but sorted. >>> sort_even([1, 2, 3]) [1, 2, 3] >>> sort_even([5, 6, 3, 4]) [3, 6, 5, 4]",
+    "prompt_sw": "Tekeleza Python function sort_even(l). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kazi hii inachukua orodha l' na inarudi orodha l' ya aina kwamba l' ni sawa na l katika indices odd, wakati thamani yake katika indices even ni sawa na thamani ya indices even ya l, lakini sorted. >>> sort_even([1, 2, 3]) [1, 2, 3] sort_even([5, 6, 3, 4]) [3, 6, 5, 4] >>> Technical terms zihifadhiwe: function, list.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert tuple(candidate([1, 2, 3])) == tuple([1, 2, 3])\n    assert tuple(candidate([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])) == tuple([-10, 3, -5, 2, -3, 3, 5, 0, 9, 1, 123])\n    assert tuple(candidate([5, 8, -12, 4, 23, 2, 3, 11, 12, -10])) == tuple([-12, 8, 3, 4, 5, 2, 12, 11, 23, -10])\ncheck(sort_even)"
+    ],
+    "translation_semantic_score": 0.5303
+  },
+  {
+    "id": "he_HumanEval_45",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/45",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function triangle_area(a, h). Preserve this exact function name and argument contract. Requirement: Given length of a side and high return area for a triangle. >>> triangle_area(5, 3) 7.5",
+    "prompt_sw": "Tekeleza Python function triangle_area(a, h). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kutokana na urefu wa upande na eneo kubwa la kurudi kwa triangle. >>> triangle_area(5, 3) 7.5 Technical terms zihifadhiwe: function.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(5, 3) == 7.5\n    assert candidate(2, 2) == 2.0\n    assert candidate(10, 8) == 40.0\ncheck(triangle_area)"
+    ],
+    "translation_semantic_score": 0.5126
+  },
+  {
+    "id": "he_HumanEval_158",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/158",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function find_max(words). Preserve this exact function name and argument contract. Requirement: Write a function that accepts a list of strings. The list contains different words. Return the word with maximum number of unique characters. If multiple strings have maximum number of unique characters, return the one which comes first in lexicographical order. find_max([\"name\", \"of\", \"string\"]) == \"string\" find_max([\"name\", \"enam\", \"game\"]) == \"enam\" find_max([\"aaaaaaa\", \"bb\" ,\"cc\"]) == \"\"aaaaaaa\"",
+    "prompt_sw": "Tekeleza Python function find_max(words). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Andika kazi ambayo inakubali orodha ya kamba. Orodha ina maneno tofauti. Kurudisha neno na idadi kubwa ya herufi za kipekee. Ikiwa kamba nyingi zina idadi kubwa ya herufi za kipekee, rudi ile inayokuja kwanza kwa utaratibu wa kitenzi. find_max([\"jina\", \"ya\", \"string\"]) == \"string\" find_max[\"jina\", \"enam\", \"mchezo\"]) == \"enam\" find_(max[\"aaaaaaa\", \"bb\" ,\"cc\"]) == \"\"aaaaaaa\" Technical terms zihifadhiwe: function, list, string, character.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert (candidate([\"name\", \"of\", \"string\"]) == \"string\"), \"t1\"\n    assert (candidate([\"name\", \"enam\", \"game\"]) == \"enam\"), 't2'\n    assert (candidate([\"aaaaaaa\", \"bb\", \"cc\"]) == \"aaaaaaa\"), 't3'\n    assert (candidate([\"abc\", \"cba\"]) == \"abc\"), 't4'\n    assert (candidate([\"play\", \"this\", \"game\", \"of\",\"footbott\"]) == \"footbott\"), 't5'\n    assert (candidate([\"we\", \"are\", \"gonna\", \"rock\"]) == \"gonna\"), 't6'\n    assert (candidate([\"we\", \"are\", \"a\", \"mad\", \"nation\"]) == \"nation\"), 't7'\n    assert (candidate([\"this\", \"is\", \"a\", \"prrk\"]) == \"this\"), 't8'\n\n    # Check some edge cases that are easy to work out by hand.\n    assert (candidate([\"b\"]) == \"b\"), 't9'\n    assert (candidate([\"play\", \"play\", \"play\"]) == \"play\"), 't10'\ncheck(find_max)"
+    ],
+    "translation_semantic_score": 0.5045
+  },
+  {
+    "id": "he_HumanEval_52",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/52",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function below_threshold(l, t). Preserve this exact function name and argument contract. Requirement: Return True if all numbers in the list l are below threshold t. >>> below_threshold([1, 2, 4, 10], 100) True >>> below_threshold([1, 20, 4, 10], 5) False",
+    "prompt_sw": "Tekeleza Python function below_threshold(l, t). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kurudi Kweli ikiwa nambari zote katika orodha l ni chini ya kiwango t. >>> chini ya_kiwango([1, 2, 4, 10], 100) Kweli >>> chini ya_kiwango([1, 20, 4, 10], 5) Uongo Technical terms zihifadhiwe: function, list.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([1, 2, 4, 10], 100)\n    assert not candidate([1, 20, 4, 10], 5)\n    assert candidate([1, 20, 4, 10], 21)\n    assert candidate([1, 20, 4, 10], 22)\n    assert candidate([1, 8, 4, 10], 11)\n    assert not candidate([1, 8, 4, 10], 10)\ncheck(below_threshold)"
+    ],
+    "translation_semantic_score": 0.4946
+  },
+  {
+    "id": "he_HumanEval_134",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/134",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function check_if_last_char_is_a_letter(txt). Preserve this exact function name and argument contract. Requirement: Create a function that returns True if the last character of a given string is an alphabetical character and is not a part of a word, and False otherwise. Note: \"word\" is a group of characters separated by space. Examples: check_if_last_char_is_a_letter(\"apple pie\") ➞ False check_if_last_char_is_a_letter(\"apple pi e\") ➞ True check_if_last_char_is_a_letter(\"apple pi e \") ➞ False check_if_last_char_is_a_letter(\"\") ➞ False",
+    "prompt_sw": "Tekeleza Python function check_if_last_char_is_a_letter(txt). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Unda kazi ambayo inarudi Kweli ikiwa herufi ya mwisho ya mstari fulani ni herufi ya alfabeti na sio sehemu ya neno, na Uongo vinginevyo. Kumbuka: \"neno\" ni kikundi cha herufi zilizogawanywa na nafasi. Mifano: check_if_last_char_is_a_letter\"apple pie\") ⁇ Fake check_if_last_char_is_a_letter(\"apple pi e\") ⁇ True check_if_last_is_a_letter\"apple pi e\") ⁇ Fake check_if_last_is_is_a_letter\") ⁇ Fake check_if_last_is_is_a_char_letter\" Technical terms zihifadhiwe: function, string, character.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"apple\") == False\n    assert candidate(\"apple pi e\") == True\n    assert candidate(\"eeeee\") == False\n    assert candidate(\"A\") == True\n    assert candidate(\"Pumpkin pie \") == False\n    assert candidate(\"Pumpkin pie 1\") == False\n    assert candidate(\"\") == False\n    assert candidate(\"eeeee e \") == False\n    assert candidate(\"apple pie\") == False\n    assert candidate(\"apple pi e \") == False\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\ncheck(check_if_last_char_is_a_letter)"
+    ],
+    "translation_semantic_score": 0.4945
+  },
+  {
+    "id": "he_HumanEval_101",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/101",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function words_string(s). Preserve this exact function name and argument contract. Requirement: You will be given a string of words separated by commas or spaces. Your task is to split the string into words and return an array of the words. For example: words_string(\"Hi, my name is John\") == [\"Hi\", \"my\", \"name\", \"is\", \"John\"] words_string(\"One, two, three, four, five, six\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"]",
+    "prompt_sw": "Tekeleza Python function words_string(s). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Utapokea safu ya maneno yaliyogawanywa na commas au nafasi. Kazi yako ni kugawanya safu hiyo katika maneno na kurudisha safu ya maneno. Kwa mfano: words_string(\"Hi, jina langu ni John\") == [\"Hi\", \"mimi\", \"jina\", \"is\", \"John\"] words_string(\"One, two, three, four, five, six\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"] Technical terms zihifadhiwe: function, array, string.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(\"Hi, my name is John\") == [\"Hi\", \"my\", \"name\", \"is\", \"John\"]\n    assert candidate(\"One, two, three, four, five, six\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"]\n    assert candidate(\"Hi, my name\") == [\"Hi\", \"my\", \"name\"]\n    assert candidate(\"One,, two, three, four, five, six,\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"]\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(\"\") == []\n    assert candidate(\"ahmed     , gamal\") == [\"ahmed\", \"gamal\"]\ncheck(words_string)"
+    ],
+    "translation_semantic_score": 0.4852
+  },
+  {
+    "id": "he_HumanEval_140",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/140",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function fix_spaces(text). Preserve this exact function name and argument contract. Requirement: Given a string text, replace all spaces in it with underscores, and if a string has more than 2 consecutive spaces, then replace all consecutive spaces with - fix_spaces(\"Example\") == \"Example\" fix_spaces(\"Example 1\") == \"Example_1\" fix_spaces(\" Example 2\") == \"_Example_2\" fix_spaces(\" Example 3\") == \"_Example-3\"",
+    "prompt_sw": "Tekeleza Python function fix_spaces(text). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kutokana na maandishi ya safu, kuchukua nafasi zote ndani yake na alama za chini, na ikiwa safu ina nafasi zaidi ya 2 mfululizo, basi kuchukua nafasi zote mfululizo na - fix_spaces(\"Mfano\") == \"Mfano\" fix_spaces(\"Mfano 1\") == \"Mfano_1\" fix_spaces \"Mfano 2\") == \"_Mfano_2\" fix_spaces == \"Mfano 3\") \"_Mfano-3\" Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"Example\") == \"Example\", \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(\"Mudasir Hanif \") == \"Mudasir_Hanif_\", \"This prints if this assert fails 2 (good for debugging!)\"\n    assert candidate(\"Yellow Yellow  Dirty  Fellow\") == \"Yellow_Yellow__Dirty__Fellow\", \"This prints if this assert fails 3 (good for debugging!)\"\n    \n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(\"Exa   mple\") == \"Exa-mple\", \"This prints if this assert fails 4 (good for debugging!)\"\n    assert candidate(\"   Exa 1 2 2 mple\") == \"-Exa_1_2_2_mple\", \"This prints if this assert fails 4 (good for debugging!)\"\ncheck(fix_spaces)"
+    ],
+    "translation_semantic_score": 0.4822
+  },
+  {
+    "id": "he_HumanEval_58",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/58",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function common(l1, l2). Preserve this exact function name and argument contract. Requirement: Return sorted unique common elements for two lists. >>> common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121]) [1, 5, 653] >>> common([5, 3, 2, 8], [3, 2]) [2, 3]",
+    "prompt_sw": "Tekeleza Python function common(l1, l2). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kurudisha vitu vya kawaida vya kipekee vilivyotengwa kwa orodha mbili. >>> kawaida([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121]) [1, 5, 653] >>> kawaida([5, 3, 2, 8], [3, 2]) [2, 3] Technical terms zihifadhiwe: function, list.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121]) == [1, 5, 653]\n    assert candidate([5, 3, 2, 8], [3, 2]) == [2, 3]\n    assert candidate([4, 3, 2, 8], [3, 2, 4]) == [2, 3, 4]\n    assert candidate([4, 3, 2, 8], []) == []\ncheck(common)"
+    ],
+    "translation_semantic_score": 0.4791
+  },
+  {
+    "id": "he_HumanEval_16",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/16",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function count_distinct_characters(string). Preserve this exact function name and argument contract. Requirement: Given a string, find out how many distinct characters (regardless of case) does it consist of >>> count_distinct_characters('xyzXYZ') 3 >>> count_distinct_characters('Jerry') 4",
+    "prompt_sw": "Tekeleza Python function count_distinct_characters(string). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kutokana na mstari, tafuta ni wahusika wangapi tofauti (bila kujali kesi) ikiwa inajumuisha >>> count_distinct_characters('xyzXYZ') 3 >>> count_distinct_characters('Jerry') 4 Technical terms zihifadhiwe: function, string, character.",
+    "tests": [
+      "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('') == 0\n    assert candidate('abcde') == 5\n    assert candidate('abcde' + 'cade' + 'CADE') == 5\n    assert candidate('aaaaAAAAaaaa') == 1\n    assert candidate('Jerry jERRY JeRRRY') == 5\ncheck(count_distinct_characters)"
+    ],
+    "translation_semantic_score": 0.4767
+  },
+  {
+    "id": "he_HumanEval_32",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/32",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function find_zero(xs, x). Preserve this exact function name and argument contract. Requirement: Evaluates polynomial with coefficients xs at point x. return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n",
+    "prompt_sw": "Tekeleza Python function find_zero(xs, x). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Hesabu polynomial na vigezo xs katika hatua x. kurudisha xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n Technical terms zihifadhiwe: function.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    import math\n    import random\n    rng = random.Random(42)\n    import copy\n    for _ in range(100):\n        ncoeff = 2 * rng.randint(1, 4)\n        coeffs = []\n        for _ in range(ncoeff):\n            coeff = rng.randint(-10, 10)\n            if coeff == 0:\n                coeff = 1\n            coeffs.append(coeff)\n        solution = candidate(copy.deepcopy(coeffs))\n        assert math.fabs(poly(coeffs, solution)) < 1e-4\ncheck(find_zero)"
+    ],
+    "translation_semantic_score": 0.4687
+  },
+  {
+    "id": "he_HumanEval_93",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/93",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function encode(message). Preserve this exact function name and argument contract. Requirement: Write a function that takes a message, and encodes in such a way that it swaps case of all letters, replaces all vowels in the message with the letter that appears 2 places ahead of that vowel in the english alphabet. Assume only letters. Examples: >>> encode('test') 'TGST' >>> encode('This is a message') 'tHKS KS C MGSSCGG'",
+    "prompt_sw": "Tekeleza Python function encode(message). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Matakwa: Andika kazi ambayo inachukua ujumbe, na encodes kwa njia ambayo inabadilisha kesi ya herufi zote, kuchukua nafasi ya vokali zote katika ujumbe na barua ambayo inaonekana mahali 2 mbele ya vokali hiyo katika alfabeti ya Kiingereza. Fikiria barua tu. Mifano: >>> encode('test') 'TGST' encode('Hii ni ujumbe') 'tHKS KS C MGSSCGG' Technical terms zihifadhiwe: function.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('TEST') == 'tgst', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('Mudasir') == 'mWDCSKR', \"This prints if this assert fails 2 (good for debugging!)\"\n    assert candidate('YES') == 'ygs', \"This prints if this assert fails 3 (good for debugging!)\"\n    \n    # Check some edge cases that are easy to work out by hand.\n    assert candidate('This is a message') == 'tHKS KS C MGSSCGG', \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(\"I DoNt KnOw WhAt tO WrItE\") == 'k dQnT kNqW wHcT Tq wRkTg', \"This prints if this assert fails 2 (also good for debugging!)\"\ncheck(encode)"
+    ],
+    "translation_semantic_score": 0.4671
+  },
+  {
+    "id": "he_HumanEval_144",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/144",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function simplify(x, n). Preserve this exact function name and argument contract. Requirement: Your task is to implement a function that will simplify the expression x * n. The function returns True if x * n evaluates to a whole number and False otherwise. Both x and n, are string representation of a fraction, and have the following format, <numerator>/<denominator> where both numerator and denominator are positive whole numbers. You can assume that x, and n are valid fractions, and do not have zero as denominator. simplify(\"1/5\", \"5/1\") = True simplify(\"1/6\", \"2/1\") = False simplify(\"7/10\", \"10/2\") = False",
+    "prompt_sw": "Tekeleza Python function simplify(x, n). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kazi yako ni kutekeleza kazi ambayo itakuwa rahisi toleo x * n. Kazi inarudi Kweli ikiwa x * n inakadiriwa kwa idadi kamili na Uongo vinginevyo. Wote x na n, ni wito uwakilishi wa sehemu, na kuwa na muundo ufuatao, <numerator>/<denominator> ambapo wote wa nambari na denominator ni namba nzima chanya. Unaweza kudhani kwamba x, na n ni sehemu halali, na hawana sifuri kama denominator. kurahisisha \"1/5\", \"5/1\") = Kweli kurahisisha \"1/6\", \"2/1\") = uwongo kurahisisha \"7/10\", \"10/2\") = uwongo Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"1/5\", \"5/1\") == True, 'test1'\n    assert candidate(\"1/6\", \"2/1\") == False, 'test2'\n    assert candidate(\"5/1\", \"3/1\") == True, 'test3'\n    assert candidate(\"7/10\", \"10/2\") == False, 'test4'\n    assert candidate(\"2/10\", \"50/10\") == True, 'test5'\n    assert candidate(\"7/2\", \"4/2\") == True, 'test6'\n    assert candidate(\"11/6\", \"6/1\") == True, 'test7'\n    assert candidate(\"2/3\", \"5/2\") == False, 'test8'\n    assert candidate(\"5/2\", \"3/5\") == False, 'test9'\n    assert candidate(\"2/4\", \"8/4\") == True, 'test10'\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(\"2/4\", \"4/2\") == True, 'test11'\n    assert candidate(\"1/5\", \"5/1\") == True, 'test12'\n    assert candidate(\"1/5\", \"1/5\") == False, 'test13'\ncheck(simplify)"
+    ],
+    "translation_semantic_score": 0.4633
+  },
+  {
+    "id": "he_HumanEval_35",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/35",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function max_element(l). Preserve this exact function name and argument contract. Requirement: Return maximum element in the list. >>> max_element([1, 2, 3]) 3 >>> max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]) 123",
+    "prompt_sw": "Tekeleza Python function max_element(l). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kurudisha kipengele cha juu katika orodha. >>> max_element([1, 2, 3]) 3 >>> max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]) 123 Technical terms zihifadhiwe: function, list.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([1, 2, 3]) == 3\n    assert candidate([5, 3, -5, 2, -3, 3, 9, 0, 124, 1, -10]) == 124\ncheck(max_element)"
+    ],
+    "translation_semantic_score": 0.4596
+  },
+  {
+    "id": "he_HumanEval_50",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/50",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function decode_shift(s). Preserve this exact function name and argument contract. Requirement: returns encoded string by shifting every character by 5 in the alphabet.",
+    "prompt_sw": "Tekeleza Python function decode_shift(s). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: kurejesha string encoded kwa kuhamisha kila herufi kwa 5 katika alfabeti. Technical terms zihifadhiwe: function, string, character.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    from random import randint, choice\n    import copy\n    import string\n\n    letters = string.ascii_lowercase\n    for _ in range(100):\n        str = ''.join(choice(letters) for i in range(randint(10, 20)))\n        encoded_str = encode_shift(str)\n        assert candidate(copy.deepcopy(encoded_str)) == str\ncheck(decode_shift)"
+    ],
+    "translation_semantic_score": 0.4536
+  },
+  {
+    "id": "he_HumanEval_112",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/112",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function reverse_delete(s, c). Preserve this exact function name and argument contract. Requirement: Task We are given two strings s and c, you have to deleted all the characters in s that are equal to any character in c then check if the result string is palindrome. A string is called palindrome if it reads the same backward as forward. You should return a tuple containing the result string and True/False for the check. Example For s = \"abcde\", c = \"ae\", the result should be ('bcd',False) For s = \"abcdef\", c = \"b\" the result should be ('acdef',False) For s = \"abcdedcba\", c = \"ab\", the result should be ('cdedc',True)",
+    "prompt_sw": "Tekeleza Python function reverse_delete(s, c). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kazi Tunapewa kamba mbili s na c, lazima uondoe herufi zote katika s ambazo ni sawa na herufi yoyote katika c kisha angalia ikiwa kamba ya matokeo ni palindrome. kamba inaitwa palindrome ikiwa inasomwa nyuma sawa na mbele. Unapaswa kurudi tuple iliyo na kamba ya matokeo na/False kwa kuangalia. Kielelezo Kweli Kwa s = \"abcde\", c = \"ae\", matokeo inapaswa kuwa ('bcd',False) Kwa s = \"abcdef\", c = \"b\" matokeo inapaswa kuwa ('acdef',False) s = \"abccba\", c = \"abded\", matokeo inapaswa kuwa ('ccc',True) Technical terms zihifadhiwe: function, tuple, string, character.",
+    "tests": [
+      "def check(candidate):\n\n    assert candidate(\"abcde\",\"ae\") == ('bcd',False)\n    assert candidate(\"abcdef\", \"b\") == ('acdef',False)\n    assert candidate(\"abcdedcba\",\"ab\") == ('cdedc',True)\n    assert candidate(\"dwik\",\"w\") == ('dik',False)\n    assert candidate(\"a\",\"a\") == ('',True)\n    assert candidate(\"abcdedcba\",\"\") == ('abcdedcba',True)\n    assert candidate(\"abcdedcba\",\"v\") == ('abcdedcba',True)\n    assert candidate(\"vabba\",\"v\") == ('abba',True)\n    assert candidate(\"mamma\", \"mia\") == (\"\", True)\ncheck(reverse_delete)"
+    ],
+    "translation_semantic_score": 0.4507
+  },
+  {
+    "id": "he_HumanEval_64",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/64",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function vowels_count(s). Preserve this exact function name and argument contract. Requirement: Write a function vowels_count which takes a string representing a word as input and returns the number of vowels in the string. Vowels in this case are 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a vowel, but only when it is at the end of the given word. Example: >>> vowels_count(\"abcde\") 2 >>> vowels_count(\"ACEDY\") 3",
+    "prompt_sw": "Tekeleza Python function vowels_count(s). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Andika kazi vowels_count ambayo inachukua kamba inayowakilisha neno kama input na inarudi idadi ya vowels katika kamba. Vowels katika kesi hii ni 'a', 'e', 'i', 'o', 'u'. Hapa, 'y' pia ni vowel, lakini tu wakati ni mwishoni mwa neno. Mfano: >>> vowels_count(\"abcde\") 2 >>> vowels_count\") 3 Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"abcde\") == 2, \"Test 1\"\n    assert candidate(\"Alone\") == 3, \"Test 2\"\n    assert candidate(\"key\") == 2, \"Test 3\"\n    assert candidate(\"bye\") == 1, \"Test 4\"\n    assert candidate(\"keY\") == 2, \"Test 5\"\n    assert candidate(\"bYe\") == 1, \"Test 6\"\n    assert candidate(\"ACEDY\") == 3, \"Test 7\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\ncheck(vowels_count)"
+    ],
+    "translation_semantic_score": 0.448
+  },
+  {
+    "id": "he_HumanEval_73",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/73",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function smallest_change(arr). Preserve this exact function name and argument contract. Requirement: Given an array arr of integers, find the minimum number of elements that need to be changed to make the array palindromic. A palindromic array is an array that is read the same backwards and forwards. In one change, you can change one element to any other element. For example: smallest_change([1,2,3,5,4,7,9,6]) == 4 smallest_change([1, 2, 3, 4, 3, 2, 2]) == 1 smallest_change([1, 2, 3, 2, 1]) == 0",
+    "prompt_sw": "Tekeleza Python function smallest_change(arr). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kwa kuzingatia safu arr ya integer, pata kiwango cha chini cha elementi ambazo zinahitaji kubadilishwa ili kufanya safu palindromic. safu palindromic ni safu ambayo inasomwa sawa nyuma na mbele. Katika mabadiliko moja, unaweza kubadilisha kipengele kimoja kwa kipengele kingine chochote. Kwa mfano: smallest_change[1,2,3,5,4,7,9,6]) == 4 smallest_change([1, 2, 3, 4, 3, 3, 2, 2]) == 1 smallest_change[1, 2, 3, 2, 1]) == 0 Technical terms zihifadhiwe: function, array.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([1,2,3,5,4,7,9,6]) == 4\n    assert candidate([1, 2, 3, 4, 3, 2, 2]) == 1\n    assert candidate([1, 4, 2]) == 1\n    assert candidate([1, 4, 4, 2]) == 1\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate([1, 2, 3, 2, 1]) == 0\n    assert candidate([3, 1, 1, 3]) == 0\n    assert candidate([1]) == 0\n    assert candidate([0, 1]) == 1\ncheck(smallest_change)"
+    ],
+    "translation_semantic_score": 0.4414
+  },
+  {
+    "id": "he_HumanEval_132",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/132",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function is_nested(string). Preserve this exact function name and argument contract. Requirement: Create a function that takes a string as input which contains only square brackets. The function should return True if and only if there is a valid subsequence of brackets where at least one bracket in the subsequence is nested. is_nested('[[]]') ➞ True is_nested('[]]]]]]][[[[[]') ➞ False is_nested('[][]') ➞ False is_nested('[]') ➞ False is_nested('[[][]]') ➞ True is_nested('[[]][[') ➞ True",
+    "prompt_sw": "Tekeleza Python function is_nested(string). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Unda kazi ambayo inachukua kamba kama input ambayo ina brackets za mraba tu. Kazi inapaswa kurudi Kweli ikiwa na tu ikiwa kuna mfuatano halali wa brackets ambapo angalau bracket moja katika mfuatano ni_nested. ni_nested('[[]]') ⁇ Kweli ni_nested('[]]]]]]] [[[[[]') ⁇ Uongo ni_nested('[][]') ⁇ Uongo ni_nested('[]') ⁇ Uongo ni_nested('[[]]') ⁇ Uongo ni_nested('[[]]') ⁇ Kweli ni_nested('[[]]]]]] ⁇ Kweli Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('[[]]') == True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('[]]]]]]][[[[[]') == False\n    assert candidate('[][]') == False\n    assert candidate(('[]')) == False\n    assert candidate('[[[[]]]]') == True\n    assert candidate('[]]]]]]]]]]') == False\n    assert candidate('[][][[]]') == True\n    assert candidate('[[]') == False\n    assert candidate('[]]') == False\n    assert candidate('[[]][[') == True\n    assert candidate('[[][]]') == True\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate('') == False, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate('[[[[[[[[') == False\n    assert candidate(']]]]]]]]') == False\ncheck(is_nested)"
+    ],
+    "translation_semantic_score": 0.4401
+  },
+  {
+    "id": "he_HumanEval_91",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/91",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function is_bored(S). Preserve this exact function name and argument contract. Requirement: You'll be given a string of words, and your task is to count the number of boredoms. A boredom is a sentence that starts with the word \"I\". Sentences are delimited by '.', '?' or '!'. For example: >>> is_bored(\"Hello world\") 0 >>> is_bored(\"The sky is blue. The sun is shining. I love this weather\") 1",
+    "prompt_sw": "Tekeleza Python function is_bored(S). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Utapokea mlolongo wa maneno, na kazi yako ni kuhesabu idadi ya bored. Bored ni sentensi ambayo huanza na neno \"I\". Sentensi ni delimited na '.', '?' au '!'. Kwa mfano: >>> is_bored(\"Hello dunia\") 0 >>> is_bored(\"Mbingu ni bluu. jua linaangaza. Ninapenda hali hii ya hewa\") 1 Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"Hello world\") == 0, \"Test 1\"\n    assert candidate(\"Is the sky blue?\") == 0, \"Test 2\"\n    assert candidate(\"I love It !\") == 1, \"Test 3\"\n    assert candidate(\"bIt\") == 0, \"Test 4\"\n    assert candidate(\"I feel good today. I will be productive. will kill It\") == 2, \"Test 5\"\n    assert candidate(\"You and I are going for a walk\") == 0, \"Test 6\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\ncheck(is_bored)"
+    ],
+    "translation_semantic_score": 0.4298
+  },
+  {
+    "id": "he_HumanEval_82",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/82",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function prime_length(string). Preserve this exact function name and argument contract. Requirement: Write a function that takes a string and returns True if the string length is a prime number or False otherwise Examples prime_length('Hello') == True prime_length('abcdcba') == True prime_length('kittens') == True prime_length('orange') == False",
+    "prompt_sw": "Tekeleza Python function prime_length(string). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Andika kazi ambayo inachukua mstari na inarudi Kweli ikiwa urefu wa mstari ni nambari ya kwanza au Uongo vinginevyo Mifano prime_length('Hello') == True prime_length('abcdcba') == True prime_length('kittens') == True prime_length('orange') == Uongo Technical terms zihifadhiwe: function, string.",
+    "tests": [
+      "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('Hello') == True\n    assert candidate('abcdcba') == True\n    assert candidate('kittens') == True\n    assert candidate('orange') == False\n    assert candidate('wow') == True\n    assert candidate('world') == True\n    assert candidate('MadaM') == True\n    assert candidate('Wow') == True\n    assert candidate('') == False\n    assert candidate('HI') == True\n    assert candidate('go') == True\n    assert candidate('gogo') == False\n    assert candidate('aaaaaaaaaaaaaaa') == False\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate('Madam') == True\n    assert candidate('M') == False\n    assert candidate('0') == False\ncheck(prime_length)"
+    ],
+    "translation_semantic_score": 0.4201
+  },
+  {
+    "id": "he_HumanEval_38",
+    "source": "openai/openai_humaneval",
+    "source_task_id": "HumanEval/38",
+    "category": "independent_implementation",
+    "kind": "code",
+    "runtime": "python",
+    "prompt_en": "Implement the Python function decode_cyclic(s). Preserve this exact function name and argument contract. Requirement: returns encoded string by cycling groups of three characters.",
+    "prompt_sw": "Tekeleza Python function decode_cyclic(s). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: kurudisha string encoded na cycling makundi ya wahusika watatu. Technical terms zihifadhiwe: function, string, character.",
+    "tests": [
+      "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    from random import randint, choice\n    import string\n\n    letters = string.ascii_lowercase\n    for _ in range(100):\n        str = ''.join(choice(letters) for i in range(randint(10, 20)))\n        encoded_str = encode_cyclic(str)\n        assert candidate(encoded_str) == str\ncheck(decode_cyclic)"
+    ],
+    "translation_semantic_score": 0.4185
+  }
+]

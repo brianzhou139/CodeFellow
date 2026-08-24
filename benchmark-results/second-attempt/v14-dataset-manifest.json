@@ -1,0 +1,86 @@
+{
+  "schema": "codefellow-parallel-sft-v2",
+  "seed": 2026,
+  "total": 10000,
+  "target_ratios": {
+    "en": 0.65,
+    "sw": 0.2,
+    "sw_mix": 0.15
+  },
+  "train": {
+    "records": 9500,
+    "languages": {
+      "en": 6175,
+      "sw": 1900,
+      "sw_mix": 1425
+    },
+    "kinds": {
+      "code_generation": 9346,
+      "debugging": 154
+    },
+    "runtimes": {
+      "python": 9438,
+      "javascript": 62
+    },
+    "parallel_tasks": 625,
+    "hidden_tests_across_parallel_tasks": 1895,
+    "mutation_killed": 1505,
+    "mutation_total": 1660,
+    "verified_records": 9500
+  },
+  "validation": {
+    "records": 500,
+    "languages": {
+      "en": 325,
+      "sw_mix": 75,
+      "sw": 100
+    },
+    "kinds": {
+      "code_generation": 472,
+      "debugging": 28
+    },
+    "runtimes": {
+      "python": 472,
+      "javascript": 28
+    },
+    "parallel_tasks": 37,
+    "hidden_tests_across_parallel_tasks": 114,
+    "mutation_killed": 89,
+    "mutation_total": 96,
+    "verified_records": 500
+  },
+  "combined": {
+    "records": 10000,
+    "languages": {
+      "en": 6500,
+      "sw": 2000,
+      "sw_mix": 1500
+    },
+    "kinds": {
+      "code_generation": 9818,
+      "debugging": 182
+    },
+    "runtimes": {
+      "python": 9910,
+      "javascript": 90
+    },
+    "parallel_tasks": 662,
+    "hidden_tests_across_parallel_tasks": 2009,
+    "mutation_killed": 1594,
+    "mutation_total": 1756,
+    "verified_records": 10000
+  },
+  "code_lock": "SHA-256-identical executable code across en/sw/sw_mix for every parallel_id",
+  "verification": "Every reference compiled/executed against hidden tests; dynamic task prose passes anchor and round-trip checks; the Kiswahili explanation frame is project-authored and regression-tested",
+  "translation_role": "NLLB teacher for Kiswahili prose only; never code authority",
+  "sources": {
+    "Muennighoff/mbpp": "CC-BY-4.0; reference code locally executed against hidden tests",
+    "CodeFellow curriculum": "project-authored; Python and JavaScript references locally executed",
+    "/home/debian_isle/codefellow-training/nllb-ct2-int8": "Kiswahili prose teacher only"
+  },
+  "evaluation_exclusions": [
+    "evals/cases.py",
+    "evals/kiswahili/tasks.json",
+    "metadata.json test_prompts"
+  ]
+}

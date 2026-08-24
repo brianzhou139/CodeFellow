@@ -14,8 +14,6 @@ import tempfile
 from pathlib import Path
 
 from response_contract import normalize_code_response, normalize_explanation_response
-from translation_backend import CTranslate2NllbTranslator
-
 MAX_SOURCE_BYTES = 64 * 1024
 DIAGNOSTIC_TIMEOUT_SECONDS = 20
 GENERATION_TIMEOUT_SECONDS = 300
@@ -42,11 +40,6 @@ def parse_args() -> argparse.Namespace:
         help="run a second local critic pass for higher full-answer accuracy",
     )
     parser.add_argument("--model", type=Path, help="GGUF path; defaults to _runtime.model_path in metadata.json")
-    parser.add_argument(
-        "--translator",
-        type=Path,
-        help="CTranslate2 NLLB directory; defaults to _runtime.translation_path in metadata.json",
-    )
     parser.add_argument("--llama-cli", help="llama-cli executable or path; defaults to PATH")
     parser.add_argument(
         "--test-command",
@@ -61,12 +54,6 @@ def default_model_path() -> Path:
     root = Path(__file__).resolve().parent
     metadata = json.loads((root / "metadata.json").read_text(encoding="utf-8"))
     return root / metadata["_runtime"]["model_path"]
-
-
-def default_translator_path() -> Path:
-    root = Path(__file__).resolve().parent
-    metadata = json.loads((root / "metadata.json").read_text(encoding="utf-8"))
-    return root / metadata["_runtime"]["translation_path"]
 
 
 def resolve_executable(value: str | None) -> str:
@@ -311,19 +298,8 @@ def main() -> int:
     diagnostic = local_diagnostic(args.source, source)
     if args.test_command:
         diagnostic += "\n\n" + local_test_evidence(args.source, args.test_command)
-    translator = None
     model_language = args.language
     question = args.question
-    if args.language in {"sw", "sw-mix"}:
-        translator_path = (args.translator or default_translator_path()).resolve()
-        if not translator_path.is_dir():
-            raise SystemExit(
-                f"error: Kiswahili translator not found: {translator_path}; "
-                "run bash download_translation.sh"
-            )
-        translator = CTranslate2NllbTranslator(str(translator_path), threads=args.threads)
-        question, _ = translator.translate_requirement(args.question)
-        model_language = "en"
     prompt = build_prompt(
         args.source, source, diagnostic, question, args.full_answer, model_language
     )
@@ -347,8 +323,7 @@ def main() -> int:
             response = reviewed
         elif review_stderr:
             stderr = (stderr + "\n" + review_stderr).strip()
-    if response and translator is not None:
-        response = translator.translate_markdown_to_swahili(response)
+    if response and args.language in {"sw", "sw-mix"}:
         response, _ = normalize_explanation_response(response, args.language)
     if response and args.full_answer:
         runtime = "python" if args.source.suffix.lower() == ".py" else "javascript"

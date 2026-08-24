@@ -9,10 +9,10 @@ MODEL_DIR="$HERE/model"
 MODEL_FILE="$MODEL_DIR/CodeFellow-Q4_K_M.gguf"
 PARTIAL_FILE="$MODEL_FILE.partial"
 
-# Qwen2.5-Coder-3B-Instruct Q4_K_M, selected by the full official-profiler
-# comparison. The checksum is published with the unchanged Bartowski artifact.
-MODEL_URL="https://huggingface.co/bartowski/Qwen2.5-Coder-3B-Instruct-GGUF/resolve/main/Qwen2.5-Coder-3B-Instruct-Q4_K_M.gguf"
-MODEL_SHA256="3da3afe6cf5c674ac195803ea0dd6fee7e1c228c2105c1ce8c66890d1d4ab460"
+# CodeFellow's selected step-100, 0.45-strength, importance-matrix Q4_K_M
+# derivative. The public artifact is checksum-pinned for reproducible audits.
+MODEL_URL="https://github.com/brianzhou139/CodeFellow/releases/download/gate1-v1/CodeFellow-3B-Kiswahili-Instruct-Q4_K_M.gguf"
+MODEL_SHA256="50177433b86f9fdcd0161a89bdfdf0ec2819b396e9987bee5d743b3e9e822ea5"
 
 verify_model() {
     printf '%s  %s\n' "$MODEL_SHA256" "$1" | sha256sum --check --status

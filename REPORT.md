@@ -1,142 +1,161 @@
 # Technical Report — CodeFellow
 
-**Team ID:** pending ADTF registration value
+**Team ID:** `REPLACE_WITH_ADTF_TEAM_ID`
 
-**Domain:** coding assistants
+**Domain:** Coding Assistants
 
-**Cross-disciplinary pairing:** programming education, with computational linguistics
+**Cross-disciplinary integration:** Programming education
 
-**Core model:** unchanged Qwen2.5-Coder-3B-Instruct Q4_K_M
+**Submitted model:** CodeFellow-3B-Kiswahili-Instruct-Q4_K_M
 
-**Kiswahili layer:** NLLB-200-distilled-600M, CTranslate2 INT8
+## 1. Submission summary
 
-## 1. Problem and product
+CodeFellow is a model-only-capable, offline coding tutor for English, Kiswahili, and natural English–Kiswahili code-switching. The submitted artifact is one `Q4_K_M` GGUF that runs directly in `llama.cpp`; no translator, cloud API, postprocessor, or external tool is present in the judged inference path.
 
-CodeFellow is an offline coding tutor for university, polytechnic, TVET, and bootcamp learners using budget laptops and intermittent connectivity. It focuses on beginner Python and JavaScript debugging in English and in the Kiswahili/English register programmers actually use.
+The design goal is not general translation. It is to keep executable identifiers and conventional programming vocabulary exact while teaching the surrounding concept in the learner's language. The 3B parent was retained to maximize CPU throughput and RAM headroom on the ADTC Standard Laptop.
 
-The target failure is ungrounded tutoring: a generic chatbot can invent test results, replace an exercise instead of teaching its invariant, mistranslate one word that changes executable behaviour, or stop working when connectivity is unavailable. CodeFellow combines real local diagnostics, hint-first pedagogy, a coding-specialized model, and a terminology-aware Kiswahili route. It never claims generated code ran and never silently edits the learner's files.
+## 2. Artifact identity
 
-## 2. Architecture
+| Artifact | Bytes | SHA-256 |
+|---|---:|---|
+| Selected 0.45 imatrix Q4_K_M | 1,929,902,784 | `50177433b86f9fdcd0161a89bdfdf0ec2819b396e9987bee5d743b3e9e822ea5` |
+| Experimental 0.50 imatrix control | 1,929,902,784 | `a7dd12a18cec1998e30989207c72fdf4d54da4704274abfb782e4985b9a70efb` |
+| Experimental 0.50 ordinary control | 1,929,902,464 | `9f841f692acfb9fbd6f83727ae8be283dd868c3bcb5a48b4e4b3b6dcdbc4efa1` |
 
-English requests take the shortest path:
+The selected GGUF was produced with `llama.cpp` quantizer version `0.2.0-dev`, commit `e85caa8`. `benchmark-results/submission-2026/quantization-manifest.json` records the commands and hashes.
 
-1. read one learner-selected source file, capped at 64 KiB;
-2. run Python syntax parsing or `node --check`, plus an optional learner-supplied test command;
-3. prompt the unchanged Qwen Q4_K_M model through CPU-only `llama.cpp`;
-4. apply a deterministic response contract that preserves one fenced implementation and removes obvious top-level demo calls.
+## 3. Chat-template audit
 
-Kiswahili and code-switched requests add a local language layer:
+Template parity was checked before attributing any failure to training:
 
-1. a reviewed programming glossary protects high-impact terms such as *shufwa* → `even`, `thamani tofauti` → `distinct values`, exact public interfaces, operators, exception names, and Big-O notation;
-2. CPU-int8 NLLB translates only the natural-language requirement to English;
-3. Qwen solves the technical task in the language where its coding ability is strongest;
-4. NLLB translates teaching prose back to Kiswahili while fenced code is preserved byte-for-byte;
-5. `sw-mix` rendering retains conventional terms such as `function`, `variable`, `array`, `input`, and `output`.
+- original and merged Hugging Face tokenizers contain the same Qwen ChatML/Jinja template;
+- exact template SHA-256: `2b9959716c4694f8ecf6a387a88019d4797ad5a73cc371d36404d1bc44dfcbe1`;
+- EOS is `<|im_end|>` (token 151645), assistant start is token 151644, and automatic BOS insertion is disabled;
+- the GGUF embeds the native template;
+- evaluation sends structured `messages` to `/v1/chat/completions` with temperature zero and no manual prompt approximation.
 
-This is deliberately an application built **alongside** the selected model, not an irreversible replacement of it. English never loads the translator, so the base model's speed and accuracy remain available. A second local critic is optional rather than mandatory because it adds latency and did not consistently repair the hardest boundary case.
+Conclusion: the observed differences are model behavior, not a template mismatch. The complete audit is in `benchmark-results/submission-2026/CHAT_TEMPLATE_AUDIT.md`.
 
-## 3. Why this differentiates the base model
+## 4. Dataset and training
 
-The raw Q4 model is already strong at English coding, but the frozen paired evaluation found 27/30 English passes and only 10/30 in each Kiswahili lane. General translation alone also failed: it translated “even” as “empty/odd,” changed “distinct” into “difference,” dropped function names, and damaged complexity notation.
+Training restarted from the original BF16/FP16 `Qwen2.5-Coder-3B-Instruct`; no failed checkpoint or quantized model was used as a parent.
 
-The winning contribution is therefore not a new name on the same GGUF. It is a verifiable offline system around it:
+The frozen v14 dataset contains 10,000 assistant-response-only examples:
 
-- semantic, domain-constrained translation rather than unconstrained prompt translation;
-- exact interface and source-code preservation;
-- local compiler/test evidence with claims tied to actual exit status;
-- hint and full-answer teaching modes;
-- predictable response formatting and no generated-code execution;
-- a frozen English/Kiswahili/code-switch evaluation with executable tests.
+| Lane | Share | Examples |
+|---|---:|---:|
+| English coding replay | 65% | 6,500 |
+| Kiswahili coding tutor | 20% | 2,000 |
+| English–Kiswahili code-switching | 15% | 1,500 |
 
-Two LoRA phases were trained and converted during development. They improved brevity and some Kiswahili behavior but regressed several correct base answers and still omitted required fences. They were rejected by the English-preservation gate. The submitted architecture keeps the stronger original Q4 weights and puts specialization in the application layer, where each intervention is testable and reversible.
+There are 662 unique source tasks. Parallel variants lock the executable solution and vary only the teaching prose. Dataset gates include:
 
-## 4. Hardware fit and model selection
+- Python/JavaScript execution;
+- edge-case assertions;
+- interface, code-fence, and completeness checks;
+- rejection of invented APIs and unsafe constructs;
+- mutation testing, with 90.8% of generated mutants killed;
+- exact source-task separation between train and validation data.
 
-The official target is an Ubuntu 22.04 laptop with four representative CPU cores, 8 GB DDR4, integrated graphics, and no discrete GPU. Comparable local selection runs used CPU-only `llama.cpp`.
+The conservative LoRA run used assistant-response-only loss and checkpointed frequently. Step 100 was frozen and tested at uniform merge strengths 0.35, 0.45, 0.50, 0.75, and 1.00. Intact-parent domain quantization and an upper-eight-layer-only merge were also tested and rejected. Strength 0.45 was selected as the Gate 1 competition tradeoff after the full matched screen and official profiler run.
 
-| Candidate | GGUF size | Generation | Peak RSS | Official-profiler result |
+## 5. Importance-matrix quantization
+
+The importance corpus has 800 records:
+
+- 400 English;
+- 200 Kiswahili;
+- 200 code-switched;
+- 686 generation and 114 debugging records;
+- supplemental exact fences, tests, JSON, and output contracts.
+
+In the original matched 12-task 0.50 quantization A/B, ordinary and imatrix builds tied on English (11/12) and Kiswahili (7/12), while imatrix improved code-switch executable pass rate from 6/12 to 8/12. That evidence fixed the quantization recipe before testing the 0.45 merge. The calibration activations were collected on the nearby 0.50 merge; this is disclosed in the quantization manifest.
+
+## 6. Independent model-only evaluation
+
+The screen is constructed from the MIT-licensed HumanEval corpus and is independent of the 662 training source tasks. Every canonical solution is executed against the upstream `check()` function before inclusion. Normalized token-Jaccard and sequence-similarity gates reject close training paraphrases.
+
+Kiswahili prose is produced by a local teacher and must pass a round-trip semantic/anchor gate. Exact public function signatures are restored after prose translation and verified across all 50 tasks. An earlier partial screen was invalidated when this audit found that the teacher had translated a few public names; those results are kept out of the final comparison.
+
+All raw-model runs use:
+
+- CPU-only `llama.cpp` on cores 0–3;
+- native embedded chat template;
+- temperature 0;
+- equal 2,048-token per-request context and equal output limits;
+- no translator, review pass, application prompt, or response postprocessor;
+- executable hidden tests in resource-limited subprocesses.
+
+### Final 50-task matched screen
+
+| Model | English code | Kiswahili code | Code-switch code | Strict contracts |
+|---|---:|---:|---:|---:|
+| **CodeFellow 0.45 imatrix Q4_K_M** | **39/50 (78%)** | 21/50 (42%) | 24/50 (48%) | **35/50 (70%)** |
+| Qwen2.5-Coder-3B-Instruct Q4_K_M | 38/50 (76%) | **24/50 (48%)** | **29/50 (58%)** | 30/50 (60%) |
+
+CodeFellow improved English execution by one task, strict contracts by five tasks, Kiswahili adherence from 42% to 52%, and code-switch adherence from 6% to 24%. The base retained a three-task Kiswahili and five-task code-switch execution lead. Exact fences were 20/20 for both; CodeFellow improved exact JSON from 0/15 to 5/15. The weighted local composite was 59.9 for CodeFellow versus 61.3 for the base, a 1.4-point gap before any African-use-case bonus.
+
+### Broader 12-task model screen
+
+| Model | English | Kiswahili | Code-switch | Strict format |
+|---|---:|---:|---:|---:|
+| CodeFellow 0.45 | 11/12 | 8/12 | 9/12 | 12/12 |
+| Qwen2.5-Coder-3B | 12/12 | 8/12 | 10/12 | 12/12 |
+| Qwen3-4B-Instruct-2507 | 10/12 | 7/12 | 7/12 | 12/12 |
+| Qwen3.5-4B, non-thinking | 11/12 | 7/12 | 9/12 | 12/12 |
+
+Qwen3.5 was evaluated with its official `enable_thinking=false` chat-template option. It matched CodeFellow's rapid executable counts but required more RAM and was materially slower. Raw JSON, native template parameters, and rejected-candidate results are published under `benchmark-results/submission-2026/`.
+
+## 7. Hardware selection
+
+The ADTC profiler is run separately from the accuracy clients because concurrent evaluation latency is not a throughput measurement. Existing CPU-only comparison telemetry on the development machine is:
+
+| Candidate | Generation | Peak RSS | Profiler accuracy | Result |
 |---|---:|---:|---:|---|
-| Qwen3.5-4B Q4_K_M | 2.55 GiB | 3.19 tok/s | 4268.43 MiB | pass |
-| Qwen3-4B-Instruct-2507 Q4_K_M | 2.23 GiB | 4.24 tok/s | 4384.09 MiB | pass |
-| Qwen2.5-Coder-3B-Instruct Q4_K_M | 1.80 GiB | **4.89 tok/s** | **3370.07 MiB** | pass |
+| Qwen2.5-Coder-3B-Instruct Q4_K_M | 4.89 tok/s | 3,370.07 MiB | 0.84 | pass |
+| **CodeFellow 0.45 Q4_K_M** | **4.67 tok/s median** | **3,370.16 MiB max** | **0.82** | **pass** |
+| Qwen3-4B-Instruct-2507 Q4_K_M | 4.24 tok/s | 4,384.09 MiB | 0.82 | pass |
+| Qwen3.5-4B Q4_K_M | 3.19 tok/s | 4,268.43 MiB | 0.76 | pass |
 
-Qwen2.5-Coder-3B was selected because it had the best measured generation throughput, lowest peak memory, and highest default profiler accuracy of the three. The production NLLB conversion occupies about 600 MB on disk, loads in 3.8 seconds, translates two representative requirements in 6.3 seconds, and peaked at 1.13 GiB resident memory in isolation. The conservative combined estimate is about 4.5 GiB, leaving substantial headroom below 8 GB.
+CodeFellow's five clean four-core runs measured 4.66, 4.68, 4.67, 4.68, and 4.67 tok/s. Peak RSS ranged from 3,369.98 to 3,370.16 MiB. A separate accuracy-enabled official run produced 0.82 `acc_norm` over 50 ARC-Easy samples and a schema-valid report. These are local selection measurements, not organizer-device claims.
 
-The final package layout was profiled again after the long multilingual and repair runs. The complete official profile measured 4.54 tok/s, 3370.37 MiB peak RSS, and 0.84 ARC-Easy accuracy; an isolated telemetry-only repeat measured 4.58 tok/s and 3370.12 MiB. The 4.54–4.89 tok/s spread is reported as run-to-run development-laptop variation, not as a model change.
+## 8. Failure analysis and release decision
 
-## 5. Frozen application evaluation
+The full screen rejects the claim that this checkpoint universally improves localized coding: it does not. The 0.45 merge loses three Kiswahili and five code-switch executable tasks relative to the base, even while improving English, exact contracts, adherence, and concision. Uniform 0.35/0.50, intact-parent domain quantization, and upper-layer-only controls did not produce a better rapid balance.
 
-The paired suite has 30 matched interactions per language: 25 executable Python/JavaScript tasks and five concept explanations. Code runs in resource-limited subprocesses against private assertions. Explanation rubrics check requested concepts; separate checks cover language evidence, mixed programming terms, fences, and top-level side effects. The public task file is excluded from training and calibration data.
+Gate 1 selection is therefore a calculated scoring decision, not a claim of dominance on every lane. The official accuracy loss is 0.02, speed/RAM remain in the stronger 3B class, and CodeFellow adds measurable format/adherence behavior that supports ADTC's African-use-case bonus of up to 10 points. A future weight release must recover the localized executable regressions before replacing this frozen artifact.
 
-| System/lane | Code | Explanations | Overall | Format | Language adherence |
-|---|---:|---:|---:|---:|---:|
-| Raw base — English | 22/25 | 5/5 | 27/30 (90.0%) | 96% | 63.3% |
-| Raw base — Kiswahili | 10/25 | 0/5 | 10/30 (33.3%) | 88% | 40.0% |
-| Raw base — code-switch | 9/25 | 1/5 | 10/30 (33.3%) | 88% | 20.0% |
-| CodeFellow — English | **24/25** | **5/5** | **29/30 (96.7%)** | 96% | 63.3% |
-| CodeFellow — Kiswahili, production CT2 | **24/25** | **5/5** | **29/30 (96.7%)** | 96% | **96.7%** |
-| CodeFellow — code-switch, production CT2 | **24/25** | **5/5** | **29/30 (96.7%)** | **100%** | **100%** |
+## 9. Reproduction
 
-The Kiswahili gain is 63.4 percentage points with no English loss; English instead improves by 6.7 points under the deterministic application contract. All three lanes reach the same 96% executable-code rate and have exactly the same per-task pass/fail outcome. The remaining shared miss is a supplied sliding-window implementation whose invariant requires repeated removal; it fails in English too, demonstrating that the residual issue is base-model debugging depth rather than translation.
-
-The separate 30-case execution-grounded repair stress test scores 20/30 at Pass@1 and 20/30 after one feedback turn, evenly split between Python and JavaScript. This matches the frozen base result and confirms no regression, but it also shows that a generic second critic pass is not a reliable improvement for this 3B model; it remains optional in the application.
-
-Results are development-machine measurements, not claims about the organizers' unseen benchmark. JSON checkpoints live outside the repository under `work/benchmark-results/` in the development workspace. The evaluator and task definitions needed to reproduce them are committed under `evals/kiswahili/`.
-
-## 6. Reproduction
-
-Install and download all artifacts before disconnecting the network:
+Download the final GGUF and verify its published checksum:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
 bash download_model.sh
-bash download_translation.sh
+sha256sum model/CodeFellow-Q4_K_M.gguf
 ```
 
-Run the application:
-
-```bash
-python3 codefellow.py examples/longest_unique_bug.py --full-answer
-python3 codefellow.py examples/average_bug.js --language sw-mix \
-  --question "Kwa nini function hii inafeli ikiwa array ni empty?" --full-answer
-```
-
-Run the official profiler after the Qwen model is present:
+Run the official profiler:
 
 ```bash
 taskset -c 0-3 adtc-profiler run \
   --submission . --mode participant --output submission.json
 ```
 
-Run the paired application evaluator against a local `llama-server`:
+Run the raw comparison helper:
 
 ```bash
-python3 evals/kiswahili/run_eval.py \
-  --output artifacts/paired.json \
-  --endpoint http://127.0.0.1:8181/v1/chat/completions \
-  --languages en,sw,sw_mix \
-  --application-contract \
-  --ct2-nllb-model translation/nllb-200-distilled-600M-ct2-int8 \
-  --nllb-roundtrip-explanations
+CODEFELLOW_PYTHON=.venv/bin/python \
+bash evals/submission/run_q4_comparison.sh \
+  model/CodeFellow-Q4_K_M.gguf \
+  codefellow \
+  benchmark-results/submission-2026/humaneval-screen50.json \
+  benchmark-results/submission-2026/reproduction
 ```
 
-## 7. Safety, licensing, and limitations
+## 10. Safety, licensing, and limitations
 
-- Generated code is displayed but not executed or written to the learner's file.
-- Only a test command explicitly supplied by the learner can run; it is parsed without a shell and bounded by time and output limits.
-- The translator is a terminology-aware aid, not a certified translator. Exact code interfaces and notation are restored deterministically because machine translation can still mistranslate prose.
-- The current product specializes in Python and JavaScript; repository-scale retrieval, IDE integration, and more languages are deliberately out of scope for this submission.
-- The Qwen weights retain the Qwen Research License. NLLB and its conversion are CC-BY-NC-4.0 and are used only for this non-commercial competition research/evaluation prototype. Repository code is GPL-3.0.
-
-## 8. Final device gates
-
-Before submission, repeat these checks on a clean 4-vCPU/8-GB Ubuntu VPS and then the ADTC Standard Laptop:
-
-1. install from the public scripts and disconnect networking;
-2. run all 90 paired interactions and the separate repair suite;
-3. run the official profiler three times with CPU-only inference;
-4. record model-only and combined application peak RSS;
-5. run ten minutes of repeated generation and check for thermal throttling;
-6. demo hint mode, full-answer mode, English, Kiswahili, and code-switching with real local diagnostics.
+- Generated code must be reviewed and tested.
+- The optional application never executes model-generated code or silently edits learner files.
+- The specialization targets Python/JavaScript learning and natural Kiswahili programming code-switching; it is not a general translation system.
+- Qwen derivative weights retain the Qwen Research License. Repository code is GPL-3.0.
+- Results are development measurements and do not predict the three hidden judge prompts with certainty.

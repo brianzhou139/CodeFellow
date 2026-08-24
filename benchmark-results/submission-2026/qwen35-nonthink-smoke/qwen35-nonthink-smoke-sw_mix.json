@@ -1,0 +1,99 @@
+{
+  "schema": "codefellow-english-kiswahili-codeswitch-eval-v3",
+  "model": "qwen35-nonthink-smoke",
+  "endpoint": "http://127.0.0.1:8181/v1/chat/completions",
+  "seed": 42,
+  "languages": [
+    "sw_mix"
+  ],
+  "task_count": 1,
+  "chat_template_kwargs": {
+    "enable_thinking": false
+  },
+  "model_only": true,
+  "application_contract": false,
+  "self_review": false,
+  "translate_then_solve": false,
+  "nllb_model": null,
+  "translation_runtime": "transformers",
+  "nllb_roundtrip_explanations": false,
+  "application_prompt_strategy": "direct",
+  "started_at_unix": 1787530648,
+  "results": [
+    {
+      "task_id": "he_HumanEval_66",
+      "category": "independent_implementation",
+      "kind": "code",
+      "runtime": "python",
+      "language": "sw_mix",
+      "model_prompt_language": "sw_mix",
+      "prompt": "Tekeleza Python function digitSum(s). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kazi Andika kazi ambayo inachukua mlolongo kama input na inarudi jumla ya herufi za juu tu' ASCII codes. Mifano: digitSum(\"\") => 0 digitSum(\"abAB\") => 131 digitSum(\"abcCd\") => 67 digitSum(\"helloE\") => 69 digitSum(\"woArBld\") => 131 digitSum(\"aAaaaXa\") => 153 Technical terms zihifadhiwe: function, string, character.\n\nJibu kwa Kiswahili, lakini tumia English programming terms za kawaida kama function, variable, array, list, loop, class, object, API, database, compiler, runtime, pointer na recursion. Toa fenced python code block moja tu yenye implementation kamili. Baada ya block, ongeza sentensi moja fupi ya Kiswahili. Usijumuishe tests.",
+      "original_prompt": null,
+      "translated_requirement": null,
+      "translation_substitutions": [],
+      "english_response": null,
+      "response": "```python\ndef digitSum(s):\n    total = 0\n    for char in s:\n        if 'A' <= char <= 'Z':\n            total += ord(char)\n    return total\n```\n\nHii ni kazi (function) inayotumia mlinganyo (loop) ili kupata jumla ya ASCII codes za herufi za juu tu.",
+      "first_response": null,
+      "self_review_applied": false,
+      "raw_response": null,
+      "application_contract_actions": [],
+      "finish_reason": "stop",
+      "prompt_tokens": 309,
+      "completion_tokens": 85,
+      "inference_seconds": 94.862,
+      "technical_pass": true,
+      "format_compliant": true,
+      "grade": {
+        "passed": true,
+        "reason": "passed",
+        "side_effect_free": true,
+        "duration_seconds": 0.0178,
+        "stdout": "CODEFELLOW_TEST_PASS\n",
+        "stderr": ""
+      },
+      "language_evidence_count": 4,
+      "language_evidence_words": [
+        "hii",
+        "ili",
+        "ni",
+        "ya"
+      ],
+      "code_switch_terms": [
+        "function",
+        "loop"
+      ],
+      "language_adherent": true
+    }
+  ],
+  "summary": {
+    "languages": {
+      "sw_mix": {
+        "responses": 1,
+        "code_passed": 1,
+        "code_total": 1,
+        "code_pass_rate": 1.0,
+        "format_compliant": 1,
+        "format_compliance_rate": 1.0,
+        "side_effect_free": 1,
+        "side_effect_free_rate": 1.0,
+        "explanations_passed": 0,
+        "explanations_total": 0,
+        "explanation_pass_rate": 0,
+        "overall_passed": 1,
+        "overall_total": 1,
+        "overall_pass_rate": 1.0,
+        "language_adherent": 1,
+        "language_adherence_rate": 1.0,
+        "mean_inference_seconds": 94.862,
+        "median_inference_seconds": 94.862,
+        "mean_completion_tokens": 85,
+        "total_completion_tokens": 85
+      }
+    },
+    "complete_language_sets": 1,
+    "all_languages_passed": 1,
+    "all_languages_pass_rate": 1.0,
+    "localized_parity": {}
+  },
+  "finished_at_unix": 1787530743
+}

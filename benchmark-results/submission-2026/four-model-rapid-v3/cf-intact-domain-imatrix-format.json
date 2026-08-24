@@ -1,0 +1,207 @@
+{
+  "schema": "codefellow-format-screen-v1",
+  "model": "cf-intact-domain-imatrix",
+  "model_only": true,
+  "temperature": 0.0,
+  "chat_template_kwargs": null,
+  "results": [
+    {
+      "id": "format_fence_01",
+      "language": "en",
+      "contract": "exact_fence",
+      "prompt": "Copy the code below unchanged. Return exactly one closed python Markdown code fence and nothing else.\n\ndef format_probe_01(value):\n    return value + 1",
+      "expected": "def format_probe_01(value):\n    return value + 1",
+      "response": "```python\ndef format_probe_01(value):\n    return value + 1\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 78,
+      "completion_tokens": 20,
+      "inference_seconds": 39.224
+    },
+    {
+      "id": "format_fence_02",
+      "language": "sw",
+      "contract": "exact_fence",
+      "prompt": "Nakili msimbo ulio hapa chini bila kuubadilisha. Toa code fence moja tu ya python iliyofungwa, bila maelezo mengine.\n\ndef format_probe_02(value):\n    return value + 2",
+      "expected": "def format_probe_02(value):\n    return value + 2",
+      "response": "```python\ndef format_probe_02(value):\n    return value + 2\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 104,
+      "completion_tokens": 20,
+      "inference_seconds": 7.794
+    },
+    {
+      "id": "format_fence_03",
+      "language": "sw_mix",
+      "contract": "exact_fence",
+      "prompt": "Copy code iliyo hapa chini exactly. Return closed python code fence moja tu, bila extra prose.\n\ndef format_probe_03(value):\n    return value + 3",
+      "expected": "def format_probe_03(value):\n    return value + 3",
+      "response": "```python\ndef format_probe_03(value):\n    return value + 3\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 84,
+      "completion_tokens": 20,
+      "inference_seconds": 7.916
+    },
+    {
+      "id": "format_fence_04",
+      "language": "en",
+      "contract": "exact_fence",
+      "prompt": "Copy the code below unchanged. Return exactly one closed python Markdown code fence and nothing else.\n\ndef format_probe_04(value):\n    return value + 4",
+      "expected": "def format_probe_04(value):\n    return value + 4",
+      "response": "```python\ndef format_probe_04(value):\n    return value + 4\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 78,
+      "completion_tokens": 20,
+      "inference_seconds": 14.409
+    },
+    {
+      "id": "format_fence_05",
+      "language": "sw",
+      "contract": "exact_fence",
+      "prompt": "Nakili msimbo ulio hapa chini bila kuubadilisha. Toa code fence moja tu ya python iliyofungwa, bila maelezo mengine.\n\ndef format_probe_05(value):\n    return value + 5",
+      "expected": "def format_probe_05(value):\n    return value + 5",
+      "response": "```python\ndef format_probe_05(value):\n    return value + 5\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 104,
+      "completion_tokens": 20,
+      "inference_seconds": 4.959
+    },
+    {
+      "id": "format_fence_06",
+      "language": "sw_mix",
+      "contract": "exact_fence",
+      "prompt": "Copy code iliyo hapa chini exactly. Return closed python code fence moja tu, bila extra prose.\n\ndef format_probe_06(value):\n    return value + 6",
+      "expected": "def format_probe_06(value):\n    return value + 6",
+      "response": "```python\ndef format_probe_06(value):\n    return value + 6\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 84,
+      "completion_tokens": 20,
+      "inference_seconds": 5.057
+    },
+    {
+      "id": "format_fence_07",
+      "language": "en",
+      "contract": "exact_fence",
+      "prompt": "Copy the code below unchanged. Return exactly one closed python Markdown code fence and nothing else.\n\ndef format_probe_07(value):\n    return value + 7",
+      "expected": "def format_probe_07(value):\n    return value + 7",
+      "response": "```python\ndef format_probe_07(value):\n    return value + 7\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 78,
+      "completion_tokens": 20,
+      "inference_seconds": 5.458
+    },
+    {
+      "id": "format_fence_08",
+      "language": "sw",
+      "contract": "exact_fence",
+      "prompt": "Nakili msimbo ulio hapa chini bila kuubadilisha. Toa code fence moja tu ya python iliyofungwa, bila maelezo mengine.\n\ndef format_probe_08(value):\n    return value + 8",
+      "expected": "def format_probe_08(value):\n    return value + 8",
+      "response": "```python\ndef format_probe_08(value):\n    return value + 8\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 104,
+      "completion_tokens": 20,
+      "inference_seconds": 11.611
+    },
+    {
+      "id": "format_fence_09",
+      "language": "sw_mix",
+      "contract": "exact_fence",
+      "prompt": "Copy code iliyo hapa chini exactly. Return closed python code fence moja tu, bila extra prose.\n\ndef format_probe_09(value):\n    return value + 9",
+      "expected": "def format_probe_09(value):\n    return value + 9",
+      "response": "```python\ndef format_probe_09(value):\n    return value + 9\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 84,
+      "completion_tokens": 20,
+      "inference_seconds": 5.002
+    },
+    {
+      "id": "format_fence_10",
+      "language": "en",
+      "contract": "exact_fence",
+      "prompt": "Copy the code below unchanged. Return exactly one closed python Markdown code fence and nothing else.\n\ndef format_probe_10(value):\n    return value + 10",
+      "expected": "def format_probe_10(value):\n    return value + 10",
+      "response": "```python\ndef format_probe_10(value):\n    return value + 10\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 79,
+      "completion_tokens": 21,
+      "inference_seconds": 5.334
+    },
+    {
+      "id": "format_fence_11",
+      "language": "sw",
+      "contract": "exact_fence",
+      "prompt": "Nakili msimbo ulio hapa chini bila kuubadilisha. Toa code fence moja tu ya python iliyofungwa, bila maelezo mengine.\n\ndef format_probe_11(value):\n    return value + 11",
+      "expected": "def format_probe_11(value):\n    return value + 11",
+      "response": "```python\ndef format_probe_11(value):\n    return value + 11\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 105,
+      "completion_tokens": 21,
+      "inference_seconds": 5.302
+    },
+    {
+      "id": "format_fence_12",
+      "language": "sw_mix",
+      "contract": "exact_fence",
+      "prompt": "Copy code iliyo hapa chini exactly. Return closed python code fence moja tu, bila extra prose.\n\ndef format_probe_12(value):\n    return value + 12",
+      "expected": "def format_probe_12(value):\n    return value + 12",
+      "response": "```python\ndef format_probe_12(value):\n    return value + 12\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 21,
+      "inference_seconds": 5.242
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "compliance_rate": 1.0,
+    "median_inference_seconds": 5.396,
+    "by_contract": {
+      "exact_fence": {
+        "passed": 12,
+        "total": 12,
+        "rate": 1.0
+      }
+    },
+    "by_language": {
+      "en": {
+        "passed": 4,
+        "total": 4,
+        "rate": 1.0
+      },
+      "sw": {
+        "passed": 4,
+        "total": 4,
+        "rate": 1.0
+      },
+      "sw_mix": {
+        "passed": 4,
+        "total": 4,
+        "rate": 1.0
+      }
+    }
+  }
+}

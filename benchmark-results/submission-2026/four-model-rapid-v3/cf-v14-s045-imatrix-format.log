@@ -1,0 +1,90 @@
+[01/50] format_fence_01 PASS
+[02/50] format_fence_02 PASS
+[03/50] format_fence_03 PASS
+[04/50] format_fence_04 PASS
+[05/50] format_fence_05 PASS
+[06/50] format_fence_06 PASS
+[07/50] format_fence_07 PASS
+[08/50] format_fence_08 PASS
+[09/50] format_fence_09 PASS
+[10/50] format_fence_10 PASS
+[11/50] format_fence_11 PASS
+[12/50] format_fence_12 PASS
+[13/50] format_fence_13 PASS
+[14/50] format_fence_14 PASS
+[15/50] format_fence_15 PASS
+[16/50] format_fence_16 PASS
+[17/50] format_fence_17 PASS
+[18/50] format_fence_18 PASS
+[19/50] format_fence_19 PASS
+[20/50] format_fence_20 PASS
+[21/50] format_json_21 PASS
+[22/50] format_json_22 FAIL
+[23/50] format_json_23 FAIL
+[24/50] format_json_24 PASS
+[25/50] format_json_25 FAIL
+[26/50] format_json_26 FAIL
+[27/50] format_json_27 PASS
+[28/50] format_json_28 FAIL
+[29/50] format_json_29 FAIL
+[30/50] format_json_30 PASS
+[31/50] format_json_31 FAIL
+[32/50] format_json_32 FAIL
+[33/50] format_json_33 PASS
+[34/50] format_json_34 FAIL
+[35/50] format_json_35 FAIL
+[36/50] format_bullets_36 PASS
+[37/50] format_bullets_37 PASS
+[38/50] format_bullets_38 FAIL
+[39/50] format_bullets_39 PASS
+[40/50] format_bullets_40 PASS
+[41/50] format_bullets_41 FAIL
+[42/50] format_bullets_42 PASS
+[43/50] format_bullets_43 PASS
+[44/50] format_bullets_44 FAIL
+[45/50] format_bullets_45 PASS
+[46/50] format_bullets_46 PASS
+[47/50] format_bullets_47 FAIL
+[48/50] format_bullets_48 PASS
+[49/50] format_bullets_49 PASS
+[50/50] format_bullets_50 FAIL
+{
+  "total": 50,
+  "passed": 35,
+  "compliance_rate": 0.7,
+  "median_inference_seconds": 9.485,
+  "by_contract": {
+    "exact_bullets": {
+      "passed": 10,
+      "total": 15,
+      "rate": 0.6667
+    },
+    "exact_fence": {
+      "passed": 20,
+      "total": 20,
+      "rate": 1.0
+    },
+    "exact_json": {
+      "passed": 5,
+      "total": 15,
+      "rate": 0.3333
+    }
+  },
+  "by_language": {
+    "en": {
+      "passed": 12,
+      "total": 17,
+      "rate": 0.7059
+    },
+    "sw": {
+      "passed": 7,
+      "total": 17,
+      "rate": 0.4118
+    },
+    "sw_mix": {
+      "passed": 16,
+      "total": 16,
+      "rate": 1.0
+    }
+  }
+}

@@ -1,0 +1,32 @@
+[01/1] he_HumanEval_66 sw
+  FAIL | 92.2s
+{
+  "languages": {
+    "sw": {
+      "responses": 1,
+      "code_passed": 0,
+      "code_total": 1,
+      "code_pass_rate": 0.0,
+      "format_compliant": 1,
+      "format_compliance_rate": 1.0,
+      "side_effect_free": 0,
+      "side_effect_free_rate": 0.0,
+      "explanations_passed": 0,
+      "explanations_total": 0,
+      "explanation_pass_rate": 0,
+      "overall_passed": 0,
+      "overall_total": 1,
+      "overall_pass_rate": 0.0,
+      "language_adherent": 0,
+      "language_adherence_rate": 0.0,
+      "mean_inference_seconds": 92.229,
+      "median_inference_seconds": 92.229,
+      "mean_completion_tokens": 68,
+      "total_completion_tokens": 68
+    }
+  },
+  "complete_language_sets": 1,
+  "all_languages_passed": 0,
+  "all_languages_pass_rate": 0.0,
+  "localized_parity": {}
+}

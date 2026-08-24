@@ -1,0 +1,45 @@
+{
+  "schema": "codefellow-format-screen-v1",
+  "model": "qwen35-nonthink-smoke",
+  "model_only": true,
+  "temperature": 0.0,
+  "chat_template_kwargs": {
+    "enable_thinking": false
+  },
+  "results": [
+    {
+      "id": "format_fence_01",
+      "language": "en",
+      "contract": "exact_fence",
+      "prompt": "Copy the code below unchanged. Return exactly one closed python Markdown code fence and nothing else.\n\ndef format_probe_01(value):\n    return value + 1",
+      "expected": "def format_probe_01(value):\n    return value + 1",
+      "response": "```python\ndef format_probe_01(value):\n    return value + 1\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 84,
+      "completion_tokens": 21,
+      "inference_seconds": 77.804
+    }
+  ],
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "compliance_rate": 1.0,
+    "median_inference_seconds": 77.804,
+    "by_contract": {
+      "exact_fence": {
+        "passed": 1,
+        "total": 1,
+        "rate": 1.0
+      }
+    },
+    "by_language": {
+      "en": {
+        "passed": 1,
+        "total": 1,
+        "rate": 1.0
+      }
+    }
+  }
+}

@@ -251,6 +251,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--fresh", action="store_true", help="Ignore an existing checkpoint.")
     parser.add_argument(
+        "--chat-template-kwargs",
+        type=json.loads,
+        default=None,
+        help="JSON object passed to llama.cpp as chat_template_kwargs.",
+    )
+    parser.add_argument(
+        "--model-only",
+        action="store_true",
+        help="Fail closed unless responses come directly from one model call with no translation, review, or postprocessing.",
+    )
+    parser.add_argument(
         "--application-contract",
         action="store_true",
         help="Evaluate CodeFellow's deterministic bare-code formatting and demo-removal layer.",
@@ -494,6 +505,17 @@ def summarize(tasks: list[dict], results: list[dict], languages: list[str]) -> d
 
 def main() -> int:
     args = parse_args()
+    if args.model_only and any(
+        (
+            args.application_contract,
+            args.self_review,
+            args.translate_then_solve,
+            args.nllb_model,
+            args.ct2_nllb_model,
+            args.nllb_roundtrip_explanations,
+        )
+    ):
+        raise SystemExit("--model-only cannot be combined with translation, review, or application-contract options")
     if args.nllb_model and args.ct2_nllb_model:
         raise SystemExit("choose either --nllb-model or --ct2-nllb-model, not both")
     translator_id = args.ct2_nllb_model or args.nllb_model
@@ -536,6 +558,8 @@ def main() -> int:
         "seed": args.seed,
         "languages": languages,
         "task_count": len(tasks),
+        "chat_template_kwargs": args.chat_template_kwargs,
+        "model_only": args.model_only,
         "application_contract": args.application_contract,
         "self_review": args.self_review,
         "translate_then_solve": args.translate_then_solve,
@@ -559,6 +583,7 @@ def main() -> int:
         if (
             previous.get("model") == args.model
             and previous.get("languages") == languages
+            and previous.get("chat_template_kwargs") == args.chat_template_kwargs
             and previous.get("application_contract", False) == args.application_contract
             and previous.get("self_review", False) == args.self_review
             and previous.get("translate_then_solve", False) == args.translate_then_solve
@@ -615,6 +640,8 @@ def main() -> int:
                 "stream": False,
                 "cache_prompt": True,
             }
+            if args.chat_template_kwargs is not None:
+                payload["chat_template_kwargs"] = args.chat_template_kwargs
             print(f"[{ordinal:02d}/{total}] {task['id']} {language}", flush=True)
             try:
                 inference_seconds = 0.0

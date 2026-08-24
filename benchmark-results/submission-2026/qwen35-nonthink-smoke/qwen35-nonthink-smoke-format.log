@@ -1,0 +1,21 @@
+[01/1] format_fence_01 PASS
+{
+  "total": 1,
+  "passed": 1,
+  "compliance_rate": 1.0,
+  "median_inference_seconds": 77.804,
+  "by_contract": {
+    "exact_fence": {
+      "passed": 1,
+      "total": 1,
+      "rate": 1.0
+    }
+  },
+  "by_language": {
+    "en": {
+      "passed": 1,
+      "total": 1,
+      "rate": 1.0
+    }
+  }
+}

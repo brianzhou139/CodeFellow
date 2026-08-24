@@ -2,104 +2,132 @@
 
 **Learn, debug, and build—completely offline.**
 
-CodeFellow is a private, on-device coding tutor for learners who cannot assume reliable or affordable internet access. It combines the unchanged Qwen2.5-Coder-3B-Instruct Q4_K_M coding model, a 600 MB CPU-int8 Kiswahili translation model, and real local diagnostics from Python or Node.js. It supports English and the natural Kiswahili/English code-switching register used in programming classrooms, preserving terms such as `function`, `array`, `API`, and `runtime` instead of forcing artificial translations.
+CodeFellow is a 3B on-device coding tutor specialized for English, Kiswahili, and the English–Kiswahili code-switching register used by programming students. The submitted artifact is one CPU-ready `Q4_K_M` GGUF. Kiswahili support is inside the model: the judged inference path uses no translator, cloud service, retrieval layer, response rewriter, or external tool.
 
-Qwen runs through `llama.cpp`; the Kiswahili language layer runs through CTranslate2 and SentencePiece. No cloud API is called during use.
+The project targets the ADTC Standard Laptop: four CPU cores, 8 GB RAM, integrated graphics, and Ubuntu 22.04. It builds on Qwen2.5-Coder-3B-Instruct while retaining the small model's speed and memory advantage.
 
-## Why this problem
+## What is different from the base model
 
-Many university, polytechnic, TVET, and bootcamp learners in Southern Africa practice on budget laptops and intermittent connections. A generic chatbot may invent compiler results and often gives away a full solution before a learner understands the bug. CodeFellow instead grounds its response in diagnostics produced on the learner's own laptop and lets the learner request either a guided hint or a full worked explanation.
+The derivative was trained from the original BF16/FP16 parent, not from an existing GGUF:
 
-## Cross-disciplinary integration
+- 10,000 assistant-response-only examples: 65% English coding replay, 20% Kiswahili tutoring, and 15% English–Kiswahili code-switching;
+- parallel task triples keep the executable code identical and vary only the teaching language;
+- generated Python and JavaScript are executed against task tests before admission;
+- mutation tests reject weak test suites and incorrect solutions;
+- LoRA checkpoints and merge strengths are gated against an untouched executable benchmark;
+- the selected step-100 adapter is merged at 0.45 strength after uniform 0.35/0.45/0.50 and upper-layer controls;
+- final `Q4_K_M` quantization uses an importance matrix balanced across English code, debugging, Kiswahili prose, code-switching, fences, JSON, tests, and strict output contracts.
 
-The primary pairing is **coding assistants + education**, with computational linguistics as a second load-bearing integration:
+This is deliberately a coding model that teaches, rather than a general translation model. Conventional terms such as `function`, `variable`, `array`, `list`, `loop`, `API`, `compiler`, and `runtime` remain in English when that is natural, while the surrounding explanation can be Kiswahili.
 
-- hint mode asks questions, identifies one concept, and avoids replacing the whole solution;
-- full mode explains the root cause, proposes a minimal patch, and suggests tests;
-- the prompt includes real syntax diagnostics produced locally, so tutoring is tied to executable evidence rather than a cosmetic persona.
-- a constrained Kiswahili programming glossary protects identifiers, operators, complexity notation, and semantic terms such as *shufwa* (even) before local translation;
-- fenced code is never translated, while teaching prose can be rendered in Kiswahili or natural Kiswahili/English code-switching.
+## Meaningful cross-disciplinary integration
 
-## Quick start
+CodeFellow combines **coding assistance + programming education**. Its model behavior is trained and evaluated for two load-bearing outcomes at once:
 
-Requirements: Ubuntu/Linux, Python 3.10+, a current `llama.cpp` build containing `llama-cli`, roughly 3 GB of free disk space, and 8 GB RAM.
+1. produce executable, contract-preserving code; and
+2. teach the approach briefly in the learner's requested English, Kiswahili, or code-switched register.
+
+The included offline application adds local syntax/test evidence and hint-first tutoring, but it is not needed for the language capability and is not included in model-only benchmark claims.
+
+## Download and run the model
+
+Requirements: Linux, a current `llama.cpp` build with `llama-cli`, about 2 GB free storage, and 8 GB RAM.
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
 bash download_model.sh
-bash download_translation.sh
 
-# Guided hint for a Python or JavaScript file
-python3 codefellow.py app.py --question "Why does this fail on repeated values?"
+llama-cli \
+  -m model/CodeFellow-Q4_K_M.gguf \
+  -t 4 -c 2048 -n 320 --temp 0 --jinja \
+  -p 'Implement Python function square(x). Return one fenced Python code block and then explain it in one short Kiswahili sentence.'
+```
 
-# Full diagnosis and patch guidance
-python3 codefellow.py app.py --full-answer
+The download is public, resumable, and SHA-256 verified. Once downloaded, inference is fully offline.
 
-# Higher-accuracy two-pass mode: a second local critic checks the first draft
-python3 codefellow.py app.py --full-answer --review
+## Optional diagnostics-grounded tutor
 
-# Ground the answer in a trusted test command that you choose
-python3 codefellow.py app.py --full-answer --test-command "python3 -m pytest -q"
+`codefellow.py` reads one learner-selected Python or JavaScript file, obtains a local syntax diagnostic, and sends that evidence to the same GGUF. It never silently edits the source or executes model-generated code. A learner-supplied test command is optional, shell-free, time-limited, and clearly labeled as local evidence.
 
-# Reproduce the two included demo scenarios
+```bash
 python3 codefellow.py examples/longest_unique_bug.py \
-  --question "Why is the answer for abba wrong?" --full-answer
+  --question 'Why is the answer for abba wrong?' --full-answer
+
 python3 codefellow.py examples/average_bug.js \
-  --question "Help me handle empty input and numeric strings."
+  --language sw-mix --full-answer \
+  --question 'Kwa nini function hii inafeli ikiwa array ni empty?'
+```
 
-# Kiswahili teaching prose with standard English coding vocabulary
-python3 codefellow.py examples/average_bug.js --language sw-mix \
-  --question "Kwa nini function hii inafeli ikiwa array ni empty?" --full-answer
+Override the runtime paths when needed:
 
-# Override runtime paths when llama-cli is not on PATH
+```bash
 python3 codefellow.py app.py \
   --llama-cli /path/to/llama.cpp/build/bin/llama-cli \
-  --model /path/to/model.gguf
+  --model /path/to/CodeFellow-Q4_K_M.gguf
 ```
 
-CodeFellow reads at most 64 KiB from the selected source file. Python files are checked with the standard-library syntax parser without creating bytecode; JavaScript files are checked with `node --check` when Node.js is installed. A learner may explicitly supply a trusted `--test-command`; it runs without a shell, in the source directory, with a 45-second timeout and bounded captured output. Test evidence is placed in the model prompt so the diagnosis is tied to an actual failure.
+## Reproduce model-only evaluation
 
-For Kiswahili requests, CodeFellow first protects exact programming contracts and translates only the natural-language requirement to English. Qwen solves the technical problem in its strongest language. The local language layer then translates teaching prose back to Kiswahili while preserving fenced code exactly. In `sw-mix` mode it retains conventional English programming vocabulary. English requests bypass the translator completely, preserving the base model's speed and accuracy.
+The independent screen contains 50 HumanEval-derived tasks whose canonical solutions were executed before inclusion. It rejects any task or close paraphrase overlapping the 662 source tasks used to construct training data. Public function signatures are restored after prose translation and verified exactly.
 
-When a compact model returns bare replacement code in full-answer mode, CodeFellow's deterministic response-contract layer wraps it in one language-labelled code block and removes only obvious top-level demo execution after the final Python or JavaScript definition. The model still produces the implementation, and generated code is never executed by this layer. This makes formatting and safety predictable without weakening the underlying model or requiring a cloud retry.
+Run one raw-model lane through a local `llama-server` endpoint:
 
-The runtime explicitly disables hidden reasoning traces and reserves the token budget for the learner-facing answer. This keeps responses predictable on compact thinking-capable models.
+```bash
+python3 evals/kiswahili/run_eval.py \
+  --endpoint http://127.0.0.1:8181/v1/chat/completions \
+  --model CodeFellow \
+  --tasks benchmark-results/submission-2026/humaneval-screen50.json \
+  --languages en,sw,sw_mix \
+  --model-only --fresh \
+  --output benchmark-results/submission-2026/codefellow-screen50.json
+```
 
-## ADTC profiler smoke test
+The strict format suite has 50 exact-output probes covering fenced code, JSON, and bullet contracts:
+
+```bash
+python3 evals/submission/run_format_eval.py \
+  --endpoint http://127.0.0.1:8181/v1/chat/completions \
+  --model CodeFellow \
+  --output benchmark-results/submission-2026/codefellow-format50.json
+```
+
+`evals/submission/run_q4_comparison.sh` runs matched raw-model comparisons with four CPU cores, temperature zero, the native model template, and no application processing.
+
+On the final 50-task screen, CodeFellow scored 39/50 English, 21/50 Kiswahili, and 24/50 code-switched executable passes, versus 38/50, 24/50, and 29/50 for the untouched Q4 base. The derivative improved strict-contract compliance from 30/50 to 35/50 and language adherence, but regressed localized executable accuracy. It was selected as a calculated competition tradeoff because the official profiler accuracy loss was only 0.02 and the African-use-case bonus can offset it. These limitations are disclosed rather than hidden.
+
+## ADTC profiler
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install "git+https://github.com/Africa-Deep-Tech-Foundation/adtc-profiler.git"
+pip install 'git+https://github.com/Africa-Deep-Tech-Foundation/adtc-profiler.git'
 
-adtc-profiler run \
+taskset -c 0-3 adtc-profiler run \
   --submission . \
   --mode participant \
-  --output submission.json \
-  --skip-accuracy
+  --output submission.json
 ```
 
-The model is downloaded before evaluation. Once the model is present, both the application and profiler inference path operate without network access.
+Submit the generated report without editing it. Development measurements are evidence, not a promise of identical organizer-hardware results.
 
-## Repository layout
+Selected-model development profiler result: 0.82 ARC-Easy `acc_norm` over 50 samples, five-run median 4.67 generation tok/s, and worst observed peak RSS 3,370.16 MiB. Raw reports are under `benchmark-results/submission-2026/`.
 
-- `codefellow.py` — offline tutor and local-diagnostics application
-- `translation_backend.py` — terminology-aware Kiswahili routing and CPU-int8 NLLB runtime
-- `response_contract.py` — deterministic formatting, demo removal, and code-switch register
-- `metadata.json` — ADTC submission metadata and two declared prompts
-- `download_model.sh` — public, resumable, checksum-verified model download
-- `download_translation.sh` — public, resumable, checksum-verified translator download
-- `REPORT.md` — design rationale and reproducible benchmark results
-- `examples/` — small Python and JavaScript demo bugs
-- `model/` — local GGUF weights, excluded from Git
+## Reproducibility and audit files
 
-## Safety and scope
+- `metadata.json` — ADTC metadata and two declared model prompts
+- `download_model.sh` — public checksum-verified GGUF download
+- `REPORT.md` — training, selection, benchmark, and hardware report
+- `training/` — dataset validation, LoRA, merge, importance-matrix, and release-gate scripts
+- `evals/submission/` — independent task builder, strict format grader, model runner, and scorer
+- `benchmark-results/submission-2026/` — chat-template audit, dataset manifest, quantization hashes, and raw result JSON
+- `codefellow.py` — optional offline tutor using the submitted GGUF
 
-CodeFellow is a learning tool. It does not execute model-generated code, make network requests, or silently edit the learner's files. It runs a project test command only when the learner explicitly supplies `--test-command`; that command is never constructed by the model.
+## Safety and limitations
+
+- The model is optimized for Python/JavaScript learning tasks, not autonomous deployment or security-critical code.
+- Generated programs must still be reviewed and tested.
+- Model-only evaluation executes candidate code only inside the evaluation harness with resource limits; the user application does not execute generated code.
+- Kiswahili quality is targeted at natural programming code-switching, not general-purpose literary translation.
 
 ## License
 
-Repository code is distributed under [GPL-3.0](LICENSE). Qwen retains the Qwen Research License. The NLLB translator is CC-BY-NC-4.0 and is included for this non-commercial research/evaluation prototype; see `NOTICE` and `THIRD_PARTY_LICENSES/`.
+Repository code is GPL-3.0. The derivative weights retain the Qwen Research License; see `NOTICE` and `THIRD_PARTY_LICENSES/QWEN_RESEARCH_LICENSE.txt`.

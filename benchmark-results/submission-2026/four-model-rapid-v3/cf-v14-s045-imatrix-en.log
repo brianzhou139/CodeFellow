@@ -1,0 +1,106 @@
+[13/50] he_HumanEval_55 en
+  PASS | 63.6s
+[14/50] he_HumanEval_47 en
+  PASS | 51.9s
+[15/50] he_HumanEval_89 en
+  FAIL | 38.9s
+[16/50] he_HumanEval_122 en
+  PASS | 22.0s
+[17/50] he_HumanEval_23 en
+  PASS | 33.2s
+[18/50] he_HumanEval_10 en
+  FAIL | 18.4s
+[19/50] he_HumanEval_13 en
+  PASS | 49.1s
+[20/50] he_HumanEval_54 en
+  PASS | 29.0s
+[21/50] he_HumanEval_44 en
+  PASS | 51.0s
+[22/50] he_HumanEval_71 en
+  PASS | 63.0s
+[23/50] he_HumanEval_151 en
+  PASS | 38.0s
+[24/50] he_HumanEval_65 en
+  PASS | 60.7s
+[25/50] he_HumanEval_125 en
+  PASS | 55.2s
+[26/50] he_HumanEval_79 en
+  PASS | 53.2s
+[27/50] he_HumanEval_90 en
+  PASS | 49.2s
+[28/50] he_HumanEval_86 en
+  PASS | 21.1s
+[29/50] he_HumanEval_76 en
+  PASS | 40.9s
+[30/50] he_HumanEval_37 en
+  PASS | 32.7s
+[31/50] he_HumanEval_45 en
+  PASS | 22.4s
+[32/50] he_HumanEval_158 en
+  PASS | 59.9s
+[33/50] he_HumanEval_52 en
+  PASS | 21.1s
+[34/50] he_HumanEval_134 en
+  FAIL | 35.6s
+[35/50] he_HumanEval_101 en
+  FAIL | 23.8s
+[36/50] he_HumanEval_140 en
+  PASS | 54.9s
+[37/50] he_HumanEval_58 en
+  PASS | 17.1s
+[38/50] he_HumanEval_16 en
+  PASS | 28.4s
+[39/50] he_HumanEval_32 en
+  FAIL | 27.3s
+[40/50] he_HumanEval_93 en
+  FAIL | 42.4s
+[41/50] he_HumanEval_144 en
+  PASS | 47.6s
+[42/50] he_HumanEval_35 en
+  PASS | 28.6s
+[43/50] he_HumanEval_50 en
+  FAIL | 46.3s
+[44/50] he_HumanEval_112 en
+  PASS | 37.9s
+[45/50] he_HumanEval_64 en
+  PASS | 36.6s
+[46/50] he_HumanEval_73 en
+  PASS | 57.3s
+[47/50] he_HumanEval_132 en
+  FAIL | 63.1s
+[48/50] he_HumanEval_91 en
+  FAIL | 34.7s
+[49/50] he_HumanEval_82 en
+  PASS | 50.8s
+[50/50] he_HumanEval_38 en
+  FAIL | 22.3s
+{
+  "languages": {
+    "en": {
+      "responses": 50,
+      "code_passed": 39,
+      "code_total": 50,
+      "code_pass_rate": 0.78,
+      "format_compliant": 50,
+      "format_compliance_rate": 1.0,
+      "side_effect_free": 39,
+      "side_effect_free_rate": 0.78,
+      "explanations_passed": 0,
+      "explanations_total": 0,
+      "explanation_pass_rate": 0,
+      "overall_passed": 39,
+      "overall_total": 50,
+      "overall_pass_rate": 0.78,
+      "language_adherent": 50,
+      "language_adherence_rate": 1.0,
+      "mean_inference_seconds": 39.305,
+      "median_inference_seconds": 36.999,
+      "mean_completion_tokens": 99.66,
+      "total_completion_tokens": 4983
+    }
+  },
+  "complete_language_sets": 50,
+  "all_languages_passed": 39,
+  "all_languages_pass_rate": 0.78,
+  "localized_parity": {}
+}

@@ -1,0 +1,102 @@
+{
+  "schema": "codefellow-english-kiswahili-codeswitch-eval-v3",
+  "model": "qwen35-nonthink-smoke",
+  "endpoint": "http://127.0.0.1:8181/v1/chat/completions",
+  "seed": 42,
+  "languages": [
+    "en"
+  ],
+  "task_count": 1,
+  "chat_template_kwargs": {
+    "enable_thinking": false
+  },
+  "model_only": true,
+  "application_contract": false,
+  "self_review": false,
+  "translate_then_solve": false,
+  "nllb_model": null,
+  "translation_runtime": "transformers",
+  "nllb_roundtrip_explanations": false,
+  "application_prompt_strategy": "direct",
+  "started_at_unix": 1787530648,
+  "results": [
+    {
+      "task_id": "he_HumanEval_66",
+      "category": "independent_implementation",
+      "kind": "code",
+      "runtime": "python",
+      "language": "en",
+      "model_prompt_language": "en",
+      "prompt": "Implement the Python function digitSum(s). Preserve this exact function name and argument contract. Requirement: Task Write a function that takes a string as input and returns the sum of the upper characters only' ASCII codes. Examples: digitSum(\"\") => 0 digitSum(\"abAB\") => 131 digitSum(\"abcCd\") => 67 digitSum(\"helloE\") => 69 digitSum(\"woArBld\") => 131 digitSum(\"aAaaaXa\") => 153\n\nRespond in English. Return exactly one fenced python code block containing the complete implementation. After the block, add one short English sentence explaining the approach. Do not include tests.",
+      "original_prompt": null,
+      "translated_requirement": null,
+      "translation_substitutions": [],
+      "english_response": null,
+      "response": "```python\ndef digitSum(s):\n    return sum(ord(c) for c in s if c.isupper())\n```\n\nThis function iterates through each character in the input string, checks if it is an uppercase letter using `isupper()`, and if so, adds its ASCII code to the running total.",
+      "first_response": null,
+      "self_review_applied": false,
+      "raw_response": null,
+      "application_contract_actions": [],
+      "finish_reason": "stop",
+      "prompt_tokens": 218,
+      "completion_tokens": 66,
+      "inference_seconds": 91.612,
+      "technical_pass": true,
+      "format_compliant": true,
+      "grade": {
+        "passed": true,
+        "reason": "passed",
+        "side_effect_free": true,
+        "duration_seconds": 0.0365,
+        "stdout": "CODEFELLOW_TEST_PASS\n",
+        "stderr": ""
+      },
+      "language_evidence_count": 10,
+      "language_evidence_words": [
+        "an",
+        "and",
+        "code",
+        "each",
+        "function",
+        "in",
+        "is",
+        "the",
+        "this",
+        "to"
+      ],
+      "code_switch_terms": [],
+      "language_adherent": true
+    }
+  ],
+  "summary": {
+    "languages": {
+      "en": {
+        "responses": 1,
+        "code_passed": 1,
+        "code_total": 1,
+        "code_pass_rate": 1.0,
+        "format_compliant": 1,
+        "format_compliance_rate": 1.0,
+        "side_effect_free": 1,
+        "side_effect_free_rate": 1.0,
+        "explanations_passed": 0,
+        "explanations_total": 0,
+        "explanation_pass_rate": 0,
+        "overall_passed": 1,
+        "overall_total": 1,
+        "overall_pass_rate": 1.0,
+        "language_adherent": 1,
+        "language_adherence_rate": 1.0,
+        "mean_inference_seconds": 91.612,
+        "median_inference_seconds": 91.612,
+        "mean_completion_tokens": 66,
+        "total_completion_tokens": 66
+      }
+    },
+    "complete_language_sets": 1,
+    "all_languages_passed": 1,
+    "all_languages_pass_rate": 1.0,
+    "localized_parity": {}
+  },
+  "finished_at_unix": 1787530739
+}

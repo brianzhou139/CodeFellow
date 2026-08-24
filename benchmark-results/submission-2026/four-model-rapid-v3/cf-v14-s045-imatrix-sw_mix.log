@@ -1,0 +1,106 @@
+[13/50] he_HumanEval_55 sw_mix
+  PASS | 79.1s
+[14/50] he_HumanEval_47 sw_mix
+  PASS | 105.6s
+[15/50] he_HumanEval_89 sw_mix
+  FAIL | 78.0s
+[16/50] he_HumanEval_122 sw_mix
+  FAIL | 143.2s
+[17/50] he_HumanEval_23 sw_mix
+  PASS | 26.6s
+[18/50] he_HumanEval_10 sw_mix
+  FAIL | 65.0s
+[19/50] he_HumanEval_13 sw_mix
+  PASS | 54.1s
+[20/50] he_HumanEval_54 sw_mix
+  FAIL | 68.6s
+[21/50] he_HumanEval_44 sw_mix
+  PASS | 71.9s
+[22/50] he_HumanEval_71 sw_mix
+  PASS | 90.4s
+[23/50] he_HumanEval_151 sw_mix
+  FAIL | 78.3s
+[24/50] he_HumanEval_65 sw_mix
+  FAIL | 102.3s
+[25/50] he_HumanEval_125 sw_mix
+  FAIL | 52.8s
+[26/50] he_HumanEval_79 sw_mix
+  PASS | 56.6s
+[27/50] he_HumanEval_90 sw_mix
+  FAIL | 41.1s
+[28/50] he_HumanEval_86 sw_mix
+  FAIL | 77.8s
+[29/50] he_HumanEval_76 sw_mix
+  PASS | 56.0s
+[30/50] he_HumanEval_37 sw_mix
+  PASS | 86.5s
+[31/50] he_HumanEval_45 sw_mix
+  PASS | 32.8s
+[32/50] he_HumanEval_158 sw_mix
+  FAIL | 31.3s
+[33/50] he_HumanEval_52 sw_mix
+  PASS | 42.3s
+[34/50] he_HumanEval_134 sw_mix
+  FAIL | 36.7s
+[35/50] he_HumanEval_101 sw_mix
+  FAIL | 53.1s
+[36/50] he_HumanEval_140 sw_mix
+  FAIL | 27.6s
+[37/50] he_HumanEval_58 sw_mix
+  FAIL | 28.1s
+[38/50] he_HumanEval_16 sw_mix
+  FAIL | 35.6s
+[39/50] he_HumanEval_32 sw_mix
+  FAIL | 20.3s
+[40/50] he_HumanEval_93 sw_mix
+  FAIL | 15.5s
+[41/50] he_HumanEval_144 sw_mix
+  FAIL | 36.8s
+[42/50] he_HumanEval_35 sw_mix
+  PASS | 22.3s
+[43/50] he_HumanEval_50 sw_mix
+  FAIL | 35.5s
+[44/50] he_HumanEval_112 sw_mix
+  PASS | 19.3s
+[45/50] he_HumanEval_64 sw_mix
+  FAIL | 15.3s
+[46/50] he_HumanEval_73 sw_mix
+  PASS | 42.8s
+[47/50] he_HumanEval_132 sw_mix
+  FAIL | 22.8s
+[48/50] he_HumanEval_91 sw_mix
+  FAIL | 27.0s
+[49/50] he_HumanEval_82 sw_mix
+  PASS | 15.5s
+[50/50] he_HumanEval_38 sw_mix
+  FAIL | 14.7s
+{
+  "languages": {
+    "sw_mix": {
+      "responses": 50,
+      "code_passed": 24,
+      "code_total": 50,
+      "code_pass_rate": 0.48,
+      "format_compliant": 49,
+      "format_compliance_rate": 0.98,
+      "side_effect_free": 23,
+      "side_effect_free_rate": 0.46,
+      "explanations_passed": 0,
+      "explanations_total": 0,
+      "explanation_pass_rate": 0,
+      "overall_passed": 24,
+      "overall_total": 50,
+      "overall_pass_rate": 0.48,
+      "language_adherent": 12,
+      "language_adherence_rate": 0.24,
+      "mean_inference_seconds": 48.358,
+      "median_inference_seconds": 41.668,
+      "mean_completion_tokens": 169.46,
+      "total_completion_tokens": 8473
+    }
+  },
+  "complete_language_sets": 50,
+  "all_languages_passed": 24,
+  "all_languages_pass_rate": 0.48,
+  "localized_parity": {}
+}

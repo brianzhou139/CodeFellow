@@ -1,0 +1,869 @@
+{
+  "schema": "codefellow-format-screen-v1",
+  "model": "qwen25-base",
+  "model_only": true,
+  "temperature": 0.0,
+  "chat_template_kwargs": null,
+  "results": [
+    {
+      "id": "format_fence_01",
+      "language": "en",
+      "contract": "exact_fence",
+      "prompt": "Copy the code below unchanged. Return exactly one closed python Markdown code fence and nothing else.\n\ndef format_probe_01(value):\n    return value + 1",
+      "expected": "def format_probe_01(value):\n    return value + 1",
+      "response": "```python\ndef format_probe_01(value):\n    return value + 1\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 78,
+      "completion_tokens": 20,
+      "inference_seconds": 32.784
+    },
+    {
+      "id": "format_fence_02",
+      "language": "sw",
+      "contract": "exact_fence",
+      "prompt": "Nakili msimbo ulio hapa chini bila kuubadilisha. Toa code fence moja tu ya python iliyofungwa, bila maelezo mengine.\n\ndef format_probe_02(value):\n    return value + 2",
+      "expected": "def format_probe_02(value):\n    return value + 2",
+      "response": "```python\ndef format_probe_02(value):\n    return value + 2\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 104,
+      "completion_tokens": 20,
+      "inference_seconds": 8.166
+    },
+    {
+      "id": "format_fence_03",
+      "language": "sw_mix",
+      "contract": "exact_fence",
+      "prompt": "Copy code iliyo hapa chini exactly. Return closed python code fence moja tu, bila extra prose.\n\ndef format_probe_03(value):\n    return value + 3",
+      "expected": "def format_probe_03(value):\n    return value + 3",
+      "response": "```python\ndef format_probe_03(value):\n    return value + 3\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 84,
+      "completion_tokens": 20,
+      "inference_seconds": 7.692
+    },
+    {
+      "id": "format_fence_04",
+      "language": "en",
+      "contract": "exact_fence",
+      "prompt": "Copy the code below unchanged. Return exactly one closed python Markdown code fence and nothing else.\n\ndef format_probe_04(value):\n    return value + 4",
+      "expected": "def format_probe_04(value):\n    return value + 4",
+      "response": "```python\ndef format_probe_04(value):\n    return value + 4\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 78,
+      "completion_tokens": 20,
+      "inference_seconds": 7.32
+    },
+    {
+      "id": "format_fence_05",
+      "language": "sw",
+      "contract": "exact_fence",
+      "prompt": "Nakili msimbo ulio hapa chini bila kuubadilisha. Toa code fence moja tu ya python iliyofungwa, bila maelezo mengine.\n\ndef format_probe_05(value):\n    return value + 5",
+      "expected": "def format_probe_05(value):\n    return value + 5",
+      "response": "```python\ndef format_probe_05(value):\n    return value + 5\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 104,
+      "completion_tokens": 20,
+      "inference_seconds": 4.902
+    },
+    {
+      "id": "format_fence_06",
+      "language": "sw_mix",
+      "contract": "exact_fence",
+      "prompt": "Copy code iliyo hapa chini exactly. Return closed python code fence moja tu, bila extra prose.\n\ndef format_probe_06(value):\n    return value + 6",
+      "expected": "def format_probe_06(value):\n    return value + 6",
+      "response": "```python\ndef format_probe_06(value):\n    return value + 6\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 84,
+      "completion_tokens": 20,
+      "inference_seconds": 4.874
+    },
+    {
+      "id": "format_fence_07",
+      "language": "en",
+      "contract": "exact_fence",
+      "prompt": "Copy the code below unchanged. Return exactly one closed python Markdown code fence and nothing else.\n\ndef format_probe_07(value):\n    return value + 7",
+      "expected": "def format_probe_07(value):\n    return value + 7",
+      "response": "```python\ndef format_probe_07(value):\n    return value + 7\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 78,
+      "completion_tokens": 20,
+      "inference_seconds": 10.987
+    },
+    {
+      "id": "format_fence_08",
+      "language": "sw",
+      "contract": "exact_fence",
+      "prompt": "Nakili msimbo ulio hapa chini bila kuubadilisha. Toa code fence moja tu ya python iliyofungwa, bila maelezo mengine.\n\ndef format_probe_08(value):\n    return value + 8",
+      "expected": "def format_probe_08(value):\n    return value + 8",
+      "response": "```python\ndef format_probe_08(value):\n    return value + 8\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 104,
+      "completion_tokens": 20,
+      "inference_seconds": 13.116
+    },
+    {
+      "id": "format_fence_09",
+      "language": "sw_mix",
+      "contract": "exact_fence",
+      "prompt": "Copy code iliyo hapa chini exactly. Return closed python code fence moja tu, bila extra prose.\n\ndef format_probe_09(value):\n    return value + 9",
+      "expected": "def format_probe_09(value):\n    return value + 9",
+      "response": "```python\ndef format_probe_09(value):\n    return value + 9\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 84,
+      "completion_tokens": 20,
+      "inference_seconds": 4.703
+    },
+    {
+      "id": "format_fence_10",
+      "language": "en",
+      "contract": "exact_fence",
+      "prompt": "Copy the code below unchanged. Return exactly one closed python Markdown code fence and nothing else.\n\ndef format_probe_10(value):\n    return value + 10",
+      "expected": "def format_probe_10(value):\n    return value + 10",
+      "response": "```python\ndef format_probe_10(value):\n    return value + 10\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 79,
+      "completion_tokens": 21,
+      "inference_seconds": 5.172
+    },
+    {
+      "id": "format_fence_11",
+      "language": "sw",
+      "contract": "exact_fence",
+      "prompt": "Nakili msimbo ulio hapa chini bila kuubadilisha. Toa code fence moja tu ya python iliyofungwa, bila maelezo mengine.\n\ndef format_probe_11(value):\n    return value + 11",
+      "expected": "def format_probe_11(value):\n    return value + 11",
+      "response": "```python\ndef format_probe_11(value):\n    return value + 11\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 105,
+      "completion_tokens": 21,
+      "inference_seconds": 5.378
+    },
+    {
+      "id": "format_fence_12",
+      "language": "sw_mix",
+      "contract": "exact_fence",
+      "prompt": "Copy code iliyo hapa chini exactly. Return closed python code fence moja tu, bila extra prose.\n\ndef format_probe_12(value):\n    return value + 12",
+      "expected": "def format_probe_12(value):\n    return value + 12",
+      "response": "```python\ndef format_probe_12(value):\n    return value + 12\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 21,
+      "inference_seconds": 11.294
+    },
+    {
+      "id": "format_fence_13",
+      "language": "en",
+      "contract": "exact_fence",
+      "prompt": "Copy the code below unchanged. Return exactly one closed python Markdown code fence and nothing else.\n\ndef format_probe_13(value):\n    return value + 13",
+      "expected": "def format_probe_13(value):\n    return value + 13",
+      "response": "```python\ndef format_probe_13(value):\n    return value + 13\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 79,
+      "completion_tokens": 21,
+      "inference_seconds": 5.464
+    },
+    {
+      "id": "format_fence_14",
+      "language": "sw",
+      "contract": "exact_fence",
+      "prompt": "Nakili msimbo ulio hapa chini bila kuubadilisha. Toa code fence moja tu ya python iliyofungwa, bila maelezo mengine.\n\ndef format_probe_14(value):\n    return value + 14",
+      "expected": "def format_probe_14(value):\n    return value + 14",
+      "response": "```python\ndef format_probe_14(value):\n    return value + 14\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 105,
+      "completion_tokens": 21,
+      "inference_seconds": 5.213
+    },
+    {
+      "id": "format_fence_15",
+      "language": "sw_mix",
+      "contract": "exact_fence",
+      "prompt": "Copy code iliyo hapa chini exactly. Return closed python code fence moja tu, bila extra prose.\n\ndef format_probe_15(value):\n    return value + 15",
+      "expected": "def format_probe_15(value):\n    return value + 15",
+      "response": "```python\ndef format_probe_15(value):\n    return value + 15\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 21,
+      "inference_seconds": 5.609
+    },
+    {
+      "id": "format_fence_16",
+      "language": "en",
+      "contract": "exact_fence",
+      "prompt": "Copy the code below unchanged. Return exactly one closed python Markdown code fence and nothing else.\n\ndef format_probe_16(value):\n    return value + 16",
+      "expected": "def format_probe_16(value):\n    return value + 16",
+      "response": "```python\ndef format_probe_16(value):\n    return value + 16\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 79,
+      "completion_tokens": 21,
+      "inference_seconds": 19.717
+    },
+    {
+      "id": "format_fence_17",
+      "language": "sw",
+      "contract": "exact_fence",
+      "prompt": "Nakili msimbo ulio hapa chini bila kuubadilisha. Toa code fence moja tu ya python iliyofungwa, bila maelezo mengine.\n\ndef format_probe_17(value):\n    return value + 17",
+      "expected": "def format_probe_17(value):\n    return value + 17",
+      "response": "```python\ndef format_probe_17(value):\n    return value + 17\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 105,
+      "completion_tokens": 21,
+      "inference_seconds": 5.011
+    },
+    {
+      "id": "format_fence_18",
+      "language": "sw_mix",
+      "contract": "exact_fence",
+      "prompt": "Copy code iliyo hapa chini exactly. Return closed python code fence moja tu, bila extra prose.\n\ndef format_probe_18(value):\n    return value + 18",
+      "expected": "def format_probe_18(value):\n    return value + 18",
+      "response": "```python\ndef format_probe_18(value):\n    return value + 18\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 21,
+      "inference_seconds": 5.167
+    },
+    {
+      "id": "format_fence_19",
+      "language": "en",
+      "contract": "exact_fence",
+      "prompt": "Copy the code below unchanged. Return exactly one closed python Markdown code fence and nothing else.\n\ndef format_probe_19(value):\n    return value + 19",
+      "expected": "def format_probe_19(value):\n    return value + 19",
+      "response": "```python\ndef format_probe_19(value):\n    return value + 19\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 79,
+      "completion_tokens": 21,
+      "inference_seconds": 9.111
+    },
+    {
+      "id": "format_fence_20",
+      "language": "sw",
+      "contract": "exact_fence",
+      "prompt": "Nakili msimbo ulio hapa chini bila kuubadilisha. Toa code fence moja tu ya python iliyofungwa, bila maelezo mengine.\n\ndef format_probe_20(value):\n    return value + 20",
+      "expected": "def format_probe_20(value):\n    return value + 20",
+      "response": "```python\ndef format_probe_20(value):\n    return value + 20\n```",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 105,
+      "completion_tokens": 21,
+      "inference_seconds": 14.56
+    },
+    {
+      "id": "format_json_21",
+      "language": "sw_mix",
+      "contract": "exact_json",
+      "prompt": "Return JSON object hii only. No Markdown fence, heading, or explanation; preserve every key na value.\n\n{\"task\":\"format_probe_21\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_21",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\"task\":\"format_probe_21\",\"status\":\"ready\",\"offline\":true}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 22,
+      "inference_seconds": 8.372
+    },
+    {
+      "id": "format_json_22",
+      "language": "en",
+      "contract": "exact_json",
+      "prompt": "Return the JSON object below only. Use no Markdown fence, heading, or explanation, and preserve all keys and values.\n\n{\"task\":\"format_probe_22\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_22",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\"task\":\"format_probe_22\",\"status\":\"ready\",\"offline\":true}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 87,
+      "completion_tokens": 22,
+      "inference_seconds": 12.54
+    },
+    {
+      "id": "format_json_23",
+      "language": "sw",
+      "contract": "exact_json",
+      "prompt": "Rudisha JSON object iliyo hapa chini pekee. Usitumie Markdown fence, kichwa, au maelezo; hifadhi keys na values zote.\n\n{\"task\":\"format_probe_23\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_23",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\n  \"task\": \"format_probe_23\",\n  \"status\": \"ready\",\n  \"offline\": true\n}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 104,
+      "completion_tokens": 31,
+      "inference_seconds": 10.839
+    },
+    {
+      "id": "format_json_24",
+      "language": "sw_mix",
+      "contract": "exact_json",
+      "prompt": "Return JSON object hii only. No Markdown fence, heading, or explanation; preserve every key na value.\n\n{\"task\":\"format_probe_24\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_24",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\"task\":\"format_probe_24\",\"status\":\"ready\",\"offline\":true}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 22,
+      "inference_seconds": 5.301
+    },
+    {
+      "id": "format_json_25",
+      "language": "en",
+      "contract": "exact_json",
+      "prompt": "Return the JSON object below only. Use no Markdown fence, heading, or explanation, and preserve all keys and values.\n\n{\"task\":\"format_probe_25\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_25",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\"task\":\"format_probe_25\",\"status\":\"ready\",\"offline\":true}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 87,
+      "completion_tokens": 22,
+      "inference_seconds": 14.748
+    },
+    {
+      "id": "format_json_26",
+      "language": "sw",
+      "contract": "exact_json",
+      "prompt": "Rudisha JSON object iliyo hapa chini pekee. Usitumie Markdown fence, kichwa, au maelezo; hifadhi keys na values zote.\n\n{\"task\":\"format_probe_26\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_26",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\n  \"task\": \"format_probe_26\",\n  \"status\": \"ready\",\n  \"offline\": true\n}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 104,
+      "completion_tokens": 31,
+      "inference_seconds": 7.085
+    },
+    {
+      "id": "format_json_27",
+      "language": "sw_mix",
+      "contract": "exact_json",
+      "prompt": "Return JSON object hii only. No Markdown fence, heading, or explanation; preserve every key na value.\n\n{\"task\":\"format_probe_27\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_27",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\"task\":\"format_probe_27\",\"status\":\"ready\",\"offline\":true}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 22,
+      "inference_seconds": 10.116
+    },
+    {
+      "id": "format_json_28",
+      "language": "en",
+      "contract": "exact_json",
+      "prompt": "Return the JSON object below only. Use no Markdown fence, heading, or explanation, and preserve all keys and values.\n\n{\"task\":\"format_probe_28\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_28",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\"task\":\"format_probe_28\",\"status\":\"ready\",\"offline\":true}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 87,
+      "completion_tokens": 22,
+      "inference_seconds": 5.326
+    },
+    {
+      "id": "format_json_29",
+      "language": "sw",
+      "contract": "exact_json",
+      "prompt": "Rudisha JSON object iliyo hapa chini pekee. Usitumie Markdown fence, kichwa, au maelezo; hifadhi keys na values zote.\n\n{\"task\":\"format_probe_29\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_29",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\n  \"task\": \"format_probe_29\",\n  \"status\": \"ready\",\n  \"offline\": true\n}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 104,
+      "completion_tokens": 31,
+      "inference_seconds": 16.976
+    },
+    {
+      "id": "format_json_30",
+      "language": "sw_mix",
+      "contract": "exact_json",
+      "prompt": "Return JSON object hii only. No Markdown fence, heading, or explanation; preserve every key na value.\n\n{\"task\":\"format_probe_30\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_30",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\"task\":\"format_probe_30\",\"status\":\"ready\",\"offline\":true}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 22,
+      "inference_seconds": 5.342
+    },
+    {
+      "id": "format_json_31",
+      "language": "en",
+      "contract": "exact_json",
+      "prompt": "Return the JSON object below only. Use no Markdown fence, heading, or explanation, and preserve all keys and values.\n\n{\"task\":\"format_probe_31\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_31",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\"task\":\"format_probe_31\",\"status\":\"ready\",\"offline\":true}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 87,
+      "completion_tokens": 22,
+      "inference_seconds": 5.308
+    },
+    {
+      "id": "format_json_32",
+      "language": "sw",
+      "contract": "exact_json",
+      "prompt": "Rudisha JSON object iliyo hapa chini pekee. Usitumie Markdown fence, kichwa, au maelezo; hifadhi keys na values zote.\n\n{\"task\":\"format_probe_32\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_32",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\n  \"task\": \"format_probe_32\",\n  \"status\": \"ready\",\n  \"offline\": true\n}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 104,
+      "completion_tokens": 31,
+      "inference_seconds": 14.813
+    },
+    {
+      "id": "format_json_33",
+      "language": "sw_mix",
+      "contract": "exact_json",
+      "prompt": "Return JSON object hii only. No Markdown fence, heading, or explanation; preserve every key na value.\n\n{\"task\":\"format_probe_33\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_33",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\"task\":\"format_probe_33\",\"status\":\"ready\",\"offline\":true}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 22,
+      "inference_seconds": 5.36
+    },
+    {
+      "id": "format_json_34",
+      "language": "en",
+      "contract": "exact_json",
+      "prompt": "Return the JSON object below only. Use no Markdown fence, heading, or explanation, and preserve all keys and values.\n\n{\"task\":\"format_probe_34\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_34",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\"task\":\"format_probe_34\",\"status\":\"ready\",\"offline\":true}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 87,
+      "completion_tokens": 22,
+      "inference_seconds": 5.389
+    },
+    {
+      "id": "format_json_35",
+      "language": "sw",
+      "contract": "exact_json",
+      "prompt": "Rudisha JSON object iliyo hapa chini pekee. Usitumie Markdown fence, kichwa, au maelezo; hifadhi keys na values zote.\n\n{\"task\":\"format_probe_35\",\"status\":\"ready\",\"offline\":true}",
+      "expected": {
+        "task": "format_probe_35",
+        "status": "ready",
+        "offline": true
+      },
+      "response": "```json\n{\n  \"task\": \"format_probe_35\",\n  \"status\": \"ready\",\n  \"offline\": true\n}\n```",
+      "passed": false,
+      "reason": "JSON was wrapped in Markdown",
+      "finish_reason": "stop",
+      "prompt_tokens": 104,
+      "completion_tokens": 31,
+      "inference_seconds": 12.748
+    },
+    {
+      "id": "format_bullets_36",
+      "language": "sw_mix",
+      "contract": "exact_bullets",
+      "prompt": "Return exactly bullet lines hizi tatu in this order. No heading, fence, au extra prose.\n\n- function: format_probe_36\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_36",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "- function: format_probe_36\n- runtime: python\n- network: disabled",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 19,
+      "inference_seconds": 7.577
+    },
+    {
+      "id": "format_bullets_37",
+      "language": "en",
+      "contract": "exact_bullets",
+      "prompt": "Return exactly the following three Markdown bullet lines in this order. Add no heading, fence, or other prose.\n\n- function: format_probe_37\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_37",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "- function: format_probe_37\n- runtime: python\n- network: disabled",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 86,
+      "completion_tokens": 19,
+      "inference_seconds": 7.556
+    },
+    {
+      "id": "format_bullets_38",
+      "language": "sw",
+      "contract": "exact_bullets",
+      "prompt": "Rudisha mistari hii mitatu tu ya Markdown kwa mpangilio huu. Usiongeze kichwa, fence, au maelezo mengine.\n\n- function: format_probe_38\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_38",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "```markdown\n# Rudisha Mistari\n\n## Mitatu Tu ya Markdown\n\n### Usiongeze Kichwa, Fence, au Maelezo Mengine\n\n- **function**: format_probe_38\n- **runtime**: python\n- **network**: disabled\n```",
+      "passed": false,
+      "reason": "bullet lines, ordering, or extra prose differ",
+      "finish_reason": "stop",
+      "prompt_tokens": 102,
+      "completion_tokens": 59,
+      "inference_seconds": 26.5
+    },
+    {
+      "id": "format_bullets_39",
+      "language": "sw_mix",
+      "contract": "exact_bullets",
+      "prompt": "Return exactly bullet lines hizi tatu in this order. No heading, fence, au extra prose.\n\n- function: format_probe_39\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_39",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "- function: format_probe_39\n- runtime: python\n- network: disabled",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 19,
+      "inference_seconds": 4.98
+    },
+    {
+      "id": "format_bullets_40",
+      "language": "en",
+      "contract": "exact_bullets",
+      "prompt": "Return exactly the following three Markdown bullet lines in this order. Add no heading, fence, or other prose.\n\n- function: format_probe_40\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_40",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "- function: format_probe_40\n- runtime: python\n- network: disabled",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 86,
+      "completion_tokens": 19,
+      "inference_seconds": 17.817
+    },
+    {
+      "id": "format_bullets_41",
+      "language": "sw",
+      "contract": "exact_bullets",
+      "prompt": "Rudisha mistari hii mitatu tu ya Markdown kwa mpangilio huu. Usiongeze kichwa, fence, au maelezo mengine.\n\n- function: format_probe_41\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_41",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "```markdown\n# Rudisha Mistari\n\n## Mitatu Tu ya Markdown\n\n### Usiongeze Kichwa, Fence, au Maelezo Mengine\n\n- **function**: format_probe_41\n- **runtime**: python\n- **network**: disabled\n```",
+      "passed": false,
+      "reason": "bullet lines, ordering, or extra prose differ",
+      "finish_reason": "stop",
+      "prompt_tokens": 102,
+      "completion_tokens": 59,
+      "inference_seconds": 12.857
+    },
+    {
+      "id": "format_bullets_42",
+      "language": "sw_mix",
+      "contract": "exact_bullets",
+      "prompt": "Return exactly bullet lines hizi tatu in this order. No heading, fence, au extra prose.\n\n- function: format_probe_42\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_42",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "- function: format_probe_42\n- runtime: python\n- network: disabled",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 19,
+      "inference_seconds": 4.702
+    },
+    {
+      "id": "format_bullets_43",
+      "language": "en",
+      "contract": "exact_bullets",
+      "prompt": "Return exactly the following three Markdown bullet lines in this order. Add no heading, fence, or other prose.\n\n- function: format_probe_43\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_43",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "- function: format_probe_43\n- runtime: python\n- network: disabled",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 86,
+      "completion_tokens": 19,
+      "inference_seconds": 4.859
+    },
+    {
+      "id": "format_bullets_44",
+      "language": "sw",
+      "contract": "exact_bullets",
+      "prompt": "Rudisha mistari hii mitatu tu ya Markdown kwa mpangilio huu. Usiongeze kichwa, fence, au maelezo mengine.\n\n- function: format_probe_44\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_44",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "```markdown\n# Rudisha Mistari\n\n## Mitatu Tu ya Markdown\n\n### Usiongeze Kichwa\n\n- function: format_probe_44\n- runtime: python\n- network: disabled\n```",
+      "passed": false,
+      "reason": "bullet lines, ordering, or extra prose differ",
+      "finish_reason": "stop",
+      "prompt_tokens": 102,
+      "completion_tokens": 46,
+      "inference_seconds": 10.439
+    },
+    {
+      "id": "format_bullets_45",
+      "language": "sw_mix",
+      "contract": "exact_bullets",
+      "prompt": "Return exactly bullet lines hizi tatu in this order. No heading, fence, au extra prose.\n\n- function: format_probe_45\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_45",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "- function: format_probe_45\n- runtime: python\n- network: disabled",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 19,
+      "inference_seconds": 4.791
+    },
+    {
+      "id": "format_bullets_46",
+      "language": "en",
+      "contract": "exact_bullets",
+      "prompt": "Return exactly the following three Markdown bullet lines in this order. Add no heading, fence, or other prose.\n\n- function: format_probe_46\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_46",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "- function: format_probe_46\n- runtime: python\n- network: disabled",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 86,
+      "completion_tokens": 19,
+      "inference_seconds": 4.841
+    },
+    {
+      "id": "format_bullets_47",
+      "language": "sw",
+      "contract": "exact_bullets",
+      "prompt": "Rudisha mistari hii mitatu tu ya Markdown kwa mpangilio huu. Usiongeze kichwa, fence, au maelezo mengine.\n\n- function: format_probe_47\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_47",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "```markdown\n# Rudisha Mistari\n\n## Mitatu Tu ya Markdown\n\nKwa mpangilio huu, usiongeze kichwa, fence, au maelezo mengine.\n\n- function: format_probe_47\n- runtime: python\n- network: disabled\n```",
+      "passed": false,
+      "reason": "bullet lines, ordering, or extra prose differ",
+      "finish_reason": "stop",
+      "prompt_tokens": 102,
+      "completion_tokens": 63,
+      "inference_seconds": 20.969
+    },
+    {
+      "id": "format_bullets_48",
+      "language": "sw_mix",
+      "contract": "exact_bullets",
+      "prompt": "Return exactly bullet lines hizi tatu in this order. No heading, fence, au extra prose.\n\n- function: format_probe_48\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_48",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "- function: format_probe_48\n- runtime: python\n- network: disabled",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 85,
+      "completion_tokens": 19,
+      "inference_seconds": 12.004
+    },
+    {
+      "id": "format_bullets_49",
+      "language": "en",
+      "contract": "exact_bullets",
+      "prompt": "Return exactly the following three Markdown bullet lines in this order. Add no heading, fence, or other prose.\n\n- function: format_probe_49\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_49",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "- function: format_probe_49\n- runtime: python\n- network: disabled",
+      "passed": true,
+      "reason": "passed",
+      "finish_reason": "stop",
+      "prompt_tokens": 86,
+      "completion_tokens": 19,
+      "inference_seconds": 4.647
+    },
+    {
+      "id": "format_bullets_50",
+      "language": "sw",
+      "contract": "exact_bullets",
+      "prompt": "Rudisha mistari hii mitatu tu ya Markdown kwa mpangilio huu. Usiongeze kichwa, fence, au maelezo mengine.\n\n- function: format_probe_50\n- runtime: python\n- network: disabled",
+      "expected": [
+        "- function: format_probe_50",
+        "- runtime: python",
+        "- network: disabled"
+      ],
+      "response": "```markdown\n# Rudisha Mistari\n\n## Mitatu Tu ya Markdown\n\n### Usiongeze Kichwa, Fence, au Maelezo Mengine\n\n- **function**: format_probe_50\n- **runtime**: python\n- **network**: disabled\n```",
+      "passed": false,
+      "reason": "bullet lines, ordering, or extra prose differ",
+      "finish_reason": "stop",
+      "prompt_tokens": 102,
+      "completion_tokens": 59,
+      "inference_seconds": 32.151
+    }
+  ],
+  "summary": {
+    "total": 50,
+    "passed": 30,
+    "compliance_rate": 0.6,
+    "median_inference_seconds": 7.566,
+    "by_contract": {
+      "exact_bullets": {
+        "passed": 10,
+        "total": 15,
+        "rate": 0.6667
+      },
+      "exact_fence": {
+        "passed": 20,
+        "total": 20,
+        "rate": 1.0
+      },
+      "exact_json": {
+        "passed": 0,
+        "total": 15,
+        "rate": 0.0
+      }
+    },
+    "by_language": {
+      "en": {
+        "passed": 12,
+        "total": 17,
+        "rate": 0.7059
+      },
+      "sw": {
+        "passed": 7,
+        "total": 17,
+        "rate": 0.4118
+      },
+      "sw_mix": {
+        "passed": 11,
+        "total": 16,
+        "rate": 0.6875
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "codefellow-independent-screen-v1",
+  "tasks": 50,
+  "source": "openai/openai_humaneval (MIT)",
+  "training_source_overlap": 0,
+  "deduplication": "token Jaccard < 0.70 and normalized sequence similarity < 0.86 against every unique v14 training prompt",
+  "reference_verification": "canonical solution executed against upstream HumanEval check() before inclusion",
+  "translation": "local NLLB CTranslate2 INT8 prose teacher; exact public signature restored; round-trip semantic and anchor gate",
+  "rejected_near_training": 0,
+  "rejected_execution": 25,
+  "rejected_translation": 87,
+  "minimum_translation_semantic_score": 0.4185
+}

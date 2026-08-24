@@ -17,8 +17,8 @@ __pycache__/
 .venv/
 
 # Local profiler and application output
-submission.json
-audit.json
+/submission.json
+/audit.json
 *.partial
 
 # Training and conversion artifacts
@@ -27,3 +27,8 @@ training-output/
 adapter/
 merged-model/
 translation-cache.json
+
+# Superseded local comparison runs (kept locally for audit, never submitted)
+benchmark-results/submission-2026/four-model-rapid/
+benchmark-results/submission-2026/four-model-rapid-v2/
+benchmark-results/submission-2026/q4-ab/

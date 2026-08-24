@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.1.0",
+  "profiler_version": "adtc-profiler 0.1.0",
+  "submission": {
+    "team_id": "local-codefellow-benchmark",
+    "domain": "coding_assistants",
+    "language_scope": [
+      "en",
+      "sw"
+    ],
+    "african_alpha_claim": true,
+    "budget_laptop_claim": true,
+    "submitter": {
+      "name": "Local benchmark",
+      "email": "benchmark@example.invalid",
+      "github_handle": "brianzhou139"
+    },
+    "cross_disciplinary_pairing": {
+      "discipline": "education",
+      "load_bearing": true,
+      "description": "Offline compiler diagnostics and Kiswahili code-switching support a hint-first programming tutor."
+    },
+    "test_prompts": [
+      {
+        "prompt_id": "tp_001",
+        "prompt": "Implement the Python function get_positive(l). Preserve this exact function name and argument contract. Requirement: Return only positive numbers in the list. >>> get_positive([-1, 2, -4, 5, 6]) [2, 5, 6] >>> get_positive([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]) [5, 3, 2, 3, 9, 123, 1]\n\nRespond in English. Return exactly one fenced python code block containing the complete implementation. After the block, add one short English sentence explaining the approach. Do not include tests."
+      },
+      {
+        "prompt_id": "tp_002",
+        "prompt": "Tekeleza Python function triangle_area(a, h). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kutokana na urefu wa upande na eneo kubwa la kurudi kwa triangle. >>> triangle_area(5, 3) 7.5 Technical terms zihifadhiwe: function.\n\nJibu kwa Kiswahili. Toa kizuizi kimoja tu cha msimbo wa python chenye utekelezaji kamili. Baada ya kizuizi, ongeza sentensi moja fupi ya Kiswahili inayoeleza mbinu. Usijumuishe majaribio."
+      }
+    ],
+    "model": {
+      "name": "CodeFellow-3B-Kiswahili-Instruct-Q4_K_M",
+      "runtime": "llama.cpp",
+      "quantization": "GGUF Q4_K_M importance-matrix calibrated",
+      "parameters_estimate": "3B",
+      "packaging": "binary_bundle"
+    }
+  },
+  "environment": {
+    "measured_on": "participant_laptop",
+    "cpu_model": "AMD Ryzen 7 4800H with Radeon Graphics",
+    "ram_gb": 15.3,
+    "gpu": "none",
+    "os": "Debian GNU/Linux 12 (bookworm)"
+  },
+  "throughput": {
+    "tokens_per_second_generation": 4.72,
+    "first_token_latency_ms": 14957.65,
+    "prompt_tokens": 512,
+    "generated_tokens": 128
+  },
+  "memory": {
+    "peak_rss_mb": 3369.93,
+    "steady_state_rss_mb": 3170.46,
+    "peak_vms_mb": 5176.9
+  },
+  "accuracy": [
+    {
+      "benchmark": "arc_easy",
+      "dataset_version": "lm-eval-harness",
+      "language": "en",
+      "samples": 50,
+      "score": 0.82,
+      "metric": "acc_norm"
+    }
+  ],
+  "cpu_thermal": {
+    "cpu_percent_p99": 24.6,
+    "core_temp_c_peak": null,
+    "throttled": false
+  },
+  "reproducibility": {
+    "git_commit_sha": "000000000000",
+    "docker_image_digest": "unknown",
+    "random_seed": 42
+  },
+  "model_info": {
+    "params_count": 3085938688,
+    "context_length": 32768,
+    "architecture": "qwen2",
+    "claimed_params_estimate": "3B",
+    "params_match": true
+  }
+}
