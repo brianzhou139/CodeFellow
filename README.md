@@ -6,6 +6,15 @@ CodeFellow is a 3B on-device coding tutor specialized for English, Kiswahili, an
 
 The project targets the ADTC Standard Laptop: four CPU cores, 8 GB RAM, integrated graphics, and Ubuntu 22.04. It builds on Qwen2.5-Coder-3B-Instruct while retaining the small model's speed and memory advantage.
 
+## Audited demo outputs
+
+These cards reproduce the exact executable responses saved in
+`benchmark-results/submission-2026/declared-prompt-evidence.json`.
+
+![CodeFellow English demo](docs/demo/codefellow-english.png)
+
+![CodeFellow Kiswahili demo](docs/demo/codefellow-kiswahili.png)
+
 ## What is different from the base model
 
 The derivative was trained from the original BF16/FP16 parent, not from an existing GGUF:

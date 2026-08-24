@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="sw">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeFellow Kiswahili Demo</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: #07111f; color: #eaf2ff; display: grid; place-items: center; }
+    main { width: 1180px; min-height: 700px; padding: 54px 62px; background: radial-gradient(circle at 92% 8%, #244b3a 0, transparent 36%), linear-gradient(145deg, #091729, #07111f 70%); }
+    header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; }
+    .brand { display: flex; align-items: center; gap: 16px; }
+    .logo { width: 50px; height: 50px; border-radius: 15px; display: grid; place-items: center; background: #2fd6a2; color: #062118; font: 800 27px ui-monospace, monospace; }
+    h1 { margin: 0; font-size: 30px; letter-spacing: -.03em; }
+    .tagline { color: #9db3cb; margin-top: 4px; font-size: 15px; }
+    .offline { border: 1px solid #2fd6a2; border-radius: 999px; padding: 8px 14px; color: #8ff0d2; font: 700 13px ui-monospace, monospace; }
+    .label { margin: 0 0 10px 2px; color: #6edab9; text-transform: uppercase; letter-spacing: .12em; font-weight: 800; font-size: 12px; }
+    .card { background: rgba(12, 29, 49, .94); border: 1px solid #24415e; border-radius: 18px; padding: 24px 28px; margin-bottom: 22px; box-shadow: 0 20px 60px rgba(0,0,0,.25); }
+    .prompt { font-size: 20px; line-height: 1.52; }
+    pre { margin: 0; color: #f5f9ff; font: 19px/1.55 "Cascadia Code", Consolas, monospace; white-space: pre-wrap; }
+    .kw { color: #75bfff; } .fn { color: #ffd479; } .num { color: #ff9b8e; }
+    .explanation { margin: 18px 0 0; color: #c1d0df; font-size: 17px; line-height: 1.45; }
+    footer { display: flex; justify-content: space-between; color: #7690aa; font: 13px ui-monospace, monospace; margin-top: 28px; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="brand"><div class="logo">CF</div><div><h1>CodeFellow</h1><div class="tagline">Learn, debug, and build—completely offline.</div></div></div>
+    <div class="offline">● OFFLINE · CPU · 8 GB</div>
+  </header>
+  <p class="label">Kiswahili + code-switching</p>
+  <section class="card prompt">Tekeleza Python <b>function triangle_area(a, h)</b>. Hifadhi function name na argument contract hizi bila kubadilisha. Jibu kwa Kiswahili.</section>
+  <p class="label">Jibu la model</p>
+  <section class="card">
+    <pre><span class="kw">def</span> <span class="fn">triangle_area</span>(a, h):
+    <span class="kw">return</span> <span class="num">0.5</span> * a * h</pre>
+    <p class="explanation">Kutokana na urefu wa upande na eneo kubwa la kurudi kwa triangle.</p>
+  </section>
+  <footer><span>Qwen2.5-Coder-3B derivative · Q4_K_M</span><span>Inatekelezeka ✓ &nbsp; Format sahihi ✓ &nbsp; Hakuna translator ✓</span></footer>
+</main>
+</body>
+</html>

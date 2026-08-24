@@ -110,8 +110,8 @@ Show the benchmark table and profiler JSON. Say: "All comparison runs use four C
 
 - [ ] Replace Team ID in `metadata.json`, `REPORT.md`, and this file.
 - [ ] Publish the selected GGUF and test `download_model.sh` from a clean directory.
-- [ ] Commit and push the final source repository.
+- [x] Commit and push the final source repository.
 - [x] Add profiler JSON and benchmark summary.
-- [ ] Capture English and Kiswahili demo screenshots.
+- [x] Capture English and Kiswahili demo screenshots.
 - [ ] Record/upload the two-minute video and insert its URL.
 - [ ] Submit on DevPost before the displayed deadline.
