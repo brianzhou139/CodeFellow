@@ -119,6 +119,8 @@ The ADTC profiler is run separately from the accuracy clients because concurrent
 
 CodeFellow's five clean four-core runs measured 4.66, 4.68, 4.67, 4.68, and 4.67 tok/s. Peak RSS ranged from 3,369.98 to 3,370.16 MiB. A separate accuracy-enabled official run produced 0.82 `acc_norm` over 50 ARC-Easy samples and a schema-valid report. These are local selection measurements, not organizer-device claims.
 
+The final full participant rerun after setting the official Team ID produced 5.02 generation tok/s, 14,292.14 ms first-token latency, 3,369.99 MiB peak RSS, and 0.82 `acc_norm` over 50 samples. It records Team ID `codefellow` and source commit `168990438c7b` in `benchmark-results/submission-2026/submission.json`. Using the profiler's published formulas, the self-reported form scores are **Sperf 33.47** and **Seff 52.99**. The development laptop contains an NVIDIA GPU, but the profiler forces CPU inference with `-ngl 0`; these remain development measurements rather than Standard Laptop claims.
+
 ## 8. Failure analysis and release decision
 
 The full screen rejects the claim that this checkpoint universally improves localized coding: it does not. The 0.45 merge loses three Kiswahili and five code-switch executable tasks relative to the base, even while improving English, exact contracts, adherence, and concision. Uniform 0.35/0.50, intact-parent domain quantization, and upper-layer-only controls did not produce a better rapid balance.
@@ -138,7 +140,8 @@ Run the official profiler:
 
 ```bash
 taskset -c 0-3 adtc-profiler run \
-  --submission . --mode participant --output submission.json
+  --submission . --mode participant \
+  --output benchmark-results/submission-2026/submission.json
 ```
 
 Run the raw comparison helper:

@@ -120,7 +120,7 @@ taskset -c 0-3 adtc-profiler run \
 
 Submit the generated report without editing it. Development measurements are evidence, not a promise of identical organizer-hardware results.
 
-Selected-model development profiler result: 0.82 ARC-Easy `acc_norm` over 50 samples, five-run median 4.67 generation tok/s, and worst observed peak RSS 3,370.16 MiB. Raw reports are under `benchmark-results/submission-2026/`.
+The current full participant report records Team ID `codefellow`, commit `168990438c7b`, 0.82 ARC-Easy `acc_norm` over 50 samples, 5.02 generation tok/s, and 3,369.99 MiB peak RSS. Under the profiler's published formulas, the self-reported form values are **Sperf 33.47** and **Seff 52.99**. The five-run model-selection median was 4.67 tok/s with 3,370.16 MiB worst peak RSS. Raw reports are under `benchmark-results/submission-2026/`; all throughput runs use CPU-only `-ngl 0` execution.
 
 ## Reproducibility and audit files
 

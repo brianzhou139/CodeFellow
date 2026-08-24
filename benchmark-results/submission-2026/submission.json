@@ -2,7 +2,7 @@
   "schema_version": "1.1.0",
   "profiler_version": "adtc-profiler 0.1.0",
   "submission": {
-    "team_id": "local-codefellow-benchmark",
+    "team_id": "codefellow",
     "domain": "coding_assistants",
     "language_scope": [
       "en",
@@ -11,14 +11,14 @@
     "african_alpha_claim": true,
     "budget_laptop_claim": true,
     "submitter": {
-      "name": "Local benchmark",
-      "email": "benchmark@example.invalid",
+      "name": "Brian Zhou",
+      "email": "brianzhou139@gmail.com",
       "github_handle": "brianzhou139"
     },
     "cross_disciplinary_pairing": {
       "discipline": "education",
       "load_bearing": true,
-      "description": "Offline compiler diagnostics and Kiswahili code-switching support a hint-first programming tutor."
+      "description": "CodeFellow combines local compiler and test diagnostics with hint-first programming education in English and natural Kiswahili/English code-switching. It preserves standard coding terms while specializing in correct minimal Python and JavaScript repairs, focused tests, and beginner-friendly offline explanations."
     },
     "test_prompts": [
       {
@@ -27,13 +27,13 @@
       },
       {
         "prompt_id": "tp_002",
-        "prompt": "Tekeleza Python function triangle_area(a, h). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Kutokana na urefu wa upande na eneo kubwa la kurudi kwa triangle. >>> triangle_area(5, 3) 7.5 Technical terms zihifadhiwe: function.\n\nJibu kwa Kiswahili. Toa kizuizi kimoja tu cha msimbo wa python chenye utekelezaji kamili. Baada ya kizuizi, ongeza sentensi moja fupi ya Kiswahili inayoeleza mbinu. Usijumuishe majaribio."
+        "prompt": "Tekeleza Python function is_palindrome(text). Hifadhi function name na argument contract hizi bila kubadilisha. Mahitaji: Angalia ikiwa string iliyopewa ni palindrome. >>> is_palindrome('') True >>> is_palindrome('aba') True >>> is_palindrome('aaaaa') True >>> is_palindrome('zbcd') False Technical terms zihifadhiwe: function, string.\n\nJibu kwa kizuizi kimoja tu cha msimbo wa python chenye utekelezaji kamili. Usijumuishe maelezo au majaribio."
       }
     ],
     "model": {
       "name": "CodeFellow-3B-Kiswahili-Instruct-Q4_K_M",
       "runtime": "llama.cpp",
-      "quantization": "GGUF Q4_K_M importance-matrix calibrated",
+      "quantization": "GGUF Q4_K_M, domain importance-matrix calibrated",
       "parameters_estimate": "3B",
       "packaging": "binary_bundle"
     }
@@ -42,19 +42,19 @@
     "measured_on": "participant_laptop",
     "cpu_model": "AMD Ryzen 7 4800H with Radeon Graphics",
     "ram_gb": 15.3,
-    "gpu": "none",
+    "gpu": "NVIDIA GeForce GTX 1660 Ti",
     "os": "Debian GNU/Linux 12 (bookworm)"
   },
   "throughput": {
-    "tokens_per_second_generation": 4.72,
-    "first_token_latency_ms": 14957.65,
+    "tokens_per_second_generation": 5.02,
+    "first_token_latency_ms": 14292.14,
     "prompt_tokens": 512,
     "generated_tokens": 128
   },
   "memory": {
-    "peak_rss_mb": 3369.93,
-    "steady_state_rss_mb": 3170.46,
-    "peak_vms_mb": 5176.9
+    "peak_rss_mb": 3369.99,
+    "steady_state_rss_mb": 3153.08,
+    "peak_vms_mb": 5176.89
   },
   "accuracy": [
     {
@@ -67,12 +67,12 @@
     }
   ],
   "cpu_thermal": {
-    "cpu_percent_p99": 24.6,
+    "cpu_percent_p99": 24.7,
     "core_temp_c_peak": null,
     "throttled": false
   },
   "reproducibility": {
-    "git_commit_sha": "000000000000",
+    "git_commit_sha": "168990438c7b",
     "docker_image_digest": "unknown",
     "random_seed": 42
   },

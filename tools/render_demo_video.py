@@ -224,13 +224,13 @@ def scene_english_demo(draw: ImageDraw.ImageDraw, p: float) -> None:
 def scene_kiswahili_demo(draw: ImageDraw.ImageDraw, p: float) -> None:
     draw_brand(draw, "RECORDED LOCAL OUTPUT")
     draw_terminal_chrome(draw, "codefellow / kiswahili + code-switching")
-    prompt = "Tekeleza function triangle_area(a, h). Jibu kwa Kiswahili."
+    prompt = "Tekeleza function is_palindrome(text). Jibu kwa code block moja."
     draw.text((74, 188), ">", font=F["code_bold"], fill=GREEN)
     draw.text((104, 188), reveal(prompt, p / 0.34), font=F["code"], fill=WHITE)
     response_p = clamp((p - 0.32) / 0.54)
     if response_p > 0:
         draw.text((74, 252), "CodeFellow", font=F["label"], fill=GREEN_LIGHT)
-        code = "def triangle_area(a, h):\n    return 0.5 * a * h"
+        code = "def is_palindrome(text):\n    return text == text[::-1]"
         draw.multiline_text((74, 294), reveal(code, response_p), font=F["code"], fill=WHITE, spacing=12)
     if p > 0.76:
         draw.text((74, 414), "Function name na argument contract zimehifadhiwa.", font=F["body_small"], fill=MUTED)
