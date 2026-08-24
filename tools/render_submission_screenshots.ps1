@@ -143,15 +143,15 @@ Draw-Cover -Path (Join-Path $OutputDirectory "codefellow-cover.png")
 Draw-Card `
     -Path (Join-Path $OutputDirectory "codefellow-english.png") `
     -LanguageLabel "English prompt" `
-    -Prompt "Implement the Python function get_positive(l). Return only positive numbers in the list. Preserve the exact function name and argument contract." `
-    -CodeLines @("def get_positive(l):", "    return [x for x in l if x > 0]") `
-    -Explanation "The approach is to use a list comprehension to iterate over the input list and include only elements greater than zero." `
+    -Prompt "Implement derivative(xs). The list stores polynomial coefficients in ascending power order. Preserve the exact function name and argument contract." `
+    -CodeLines @("def derivative(xs):", "    return [i * xs[i] for i in range(1, len(xs))]") `
+    -Explanation "Multiply each coefficient by its power, then omit the constant term." `
     -Checks "Executable: YES  |  Format: PASS  |  Postprocessing: NONE"
 
 Draw-Card `
     -Path (Join-Path $OutputDirectory "codefellow-kiswahili.png") `
     -LanguageLabel "Kiswahili + code-switching" `
-    -Prompt "Tekeleza Python function is_palindrome(text). Angalia ikiwa string iliyopewa ni palindrome. Hifadhi function name na argument contract hizi bila kubadilisha." `
+    -Prompt "Implement Python function is_palindrome(text). Hifadhi exact function name na argument contract. Return True if string inasomeka sawa forward na backward." `
     -CodeLines @("def is_palindrome(text):", "    return text == text[::-1]") `
     -Explanation "" `
     -Checks "Inatekelezeka: NDIYO  |  Format: PASS  |  Cloud: HAKUNA"

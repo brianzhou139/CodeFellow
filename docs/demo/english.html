@@ -31,12 +31,12 @@
     <div class="offline">● OFFLINE · CPU · 8 GB</div>
   </header>
   <p class="label">English prompt</p>
-  <section class="card prompt">Implement the Python function <b>get_positive(l)</b>. Return only positive numbers in the list. Preserve the exact function name and argument contract.</section>
+  <section class="card prompt">Implement the Python function <b>derivative(xs)</b>. The list stores polynomial coefficients in ascending power order. Preserve the exact function name and argument contract.</section>
   <p class="label">Model response</p>
   <section class="card">
-    <pre><span class="kw">def</span> <span class="fn">get_positive</span>(l):
-    <span class="kw">return</span> [x <span class="kw">for</span> x <span class="kw">in</span> l <span class="kw">if</span> x &gt; <span class="num">0</span>]</pre>
-    <p class="explanation">The approach is to use a list comprehension to iterate over the input list and include only elements greater than zero.</p>
+    <pre><span class="kw">def</span> <span class="fn">derivative</span>(xs):
+    <span class="kw">return</span> [i * xs[i] <span class="kw">for</span> i <span class="kw">in</span> range(<span class="num">1</span>, len(xs))]</pre>
+    <p class="explanation">Multiply each coefficient by its power, then omit the constant term.</p>
   </section>
   <footer><span>CodeFellow · Runs entirely on your laptop</span><span>Executable ✓ &nbsp; Format contract ✓ &nbsp; No postprocessing ✓</span></footer>
 </main>

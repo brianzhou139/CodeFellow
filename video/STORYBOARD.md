@@ -8,7 +8,7 @@ It does not imply that a pre-rendered response is live.
 |---:|---|---|
 | 0:00–0:12 | Access problem | Data cost, unreliable internet, cloud dependency |
 | 0:12–0:22 | Product | Offline tutor, English/Kiswahili, ordinary laptop |
-| 0:22–0:37 | English demo | Audited `get_positive` prompt and executable response |
+| 0:22–0:37 | English demo | Audited `derivative` prompt and executable response |
 | 0:37–0:51 | Kiswahili demo | Audited `is_palindrome` prompt and executable response |
 | 0:51–1:07 | Debugging | Genuine `codefellow.py` run on `average_bug.js` |
 | 1:07–1:22 | Engineering | 10,000 examples, locked code, execution and mutation gates |
