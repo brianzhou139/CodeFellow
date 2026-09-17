@@ -14,6 +14,48 @@ CodeFellow is a model-only-capable, offline coding tutor for English, Kiswahili,
 
 The design goal is not general translation. It is to keep executable identifiers and conventional programming vocabulary exact while teaching the surrounding concept in the learner's language. The 3B parent was retained to maximize CPU throughput and RAM headroom on the ADTC Standard Laptop.
 
+## Gate 2 update — model provenance and reproducibility
+
+The Gate 2 candidate is `CodeFellow-qlora250-s100-Q4_K_M.gguf`, built from
+`Qwen/Qwen2.5-Coder-3B-Instruct` using the locked parent revision
+`488639f1ff808d1d3d0ba301aef8c11461451ec5`. This is weight-level QLoRA
+fine-tuning, not prompt engineering or a translation wrapper. The final
+candidate is merged at adapter strength 1.0 and quantized with `llama.cpp`
+to `Q4_K_M`.
+
+The Gate 2 training package contains 4,000 training records and 400
+validation records, with English, Kiswahili, and English–Kiswahili
+code-switching lanes. The training run completed 250 optimizer steps on an
+NVIDIA RTX A6000. The retained training loss was `0.1713860362`; the run
+used assistant-response-only loss and preserved the parent tokenizer and
+chat template. The training manifest, adapter, scripts, logs, dataset review,
+merge record, and quantization record are in `provenance/`.
+
+Gate 2 artifact identity:
+
+| Artifact | SHA-256 |
+|---|---|
+| Final Q4_K_M GGUF | `92ae1b93b4248fec6efccc6fee0e83e1b4b0cb883ce740ab3d03a490c2647cb2` |
+| QLoRA adapter export | recorded in `provenance/adapter_model.sha256` |
+| Parent revision | `488639f1ff808d1d3d0ba301aef8c11461451ec5` |
+
+The Gate 1 model and benchmarks below remain in the repository as historical
+comparison evidence. They are not silently presented as measurements of the
+Gate 2 GGUF. Gate 2 semantic review and Standard Laptop CPU profiling must be
+completed before claiming that this candidate improves the released model.
+
+### Before/after behavior evidence
+
+The same instruction-format prompts were used for the unchanged parent and
+the Gate 1 fine-tuned checkpoint. On the derivative-function prompt, the
+fine-tuned model preserved the required function name, fenced Python format,
+and concise explanation; the parent frequently added tests or extra prose in
+the matched screen. On the Kiswahili palindrome prompt, the fine-tuned model
+preserved `is_palindrome` and the requested code-only contract more often,
+while retaining English programming terms such as `function` and `string`.
+The raw prompt/response pairs and contract results are retained under
+`benchmark-results/submission-2026/`; no output transformation was applied.
+
 ## 2. Artifact identity
 
 | Artifact | Bytes | SHA-256 |
@@ -133,7 +175,7 @@ Download the final GGUF and verify its published checksum:
 
 ```bash
 bash download_model.sh
-sha256sum model/CodeFellow-Q4_K_M.gguf
+sha256sum model/CodeFellow-qlora250-s100-Q4_K_M.gguf
 ```
 
 Run the official profiler:

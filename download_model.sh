@@ -6,13 +6,13 @@ set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODEL_DIR="$HERE/model"
-MODEL_FILE="$MODEL_DIR/CodeFellow-Q4_K_M.gguf"
-PARTIAL_FILE="$MODEL_FILE.partial"
+MODEL_FILE="$MODEL_DIR/CodeFellow-qlora250-s100-Q4_K_M.gguf"
+ARCHIVE_FILE="$MODEL_DIR/CodeFellow-qlora250-s100-Q4_K_M.tgz.partial"
 
-# CodeFellow's selected step-100, 0.45-strength, importance-matrix Q4_K_M
-# derivative. The public artifact is checksum-pinned for reproducible audits.
-MODEL_URL="https://github.com/brianzhou139/CodeFellow/releases/download/gate1-v1/CodeFellow-3B-Kiswahili-Instruct-Q4_K_M.gguf"
-MODEL_SHA256="50177433b86f9fdcd0161a89bdfdf0ec2819b396e9987bee5d743b3e9e822ea5"
+# CodeFellow Gate 2 provisional selected 250-step QLoRA Q4_K_M artifact.
+# Keep this URL as a literal public URL for static audit verification.
+MODEL_URL="https://github.com/brianzhou139/CodeFellow/releases/download/gate2-v2/CodeFellow-qlora250-s100-Q4_K_M.tgz"
+MODEL_SHA256="92ae1b93b4248fec6efccc6fee0e83e1b4b0cb883ce740ab3d03a490c2647cb2"
 
 verify_model() {
     printf '%s  %s\n' "$MODEL_SHA256" "$1" | sha256sum --check --status
@@ -41,7 +41,7 @@ if command -v aria2c >/dev/null 2>&1; then
         --max-connection-per-server=8 \
         --split=8 \
         --dir="$MODEL_DIR" \
-        --out="$(basename "$PARTIAL_FILE")" \
+        --out="$(basename "$ARCHIVE_FILE")" \
         "$MODEL_URL"
 elif command -v curl >/dev/null 2>&1; then
     curl \
@@ -51,23 +51,25 @@ elif command -v curl >/dev/null 2>&1; then
         --retry-delay 2 \
         --retry-all-errors \
         --continue-at - \
-        --output "$PARTIAL_FILE" \
+        --output "$ARCHIVE_FILE" \
         "$MODEL_URL"
 elif command -v wget >/dev/null 2>&1; then
     wget \
         --continue \
-        --output-document="$PARTIAL_FILE" \
+        --output-document="$ARCHIVE_FILE" \
         "$MODEL_URL"
 else
     echo "error: install aria2c, curl, or wget to download the model" >&2
     exit 1
 fi
 
-if ! verify_model "$PARTIAL_FILE"; then
-    echo "error: downloaded model failed SHA-256 verification" >&2
-    rm -f -- "$PARTIAL_FILE"
+tar -xf "$ARCHIVE_FILE" -C "$MODEL_DIR"
+rm -f -- "$ARCHIVE_FILE"
+
+if ! verify_model "$MODEL_FILE"; then
+    echo "error: extracted model failed SHA-256 verification" >&2
+    rm -f -- "$MODEL_FILE"
     exit 1
 fi
 
-mv -f -- "$PARTIAL_FILE" "$MODEL_FILE"
 echo "verified model ready: $MODEL_FILE"

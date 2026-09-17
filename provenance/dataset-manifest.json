@@ -1,0 +1,16 @@
+{
+  "name": "CodeFellow Gate 2 SFT curriculum",
+  "train_records": 4000,
+  "validation_records": 400,
+  "train_families": 389,
+  "validation_families": 44,
+  "language_mix": {"en": 0.65, "sw": 0.20, "sw_mix": 0.15},
+  "behaviour_mix": {"coding": 0.30, "debugging": 0.25, "hint_multiturn": 0.20, "concepts": 0.15, "format": 0.10},
+  "sources": [
+    {"name": "MBPP+", "use": "programming-task references and executable checks", "license": "MIT"},
+    {"name": "HumanEval+", "use": "programming-task references and executable checks", "license": "MIT"},
+    {"name": "Project-authored teaching curriculum", "use": "debugging, hints, concepts, Kiswahili and code-switching prose", "license": "CodeFellow project work"}
+  ],
+  "quality_controls": ["execution checks", "format-contract checks", "mutation checks", "family-separated validation", "token-length preflight"],
+  "full_corpus": "Not committed; this manifest and the training run records are the representative provenance package."
+}

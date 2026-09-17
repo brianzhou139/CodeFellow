@@ -1,0 +1,15 @@
+{
+  "schema": "codefellow-gate2-quantization-v1",
+  "parent_revision": "488639f1ff808d1d3d0ba301aef8c11461451ec5",
+  "adapter": "adapter_model.safetensors",
+  "merge_strength": 1.0,
+  "merged_dtype": "bf16",
+  "conversion": "llama.cpp convert_hf_to_gguf.py",
+  "quantizer": "llama.cpp llama-quantize",
+  "llama_cpp_commit": "e85caa81ea2b65797396018c179b87ad61fa38ab",
+  "quantization": "Q4_K_M",
+  "final_filename": "CodeFellow-qlora250-s100-Q4_K_M.gguf",
+  "final_bytes": 1929902464,
+  "final_sha256": "92ae1b93b4248fec6efccc6fee0e83e1b4b0cb883ce740ab3d03a490c2647cb2",
+  "importance_matrix": "Not used for this provisional Gate 2 candidate; this release is explicitly identified as a standard Q4_K_M build."
+}

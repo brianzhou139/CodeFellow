@@ -1,0 +1,45 @@
+{
+  "schema": "codefellow-gate1-selection-v1",
+  "selected": {
+    "label": "cf-v14-s045-imatrix",
+    "artifact": "CodeFellow-3B-Kiswahili-Instruct-Q4_K_M.gguf",
+    "bytes": 1929902784,
+    "sha256": "50177433b86f9fdcd0161a89bdfdf0ec2819b396e9987bee5d743b3e9e822ea5",
+    "adapter_checkpoint": "run-sw-v14-pilot-r16/checkpoint-100",
+    "adapter_strength": 0.45,
+    "quantization": "Q4_K_M with multilingual coding importance matrix"
+  },
+  "full50": {
+    "codefellow": {
+      "en_code_pass_rate": 0.78,
+      "sw_code_pass_rate": 0.42,
+      "sw_mix_code_pass_rate": 0.48,
+      "strict_contract_rate": 0.70,
+      "estimated_accuracy": 59.9
+    },
+    "qwen25_base": {
+      "en_code_pass_rate": 0.76,
+      "sw_code_pass_rate": 0.48,
+      "sw_mix_code_pass_rate": 0.58,
+      "strict_contract_rate": 0.60,
+      "estimated_accuracy": 61.3
+    }
+  },
+  "official_local_profiler": {
+    "accuracy_task": "arc_easy",
+    "accuracy_samples": 50,
+    "acc_norm": 0.82,
+    "generation_tps_runs": [4.66, 4.68, 4.67, 4.68, 4.67],
+    "median_generation_tps": 4.67,
+    "worst_peak_rss_mb": 3370.16,
+    "params_match": true
+  },
+  "decision": "Calculated Gate 1 competition tradeoff: a 1.4-point local composite gap and 0.02 official accuracy loss are accepted in exchange for improved strict contracts and language adherence that support the African-use-case bonus.",
+  "known_limit": "The selected checkpoint regresses Kiswahili and code-switch executable pass rates relative to the untouched base on the independent full50 screen.",
+  "rejected_controls": [
+    "uniform adapter strengths 0.35 and 0.50",
+    "intact-parent domain-imatrix Q4_K_M",
+    "upper-eight-layer-only adapter merge",
+    "uniform strengths 0.75 and 1.00 from earlier gates"
+  ]
+}

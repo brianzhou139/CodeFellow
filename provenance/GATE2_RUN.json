@@ -1,0 +1,38 @@
+{
+  "schema": "codefellow-gate2-provenance-v1",
+  "base_model": {
+    "repo": "Qwen/Qwen2.5-Coder-3B-Instruct",
+    "revision": "488639f1ff808d1d3d0ba301aef8c11461451ec5",
+    "weight_sha256": {
+      "model-00001-of-00002.safetensors": "5b684409377e037e5ed75d680a070126e841dab17e8cb9a818868deadf01ab39",
+      "model-00002-of-00002.safetensors": "8bc5227aae6174eaf0b589fd4fbeb0de046a1fc951a67f2d2538acad811e1068"
+    },
+    "license": "Qwen Research License"
+  },
+  "fine_tuning": {
+    "method": "QLoRA",
+    "adapter_rank": 16,
+    "adapter_alpha": 32,
+    "optimizer_steps": 250,
+    "train_records": 4000,
+    "validation_records": 400,
+    "languages": ["en", "sw", "sw_mix"],
+    "loss_scope": "assistant responses only",
+    "hardware": "NVIDIA RTX A6000",
+    "training_script": "train_qlora.py",
+    "dataset_manifest": "dataset-manifest.json"
+  },
+  "conversion": {
+    "merge_strength": 1.0,
+    "runtime": "llama.cpp",
+    "llama_cpp_commit": "e85caa81ea2b65797396018c179b87ad61fa38ab",
+    "quantization": "Q4_K_M",
+    "quantization_script": "merge_adapter.py"
+  },
+  "final_gguf": {
+    "filename": "CodeFellow-qlora250-s100-Q4_K_M.gguf",
+    "bytes": 1929902464,
+    "sha256": "92ae1b93b4248fec6efccc6fee0e83e1b4b0cb883ce740ab3d03a490c2647cb2"
+  },
+  "disclosure": "Gate 2 candidate; final semantic and Standard Laptop profiler checks must be completed before claiming release superiority."
+}
