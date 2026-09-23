@@ -6,7 +6,7 @@
 
 **Cross-disciplinary integration:** Programming education
 
-**Submitted model:** CodeFellow-3B-Kiswahili-Instruct-Q4_K_M
+**Submitted Gate 2 model:** `CodeFellow-qlora250-s100-Q4_K_M.gguf`
 
 ## 1. Submission summary
 
@@ -28,8 +28,11 @@ validation records, with English, Kiswahili, and English–Kiswahili
 code-switching lanes. The training run completed 250 optimizer steps on an
 NVIDIA RTX A6000. The retained training loss was `0.1713860362`; the run
 used assistant-response-only loss and preserved the parent tokenizer and
-chat template. The training manifest, adapter, scripts, logs, dataset review,
-merge record, and quantization record are in `provenance/`.
+chat template. The exact train/validation records, source and license manifest,
+adapter, training scripts, per-step trainer history, merge record, and
+quantization record are in `provenance/`. The exact adapter checksum is in
+`provenance/adapter_model.sha256`; the parent has two weight-shard checksums in
+`provenance/GATE2_RUN.json`.
 
 Gate 2 artifact identity:
 
@@ -44,19 +47,33 @@ comparison evidence. They are not silently presented as measurements of the
 Gate 2 GGUF. Gate 2 semantic review and Standard Laptop CPU profiling must be
 completed before claiming that this candidate improves the released model.
 
-### Before/after behavior evidence
+### Two recorded before/after examples for the Gate 2 GGUF
 
-The same instruction-format prompts were used for the unchanged parent and
-the Gate 1 fine-tuned checkpoint. On the derivative-function prompt, the
-fine-tuned model preserved the required function name, fenced Python format,
-and concise explanation; the parent frequently added tests or extra prose in
-the matched screen. On the Kiswahili palindrome prompt, the fine-tuned model
-preserved `is_palindrome` and the requested code-only contract more often,
-while retaining English programming terms such as `function` and `string`.
-The raw prompt/response pairs and contract results are retained under
-`benchmark-results/submission-2026/`; no output transformation was applied.
+The following prompts were run unchanged against the unmodified
+Qwen2.5-Coder-3B Q4 control and the submitted Gate 2 GGUF, at temperature 0
+with the same development evaluator. Full, unedited responses and model hashes
+are in [`provenance/evaluation/paired-examples.json`](provenance/evaluation/paired-examples.json).
 
-## 2. Artifact identity
+1. **Kiswahili JavaScript range prompt.** “Tekeleza JavaScript function
+   `rangeInclusive(start, end)`. Inputs zote ni integers. Rudisha integers kwa
+   mpangilio wa kupanda, ukiwajumuisha start na end. start > end irudishe [].
+   Toa code fence moja tu ya javascript iliyofungwa. Usiongeze comments,
+   docstrings, majaribio wala maelezo mengine.” The base began with English
+   introductory prose and added example calls. The Gate 2 output began
+   directly with a fenced `javascript` implementation and omitted the example
+   calls. Both produced a workable algorithm; the Gate 2 response still
+   contained a docstring-style comment despite the prompt's no-comments rule.
+2. **English Python identity prompt.** “Are Python `is` and `==`
+   interchangeable for comparing two separately created lists? Explain
+   identity versus equality. Answer in English in at most 90 words. No code
+   fence.” Both models correctly distinguished identity from equality. The
+   base gave a longer bulleted explanation; the Gate 2 output gave a shorter
+   single-paragraph answer within the requested limit.
+
+These are illustrative development responses, not a claim that the Gate 2
+candidate dominates the base on held-out accuracy or throughput.
+
+## 2. Historical Gate 1 artifact identity
 
 | Artifact | Bytes | SHA-256 |
 |---|---:|---|
@@ -66,7 +83,7 @@ The raw prompt/response pairs and contract results are retained under
 
 The selected GGUF was produced with `llama.cpp` quantizer version `0.2.0-dev`, commit `e85caa8`. `benchmark-results/submission-2026/quantization-manifest.json` records the commands and hashes.
 
-## 3. Chat-template audit
+## 3. Historical Gate 1 chat-template audit
 
 Template parity was checked before attributing any failure to training:
 
@@ -78,7 +95,7 @@ Template parity was checked before attributing any failure to training:
 
 Conclusion: the observed differences are model behavior, not a template mismatch. The complete audit is in `benchmark-results/submission-2026/CHAT_TEMPLATE_AUDIT.md`.
 
-## 4. Dataset and training
+## 4. Historical Gate 1 dataset and training
 
 Training restarted from the original BF16/FP16 `Qwen2.5-Coder-3B-Instruct`; no failed checkpoint or quantized model was used as a parent.
 
@@ -101,7 +118,7 @@ There are 662 unique source tasks. Parallel variants lock the executable solutio
 
 The conservative LoRA run used assistant-response-only loss and checkpointed frequently. Step 100 was frozen and tested at uniform merge strengths 0.35, 0.45, 0.50, 0.75, and 1.00. Intact-parent domain quantization and an upper-eight-layer-only merge were also tested and rejected. Strength 0.45 was selected as the Gate 1 competition tradeoff after the full matched screen and official profiler run.
 
-## 5. Importance-matrix quantization
+## 5. Historical Gate 1 importance-matrix quantization
 
 The importance corpus has 800 records:
 
@@ -113,7 +130,7 @@ The importance corpus has 800 records:
 
 In the original matched 12-task 0.50 quantization A/B, ordinary and imatrix builds tied on English (11/12) and Kiswahili (7/12), while imatrix improved code-switch executable pass rate from 6/12 to 8/12. That evidence fixed the quantization recipe before testing the 0.45 merge. The calibration activations were collected on the nearby 0.50 merge; this is disclosed in the quantization manifest.
 
-## 6. Independent model-only evaluation
+## 6. Historical Gate 1 independent model-only evaluation
 
 The screen is constructed from the MIT-licensed HumanEval corpus and is independent of the 662 training source tasks. Every canonical solution is executed against the upstream `check()` function before inclusion. Normalized token-Jaccard and sequence-similarity gates reject close training paraphrases.
 
@@ -148,7 +165,7 @@ CodeFellow improved English execution by one task, strict contracts by five task
 
 Qwen3.5 was evaluated with its official `enable_thinking=false` chat-template option. It matched CodeFellow's rapid executable counts but required more RAM and was materially slower. Raw JSON, native template parameters, and rejected-candidate results are published under `benchmark-results/submission-2026/`.
 
-## 7. Hardware selection
+## 7. Historical Gate 1 hardware selection
 
 The ADTC profiler is run separately from the accuracy clients because concurrent evaluation latency is not a throughput measurement. Existing CPU-only comparison telemetry on the development machine is:
 
@@ -191,7 +208,7 @@ Run the raw comparison helper:
 ```bash
 CODEFELLOW_PYTHON=.venv/bin/python \
 bash evals/submission/run_q4_comparison.sh \
-  model/CodeFellow-Q4_K_M.gguf \
+  model/CodeFellow-qlora250-s100-Q4_K_M.gguf \
   codefellow \
   benchmark-results/submission-2026/humaneval-screen50.json \
   benchmark-results/submission-2026/reproduction

@@ -9,8 +9,11 @@ The model was fine-tuned with QLoRA from the immutable
 converted and quantized with `llama.cpp`. The inference submission contains
 only the resulting GGUF and uses no network dependency after download.
 
-Training records are project-authored and derived from licensed programming
-task sources where noted in the dataset manifest. The full training corpus is
-not committed here; the representative manifest and review description are
-included instead. The adapter is included as direct proof of weight-level
-fine-tuning.
+The exact 4,000 training and 400 validation records are in `data/`. Source
+names, licenses, counts, and file hashes are in `dataset-manifest.json`.
+`training/trainer_state.json` contains the loss and evaluation history through
+optimizer step 250; `training/training_result.json` records the final training
+result. The adapter is included as direct proof of weight-level fine-tuning.
+`evaluation/paired-examples.json` contains two recorded same-prompt comparisons
+with the unmodified Qwen2.5-Coder-3B Q4 control. These are development
+examples, not a final performance score. Native-speaker review is not claimed.

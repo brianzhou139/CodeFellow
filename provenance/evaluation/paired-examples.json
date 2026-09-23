@@ -1,0 +1,24 @@
+{
+  "scope": "recorded development comparisons; same suite, prompts, temperature 0, evaluator and GPU inference backend; no output rewriting",
+  "suite_sha256": "9a385a6ff12d15d2b83195414213f84df649f6722d0995bd53359c041b5daec8",
+  "examples": [
+    {
+      "case_id": "rangeInclusive-sw",
+      "language": "sw",
+      "prompt": "Tekeleza JavaScript function rangeInclusive(start, end). Inputs zote ni integers. Rudisha integers kwa mpangilio wa kupanda, ukiwajumuisha start na end. start > end irudishe [].\n\nToa code fence moja tu ya javascript iliyofungwa. Usiongeze comments, docstrings, majaribio wala maelezo mengine.",
+      "unmodified_base_response": "Certainly! Below is a JavaScript function `rangeInclusive` that generates an array of integers from `start` to `end` (inclusive). If `start` is greater than `end`, it returns an empty array.\n\n```javascript\n/**\n * Generates an array of integers from start to end (inclusive).\n * \n * @param {number} start - The starting integer.\n * @param {number} end - The ending integer.\n * @returns {number[]} An array of integers from start to end, inclusive.\n */\nfunction rangeInclusive(start, end) {\n    // Check if start is greater than end\n    if (start > end) {\n        return [];\n    }\n\n    // Initialize an empty array to store the range\n    const result = [];\n\n    // Loop from start to end (inclusive)\n    for (let i = start; i <= end; i++) {\n        result.push(i);\n    }\n\n    // Return the array of integers\n    return result;\n}\n\n// Example usage:\nconsole.log(rangeInclusive(1, 5)); // Output: [1, 2, 3, 4, 5]\nconsole.log(rangeInclusive(5, 1)); // Output: []\nconsole.log(rangeInclusive(3, 3)); // Output: [3]\n```\n\n### Explanation:\n- **Function Definition**: The function `rangeInclusive` takes two parameters, `start` and `end`.\n- **Input Validation**: It first checks if `start` is greater than `end`. If so, it returns an empty array.\n- **Array Initialization**: An empty array `result` is initialized to store the integers in the range.\n- **Loop**: A `for` loop is used to iterate from `start` to `end`, inclusive. In each iteration, the current integer `i` is pushed into the `result` array.\n- **Return**: Finally, the function returns the `result` array containing the integers from `start` to `end`.\n\nThis function is straightforward and efficiently generates the desired range of integers.",
+      "gate2_response": "```javascript\n/**\n * Returns an array of integers from start to end, inclusive.\n * If start is greater than end, returns an empty array.\n * @param {number} start - The starting integer.\n * @param {number} end - The ending integer.\n * @returns {number[]} An array of integers from start to end, inclusive.\n */\nfunction rangeInclusive(start, end) {\n  if (start > end) {\n    return [];\n  }\n  const result = [];\n  for (let i = start; i <= end; i++) {\n    result.push(i);\n  }\n  return result;\n}\n```",
+      "base_model_sha256": "724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+      "gate2_model_sha256": "92ae1b93b4248fec6efccc6fee0e83e1b4b0cb883ce740ab3d03a490c2647cb2"
+    },
+    {
+      "case_id": "concept_identity-en",
+      "language": "en",
+      "prompt": "Are Python is and == interchangeable for comparing two separately created lists? Explain identity versus equality.\n\nAnswer in English in at most 90 words. No code fence.",
+      "unmodified_base_response": "In Python, `is` and `==` are used to compare objects, but they serve different purposes:\n\n- `==` checks for equality of the values of the objects. It compares the contents of the lists, meaning it checks if both lists contain the same elements in the same order.\n\n- `is` checks for identity, meaning it checks if the two objects are the same object in memory. It does not compare the contents of the lists; it only checks if they are the same instance.\n\nFor two separately created lists, `==` would return `True` if the lists contain the same elements in the same order, while `is` would return `False` because they are different objects in memory.",
+      "gate2_response": "No, Python's `is` and `==` are not interchangeable for comparing lists. `is` checks if two variables point to the same object, while `==` checks if the objects they point to are equal. For lists, `is` would return `False` because they are separate objects, but `==` would return `True` if they contain the same elements in the same order.",
+      "base_model_sha256": "724fb256bec1ff062b2f65e4569e871ad2e95ab2a3989723d1769c54294730b7",
+      "gate2_model_sha256": "92ae1b93b4248fec6efccc6fee0e83e1b4b0cb883ce740ab3d03a490c2647cb2"
+    }
+  ]
+}

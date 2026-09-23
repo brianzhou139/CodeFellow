@@ -19,7 +19,15 @@ The response cards use executable code recorded in
 
 ## What is different from the base model
 
-The derivative was trained from the original BF16/FP16 parent, not from an existing GGUF:
+The submitted Gate 2 GGUF was trained from the original BF16/FP16
+`Qwen2.5-Coder-3B-Instruct` parent, not from an existing GGUF. The run used
+4,000 training and 400 validation records across English, Kiswahili, and
+English–Kiswahili code-switching. A rank-16 QLoRA adapter was trained for 250
+optimizer steps, merged at strength 1.0, and converted to GGUF `Q4_K_M`.
+The adapter, dataset, training history, and conversion records are in
+[`provenance/`](provenance/).
+
+The earlier Gate 1 model used a separate curriculum and selection process:
 
 - 10,000 assistant-response-only examples: 65% English coding replay, 20% Kiswahili tutoring, and 15% English–Kiswahili code-switching;
 - parallel task triples keep the executable code identical and vary only the teaching language;
@@ -48,7 +56,7 @@ Requirements: Linux, a current `llama.cpp` build with `llama-cli`, about 2 GB fr
 bash download_model.sh
 
 llama-cli \
-  -m model/CodeFellow-Q4_K_M.gguf \
+  -m model/CodeFellow-qlora250-s100-Q4_K_M.gguf \
   -t 4 -c 2048 -n 320 --temp 0 --jinja \
   -p 'Implement Python function square(x). Return one fenced Python code block and then explain it in one short Kiswahili sentence.'
 ```
@@ -73,7 +81,7 @@ Override the runtime paths when needed:
 ```bash
 python3 codefellow.py app.py \
   --llama-cli /path/to/llama.cpp/build/bin/llama-cli \
-  --model /path/to/CodeFellow-Q4_K_M.gguf
+  --model /path/to/CodeFellow-qlora250-s100-Q4_K_M.gguf
 ```
 
 ## Reproduce model-only evaluation
@@ -103,7 +111,7 @@ python3 evals/submission/run_format_eval.py \
 
 `evals/submission/run_q4_comparison.sh` runs matched raw-model comparisons with four CPU cores, temperature zero, the native model template, and no application processing.
 
-On the final 50-task screen, CodeFellow scored 39/50 English, 21/50 Kiswahili, and 24/50 code-switched executable passes, versus 38/50, 24/50, and 29/50 for the untouched Q4 base. The derivative improved strict-contract compliance from 30/50 to 35/50 and language adherence, but regressed localized executable accuracy. It was selected as a calculated competition tradeoff because the official profiler accuracy loss was only 0.02 and the African-use-case bonus can offset it. These limitations are disclosed rather than hidden.
+The historical Gate 1 model scored 39/50 English, 21/50 Kiswahili, and 24/50 code-switched executable passes, versus 38/50, 24/50, and 29/50 for the untouched Q4 base. It improved strict-contract compliance from 30/50 to 35/50 but regressed localized executable accuracy. These numbers are not measurements of the Gate 2 GGUF.
 
 ## ADTC profiler
 
@@ -120,13 +128,14 @@ taskset -c 0-3 adtc-profiler run \
 
 Submit the generated report without editing it. Development measurements are evidence, not a promise of identical organizer-hardware results.
 
-The current full participant report records Team ID `codefellow`, commit `847b98bfd94f`, 0.82 ARC-Easy `acc_norm` over 50 samples, 4.74 generation tok/s, and 3,369.94 MiB peak RSS. Under the profiler's published formulas, the self-reported form values are **Sperf 31.60** and **Seff 52.99**. The five-run model-selection median was 4.67 tok/s with 3,370.16 MiB worst peak RSS. Raw reports are under `benchmark-results/submission-2026/`; all throughput runs use CPU-only `-ngl 0` execution.
+The archived Gate 1 participant report records Team ID `codefellow`, commit `847b98bfd94f`, 0.82 ARC-Easy `acc_norm` over 50 samples, 4.74 generation tok/s, and 3,369.94 MiB peak RSS. Under the profiler's published formulas, its form values were **Sperf 31.60** and **Seff 52.99**. The five-run Gate 1 selection median was 4.67 tok/s with 3,370.16 MiB worst peak RSS. Raw reports are under `benchmark-results/submission-2026/`; these figures are not measurements of the Gate 2 GGUF.
 
 ## Reproducibility and audit files
 
 - `metadata.json` — ADTC metadata and two declared model prompts
 - `download_model.sh` — public checksum-verified GGUF download
 - `REPORT.md` — training, selection, benchmark, and hardware report
+- `provenance/` — Gate 2 adapter, exact training records, trainer state, checksums, and conversion records
 - `training/` — dataset validation, LoRA, merge, importance-matrix, and release-gate scripts
 - `evals/submission/` — independent task builder, strict format grader, model runner, and scorer
 - `benchmark-results/submission-2026/` — chat-template audit, dataset manifest, quantization hashes, and raw result JSON

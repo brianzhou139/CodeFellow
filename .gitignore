@@ -1,9 +1,10 @@
-# Model weights — never commit these to git
+# Deployment weights are excluded; the Gate 2 adapter is required provenance.
 model/
 translation/
 *.gguf
 *.bin
 *.safetensors
+!provenance/adapter_model.safetensors
 
 # Operating systems and editors
 .DS_Store

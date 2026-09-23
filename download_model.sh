@@ -9,7 +9,7 @@ MODEL_DIR="$HERE/model"
 MODEL_FILE="$MODEL_DIR/CodeFellow-qlora250-s100-Q4_K_M.gguf"
 ARCHIVE_FILE="$MODEL_DIR/CodeFellow-qlora250-s100-Q4_K_M.tgz.partial"
 
-# CodeFellow Gate 2 provisional selected 250-step QLoRA Q4_K_M artifact.
+# CodeFellow Gate 2 submitted 250-step QLoRA Q4_K_M artifact.
 # Keep this URL as a literal public URL for static audit verification.
 MODEL_URL="https://github.com/brianzhou139/CodeFellow/releases/download/gate2-v2/CodeFellow-qlora250-s100-Q4_K_M.tgz"
 MODEL_SHA256="92ae1b93b4248fec6efccc6fee0e83e1b4b0cb883ce740ab3d03a490c2647cb2"

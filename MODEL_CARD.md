@@ -18,30 +18,31 @@ tags:
 - llama.cpp
 ---
 
-# CodeFellow 3B Kiswahili Instruct — GGUF
+# CodeFellow Gate 2 — GGUF
 
-CodeFellow is an offline coding tutor for English, Kiswahili, and natural English–Kiswahili programming code-switching. This repository contains the selected importance-matrix-calibrated `Q4_K_M` GGUF for CPU-only `llama.cpp` inference.
+CodeFellow is an offline coding tutor for English, Kiswahili, and natural English–Kiswahili programming code-switching. The current submitted artifact is `CodeFellow-qlora250-s100-Q4_K_M.gguf` for CPU-only `llama.cpp` inference.
 
 ## Model details
 
 - Parent: `Qwen/Qwen2.5-Coder-3B-Instruct`
 - Architecture: Qwen2 causal language model, approximately 3.09B parameters
-- Merge: step-100 LoRA adapter at 0.45 strength
-- Quantization: GGUF `Q4_K_M`, calibrated with an 800-record multilingual coding importance corpus
+- Parent revision: `488639f1ff808d1d3d0ba301aef8c11461451ec5`
+- Adaptation: rank-16 QLoRA, 250 optimizer steps, merged at strength 1.0
+- Quantization: standard GGUF `Q4_K_M` without an importance matrix
 - Intended runtime: `llama.cpp`, native embedded ChatML/Jinja template
 - Languages: English (`en`) and Kiswahili (`sw`), including code-switching
 - Cloud dependency: none after download
-- SHA-256: `50177433b86f9fdcd0161a89bdfdf0ec2819b396e9987bee5d743b3e9e822ea5`
+- SHA-256: `92ae1b93b4248fec6efccc6fee0e83e1b4b0cb883ce740ab3d03a490c2647cb2`
 
 ## Training approach
 
-The adapter used 10,000 assistant-response-only examples:
+The Gate 2 adapter used 4,000 training and 400 validation examples:
 
 - 65% English coding replay
 - 20% Kiswahili coding tutor interactions
 - 15% English–Kiswahili code-switching
 
-Parallel language variants preserve identical executable code and vary only the explanation. Python and JavaScript solutions were executed before admission, hidden edge cases were used where available, and mutation testing rejected weak task/test pairs. The adapter was deliberately only partially merged to retain the parent's English coding behavior.
+Training used assistant-response-only loss. The exact training records, validation records, adapter, trainer history, source licenses, and conversion scripts are in [`provenance/`](provenance/). The earlier 10,000-example curriculum and 0.45-strength adapter belonged to Gate 1; see the historical comparison in `REPORT.md`.
 
 ## Intended use
 
@@ -52,24 +53,24 @@ Parallel language variants preserve identical executable code and vary only the 
 
 This model is not intended for unsupervised production deployment, malware generation, or safety-critical software. Generated code must be reviewed and tested.
 
-## Measured results
+## Historical Gate 1 results
 
-On the final independent 50-task model-only screen, CodeFellow passed 39/50 English, 21/50 Kiswahili, and 24/50 code-switched executable tasks. The untouched Qwen2.5 Q4 control passed 38/50, 24/50, and 29/50. CodeFellow improved strict exact-output contracts from 30/50 to 35/50 and improved measured language adherence, but it did not improve localized executable accuracy.
+The Gate 1 model passed 39/50 English, 21/50 Kiswahili, and 24/50 code-switched executable tasks. The untouched Qwen2.5 Q4 control passed 38/50, 24/50, and 29/50. The Gate 1 model improved strict exact-output contracts from 30/50 to 35/50 and improved measured language adherence, but it did not improve localized executable accuracy. These figures do not describe the Gate 2 GGUF.
 
-The official local ADTC profiler reported 0.82 ARC-Easy `acc_norm` over 50 samples. Five isolated four-core throughput runs produced a 4.67 tok/s median and 3,370.16 MiB worst observed peak RSS. These development results are not organizer-device guarantees.
+The Gate 1 local ADTC profiler reported 0.82 ARC-Easy `acc_norm` over 50 samples. Five isolated four-core throughput runs produced a 4.67 tok/s median and 3,370.16 MiB worst observed peak RSS. These historical development results are not Gate 2 or organizer-device measurements.
 
 ## Basic llama.cpp use
 
 ```bash
 llama-cli \
-  -m CodeFellow-3B-Kiswahili-Instruct-Q4_K_M.gguf \
+  -m model/CodeFellow-qlora250-s100-Q4_K_M.gguf \
   -t 4 -c 2048 -n 320 --temp 0 --jinja \
   -p 'Tekeleza Python function square(x), kisha eleza approach kwa sentensi moja ya Kiswahili.'
 ```
 
 ## Evaluation policy
 
-Model comparisons use temperature zero, native chat templates, CPU-only inference, equal context/output limits, no translator, no response postprocessor, and executable hidden tests. The independent screen is deduplicated against all 662 source tasks used to construct the training examples. Full raw JSON, the chat-template audit, and the evaluation scripts are published in the CodeFellow source repository.
+The historical Gate 1 model comparisons used temperature zero, native chat templates, CPU-only inference, equal context/output limits, no translator, no response postprocessor, and executable hidden tests. Gate 2 paired development examples are recorded in `provenance/evaluation/`.
 
 Development measurements do not guarantee identical results on organizer hardware or hidden prompts.
 

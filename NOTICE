@@ -2,8 +2,9 @@ CodeFellow
 Copyright (c) 2026 CodeFellow contributors
 
 This project is built with Qwen2.5-Coder-3B-Instruct and distributes a
-fine-tuned, partially merged Q4_K_M derivative of the upstream instruction
-model.
+fine-tuned Q4_K_M derivative of the upstream instruction model. The current
+Gate 2 artifact merges its 250-step QLoRA adapter at strength 1.0; the earlier
+Gate 1 artifact used a partial merge.
 
 Qwen is licensed under the Qwen RESEARCH LICENSE AGREEMENT,
 Copyright (c) Alibaba Cloud. All Rights Reserved.
@@ -39,3 +40,8 @@ https://huggingface.co/mijuanlo/nllb-200-distilled-600M-ct2-int8
 
 License:
 https://creativecommons.org/licenses/by-nc/4.0/legalcode
+
+Gate 2 training records also draw on Muennighoff/mbpp (CC-BY-4.0) and
+evalplus/humanevalplus (EvalPlus Apache-2.0; original HumanEval MIT). Exact
+source labels, counts, and records are in provenance/dataset-manifest.json and
+provenance/data/.

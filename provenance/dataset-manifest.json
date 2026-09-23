@@ -7,10 +7,16 @@
   "language_mix": {"en": 0.65, "sw": 0.20, "sw_mix": 0.15},
   "behaviour_mix": {"coding": 0.30, "debugging": 0.25, "hint_multiturn": 0.20, "concepts": 0.15, "format": 0.10},
   "sources": [
-    {"name": "MBPP+", "use": "programming-task references and executable checks", "license": "MIT"},
-    {"name": "HumanEval+", "use": "programming-task references and executable checks", "license": "MIT"},
-    {"name": "Project-authored teaching curriculum", "use": "debugging, hints, concepts, Kiswahili and code-switching prose", "license": "CodeFellow project work"}
+    {"name": "Muennighoff/mbpp", "url": "https://huggingface.co/datasets/Muennighoff/mbpp", "use": "programming-task references and executable checks", "license": "CC-BY-4.0", "train_records": 2151, "validation_records": 207},
+    {"name": "evalplus/humanevalplus", "url": "https://huggingface.co/datasets/evalplus/humanevalplus", "use": "programming-task references and executable checks", "license": "EvalPlus Apache-2.0; original HumanEval MIT", "train_records": 1738, "validation_records": 193},
+    {"name": "Project-authored teaching curriculum", "use": "debugging, hints, concepts, Kiswahili and code-switching prose", "license": "CodeFellow project work", "train_records": 111, "validation_records": 0}
   ],
   "quality_controls": ["execution checks", "format-contract checks", "mutation checks", "family-separated validation", "token-length preflight"],
-  "full_corpus": "Not committed; this manifest and the training run records are the representative provenance package."
+  "full_corpus": {
+    "training_file": "data/train.jsonl",
+    "training_sha256": "ce003769f8a84bd76e4e967b759f546c15d01251c91c66fe54de8b045e21a681",
+    "validation_file": "data/validation.jsonl",
+    "validation_sha256": "212b5690b8a8760be0e8e244ee9a67c8f8a9b14c73ff521fd03be966f44ce0df"
+  },
+  "language_review": "Project review only; independent native-speaker review is not claimed."
 }

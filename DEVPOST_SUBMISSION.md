@@ -1,4 +1,9 @@
-# CodeFellow — DevPost Gate 1 Draft
+# CodeFellow — Historical DevPost Gate 1 Draft
+
+This file preserves the Gate 1 submission copy. The current Gate 2 model is
+`CodeFellow-qlora250-s100-Q4_K_M.gguf`; use `README.md`, `MODEL_CARD.md`,
+`REPORT.md`, and `provenance/` for its identity and training record. The model
+and performance figures below describe the earlier Gate 1 artifact.
 
 ## Project name
 
